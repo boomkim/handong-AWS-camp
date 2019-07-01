@@ -1,4 +1,4 @@
-## EMR의 Zeppelin에 Athena Interpreter 추가하기
+# EMR의 Zeppelin에 Athena Interpreter 추가하기
 
 *이번 글에서는 EMR에 Spark와 Zeppelin이 올라가 있다고 가정합니다.* 
 
