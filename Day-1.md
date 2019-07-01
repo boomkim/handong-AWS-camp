@@ -6,17 +6,17 @@
 * * *
 
 ### 1-1. 개요 
-- 본 실습 섹션에서는 Amazon Virtual Private Cloud(VPC)를 사용하여 자체 VPC를 생성
-- AWS VPC에 구성 요소를 추가하여 사용자 정의된 네트워크를 구성
-- AWS EC2 인스턴스에 대한 보안 그룹을 생성
-- 웹 서버를 실행하고 이를 VPC에서 시작하도록 EC2 인스턴스를 구성 및 사용자 정의
+- 본 실습 섹션에서는 Amazon Virtual Private Cloud(VPC)를 사용하여 자체 VPC를 생성합니다.
+- AWS VPC에 구성 요소를 추가하여 사용자 정의된 네트워크를 구성합니다.
+- AWS EC2 인스턴스에 대한 보안 그룹을 생성합니다.
+- 웹 서버를 실행하고 이를 VPC에서 시작하도록 EC2 인스턴스를 구성 및 사용자 정의합니다.
 
 ### 1-2. 목표
 본 실습을 마친 후 다음을 할 수 있게 됩니다.
-- VPC 생성
-- 서브넷 생성
-- 보안 그룹 생성
-- VPC에서 EC2 인스턴스 시작 
+- AWS VPC를 생성합니다.
+- 서브넷(Subnet)을 생성합니다.
+- 보안 그룹(Security Group)을 생성합니다.
+- AWS VPC에서 EC2 인스턴스 시작합니다.
 
 ### 1-3. 사전 조건
 본 실습을 위해서는 다음이 필요합니다.
@@ -108,7 +108,7 @@
 
 ### Task 2 : Web Server 시작
 - 개요
-    - VPC를 생성한 후, 생성한 VPC에서 EC2 인스턴스를 시작
+    - VPC를 생성한 후, 생성한 VPC에서 EC2 인스턴스를 시작합니다.
     - EC2 웹 서버의 역할을 하도록 부트스트랩합니다.
 
 ### Task 2.1 : 첫 번째 웹 서버 인스턴스 시작
@@ -144,15 +144,19 @@ fi
     - `[Key]` : Name
     - `[Value]` : Web Server 1
 - 2.1.11 `[Next]` : Configure Security Group을 클릭합니다.
-- 2.1.12 `[Step 6]` : Configure Security Group 페이지에서 Select an existing security group을 클릭한 후, 작업 1.3에서 생성한 보안 그룹을 선택합니다. 
+- 2.1.12 `[Step 6]` : Configure Security Group 페이지에서 `Select an existing security group`을 클릭한 후
+    - 작업 1.3에서 생성한 보안 그룹을 선택합니다. `(WebSecurityGroup)`
 - 2.1.13 `[Reveiw and Launch]`를 클릭합니다.
 - 2.1.14 인스턴스 정보를 확인한 후 `[Launch]`를 클릭합니다.
-- 2.1.15 `[Choose an existing key pair]`를 클릭하고, `[AWSLABS]` 키 페어를 클릭하고, 승인 확인란을 선택한 후, [Launch Instance]를 클릭합니다.
+- 2.1.15 `[Choose an existing key pair]`를 클릭하고, `[AWSLABS]` 키 페어를 클릭하고, 승인 확인란을 선택한 후
+    - `[Launch Instance]`를 클릭합니다.
 - 2.1.16 아래로 스크롤하여 `[View Instance]`를 클릭합니다.
 - 2.1.17 2개의 인스턴스(`Web Server1`과 VPC 마법사에서 시작한 NAT 인스턴스)가 보일 것입니다.
-- 2.1.18 `[Web Server 1]`의 `[Status Checks]` 열에 2/2 cheks passed가 표시될 때까지 기다립니다. 3~5분 정도 걸립니다. 오른쪽 위에 있는 새로 고침 아이콘을 사용하여 업데이트를 확인합니다.
+- 2.1.18 `[Web Server 1]`의 `[Status Checks]` 열에 2/2 cheks passed가 표시될 때까지 기다립니다.
+    - 3~5분 정도 걸립니다. 오른쪽 위에 있는 새로 고침 아이콘을 사용하여 업데이트를 확인합니다.
 - 2.1.19 `[Web Server 1]`을 선택하고 `[Public DNS]` 값을 복사합니다.
-- 2.1.20 새 웹 브라우저 창이나 탭에 Public DNS 값을 붙여 넣고 `[Enter]`를 누릅니다. `[Amazon Linux AMI Test Page`]가 보일 것입니다.
+- 2.1.20 새 웹 브라우저 창이나 탭에 Public DNS 값을 붙여 넣고 `[Enter]`를 누릅니다.
+    -  `[Amazon Linux AMI Test Page`]가 보일 것입니다.
 
 실습1. 완료 <br>
 
@@ -173,9 +177,9 @@ fi
 
 ### 2-2. 목표
 본 실습을 마친 후 다음을 할 수 있게 됩니다.
-- 고가용성을 갖춘 Amazon RDS DB 인스턴스를 시작
-- 웹 서버로부터의 연결을 허용하도록 DB 인스턴스를 구성
-- 웹 애플리케이션을 열고 데이터베이스와 상호 작용
+- 고가용성을 갖춘 Amazon RDS DB 인스턴스를 시작합니다.
+- 웹 서버로부터의 연결을 허용하도록 DB 인스턴스를 구성합니다.
+- 웹 애플리케이션을 열고 데이터베이스와 상호 작용합니다.
 
 ### 2-3. 기간
 본 실습에는 약 45분 정도가 소요됩니다.
@@ -319,13 +323,13 @@ fi
 
 ### 3-2. 목표 
 본 실습을 마친 후 다음을 할 수 있게 됩니다.
-- 실행중인 인스턴스에서 Amazon 머신 이미지(AMI)를 생성
-- ELB 로드 밸런서 추가
-- Auto Scaling 시작 구성 생성
-- Auto Scaling 그룹 생성
-- 프라이빗 서브넷 내에서 새 인스턴스를 자동 조정
-- Amazon CloudWatch 경보 생성
-- 인프라의 성능 모니터링
+- 실행중인 인스턴스에서 Amazon 머신 이미지(AMI)를 생성합니다.
+- AWS ELB 로드 밸런서 추가합니다.
+- Auto Scaling 시작 구성 생성합니다.
+- Auto Scaling 그룹 생성합니다.
+- 프라이빗 서브넷 내에서 새 인스턴스를 자동 조정합니다.
+- AWS CloudWatch 경보 생성합니다.
+- AWS 인프라의 성능을 모니터링합니다.
 
 ### 3-3. 기간
 본 실습에는 약 45분 정도가 소요됩니다.
