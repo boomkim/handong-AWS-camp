@@ -21,16 +21,16 @@ EMR의 Master에는 기본적으로 DynamoDB, Glue, Kinesis, RDS, S3, SNS, SQS �
 뭔가 Default는 건들면 안될 것 같으니 다음과 같이  새로 IAM Role을 추가합니다. 
 
 * Role -> Create Role 클릭
-* 이 역할을 사용할 서비스에서 EC2 선택후 [Next: Permissions] 클릭 
-* 'AmazonElasticMapReduceforEC2Role' 와 'AmazonAthenaFullAccess' 를 찾아 선택
+* 이 역할을 사용할 서비스에서 EC2 선택후 `[Next: Permissions]` 클릭 
+* `'AmazonElasticMapReduceforEC2Role'` 와 `'AmazonAthenaFullAccess'` 를 찾아 선택
 * 태그는 무시 (원한다면 당연히 입력하셔도 됩니다.)
-* Role 이름에 'EMR_EC2_AthenaRole' 입력 후 [Create Role] 클릭 
+* Role 이름에 `'EMR_EC2_AthenaRole'` 입력 후 `[Create Role]` 클릭 
 
 이제 Role이 완성되었으니 이를 원래 있던 Role대신 넣어줘야 합니다. Zeppelin은 EMR의 마스터 노드에 있으니 Master노드를 찾아 변경해 Role을 변경해줍니다. 
 
 * EMR -> 해당 Cluster 클릭 -> Hardware -> Master 의 ID 클릭 -> EC2 Instance ID 클릭 (EC2 콘솔로 이동하게 됩니다)
-* EC2 콘솔에서 Actions -> Instance Settings -> Attach/Replace IAM Role 클릭 
-* IAM role 에서 'EMR_EC2_AthenaRole' 선택 후 [Apply] 클릭 
+* EC2 콘솔에서 Actions -> Instance Settings -> `Attach/Replace IAM Role` 클릭 
+* IAM role 에서 `'EMR_EC2_AthenaRole'` 선택 후 `[Apply]` 클릭 
 
 자, 이제 EMR의 마스터노드에서는 Athena를 마음껏 컨트롤할 수 있게 되었습니다. 
 
@@ -93,7 +93,7 @@ sudo chmod 755 AthenaJDBC42_2.0.7.jar
 
 자, 이제 마지막입니다. JDBC Interpreter만 Athena에 맞게 세팅해서 구성해주면 끝납니다. 
 
-우측상단에 있는 Interpreter를 클릭후 Interpreter 창에서 Create를 누릅니다. 
+우측상단에 있는 Interpreter를 클릭후 Interpreter 창에서 `Create`를 누릅니다. 
 
 ![그림2](/images/zeppelin-interpreter.png)
 
@@ -130,6 +130,3 @@ athena에 등록된 테이블에 쿼리를 날려봤습니다.
 
 ![그림4](/images/emr-zeppelin-athena-final-example.png)
 
-
-
-*** 
