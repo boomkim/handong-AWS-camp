@@ -58,8 +58,8 @@
 
 #### <b> Task 1.2 : 추가 서브넷 생성 </b>
 본 작업에서는 다른 가용 영역에 서브넷 2개를 추가로 생성하고 기존 라우팅 테이블을 통해 서브넷을 연결합니다.
-- 1.2.1 탐색 창에서 <b>[Subnets]</b>를 클릭합니다. 
-- 1.2.2 <b>[Create Subnet]</b>을 클릭합니다.
+- 1.2.1 탐색 창에서 `[Subnets]`를 클릭합니다. 
+- 1.2.2 `[Create Subnet]`을 클릭합니다.
 - 1.2.3 <b>[Create Subnet]</b> 대화 상자에서 다음 세부 정보를 입력합니다.
     - <b>[Name tag]</b> : Public Subnet2
     - <b>[VPC]</b> : My Lab VPC 클릭
