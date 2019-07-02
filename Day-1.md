@@ -348,48 +348,52 @@ fi
 ![image](/images/Day1-Task-ELB.png)
 
 
-### Task 1.1 : VPC 생성
-이 작업에서는 하나의 가용 영역에서 2개의 서브넷으로 구성된 VPC를 생성합니다.
-- 1.1.1	AWS Management Console의 Services 메뉴에서 EC2를 클릭합니다.
-- 1.1.2	탐색 창에서 Instances를 클릭합니다.
-- 1.1.3	Web Server 1의 Status Checks 2/2 checks passed로 표시되어 있는지 확인합니다. 아닌 경우, 변경될 때까지 기다렸다가 다음 단계로 진행합니다. 오른쪽 위에 있는 새로고침 버튼을 사용하여 업데이트를 확인합니다.
-- 1.1.4	Web Server 1을 오른쪽 마우스 클릭하고, Image를 클릭한 후, Create Image를 클릭합니다.
+### Task 1.1 : Auto Scaling 용 AMI 생성
+이 작업에서는 Auto Scaling에서 사용할 새로운 인스턴스를 시작하는 출발점으로 AMI를 생성합니다.
+- 1.1.1	`[AWS Management Console]`의 `[Services]` 메뉴에서 `[EC2]`를 클릭합니다.
+- 1.1.2	탐색 창에서 `[Instances]`를 클릭합니다.
+- 1.1.3	`[Web Server 1]`의 `[Status Checks]` 2/2 checks passed로 표시되어 있는지 확인합니다.
+    - 아닌 경우, 변경될 때까지 기다렸다가 다음 단계로 진행합니다.
+    - 오른쪽 위에 있는 새로고침 버튼을 사용하여 업데이트를 확인합니다.
+- 1.1.4	`[Web Server 1]`을 오른쪽 마우스 클릭하고, `[Image]`를 클릭한 후, `[Create Image]`를 클릭합니다.
 - 1.1.5	다음 정보를 입력하과, 나머지 값은 그대로 기본값으로 둡니다.
-    - Image name: Web Server AMI
-    - Image description: Lab 3 AMI for Web Server
-- 1.1.6	Create Image를 클릭합니다.
-- 1.1.7	확인 화면에 새로운 AMI용 AMI ID가 표시됩ㄴ디ㅏ.
-- 1.1.8	Close를 클릭합니다.
+    - `[Image name]` : Web Server AMI
+    - `[Image description]` : Lab 3 AMI for Web Server
+- 1.1.6	`[Create Image]`를 클릭합니다.
+- 1.1.7	확인 화면에 새로운 AMI용 `[AMI ID]`가 표시됩니다.
+- 1.1.8	`[Close]`를 클릭합니다.
 
 ### Task 1.2 : 로드 밸런서 추가
 이 작업에서는 로드 밸런서를 생성하여 2개의 가용 영역에서 여러 EC2 인스턴스에 걸쳐 트래픽을 로드 밸런싱합니다. 
-- 1.2.1	탐색 창에서 Load Balancer를 클릭합니다.
-- 1.2.2 Create Load Balancer를 클릭한 후 다음 화면에서 Classic Load Balancer를 선택합니다.
+- 1.2.1	탐색 창에서 `[Load Balancer]`를 클릭합니다.
+- 1.2.2 `[Create Load Balancer]`를 클릭한 후 다음 화면에서 Classic Load Balancer를 선택합니다.
 - 1.2.3 다음 정보를 입력하고, 나머지 값은 그대로 기본값으로 둡니다.
-    - Load Balancer name : Lab3ELB
-    - Create LB inside : My Lab VPC 선택
-    - Select Subnet : [+]를 클릭하여 Public Subnet 1 및 Public Subnet 2를 선택
-- 1.2.4 Next : Assign Security Group를 클릭합니다.
-- 1.2.5 default 보안 그룹을 선택 해제하고, 이름에 WebSecurityGroup이 포함되고 Enable HTTP access 라는 Description이 있는 보안 그룹을 선택합니다.
-- 1.2.6 Next : Configure Security Settings를 클릭합니다.
-- 1.2.7 본 실습에서는 보안 리스너는 구성하지 않으므로, Next : Configuretion Health Check를 클릭합니다.
+    - `[Load Balancer name]` : Lab3ELB
+    - `[Create LB inside]` : My Lab VPC 선택
+    - `[Select Subnet]` : [+]를 클릭하여 `[Public_Subnet1]` 및 `[Public_Subnet2]를 선택
+- 1.2.4 `[Next]` : Assign Security Group를 클릭합니다.
+- 1.2.5 `[default]` 보안 그룹을 선택 해제하고, 이름에 `[WebSecurityGroup]`이 포함되고
+    - `[Enable HTTP access]` 라는 `[Description]`이 있는 보안 그룹을 선택합니다.
+- 1.2.6 `[Next]` : Configure Security Settings를 클릭합니다.
+- 1.2.7 본 실습에서는 보안 리스너는 구성하지 않으므로, `[Next]` : Configuretion Health Check를 클릭합니다.
 - 1.2.8 다음 정보를 입력하고, 나머지 값은 그대로 기본값으로 둡니다.
-    - Ping Path : /index.php (기본값과 다른 값입니다.)
-    - Interval : 6
-    - Healthy Threshold : 2를 선택
-- 1.2.9 Next : Add EC2 Instance를 클릭합니다.
-- 1.2.10 다음 작업에서 로드 밸런서에서 EC2 인스턴스를 추가합니다. Next : Add Tags를 클릭합니다.
-- 1.2.11 Review and Create를 클릭합니다.
-- 1.2.12 로드 밸런서의 구성을 확인하고 Create를 클릭합니다.
-- 1.2.13 Close를 클릭합니다.
-- 1.2.14 Lab3ELB를 선택하고, 아래쪽 창의 Description에서 로드 밸런서의 DNS Name을 적어둡니다. 이때 (A Record)는 생략합니다. 
+    - `[Ping Path]` : /index.php (기본값과 다른 값입니다.)
+    - `[Interval]` : 6
+    - `[Healthy Threshold]` : 2를 선택
+- 1.2.9 `[Next]` : Add EC2 Instance를 클릭합니다.
+- 1.2.10 다음 작업에서 로드 밸런서에서 EC2 인스턴스를 추가합니다. `[Next]` : Add Tags를 클릭합니다.
+- 1.2.11 `[Review and Create]`를 클릭합니다.
+- 1.2.12 로드 밸런서의 구성을 확인하고 `[Create]`를 클릭합니다.
+- 1.2.13 `[Close]`를 클릭합니다.
+- 1.2.14 `[Lab3ELB]`를 선택하고, 아래쪽 창의 `[Description]`에서 로드 밸런서의 `[DNS Name]`을 적어둡니다.
+    - 이때 (A Record)는 생략합니다. 
 
 ### Task 1.3 : 시작 구성 및 Auto Scaling 그룹 생성
 이 작업에서는 Auto Scaling 그룹에 대한 시작 구성을 생성합니다.
-- 1.3.1	탐색 창에서 Launch Configurations를 클릭합니다.
-- 1.3.2	Create Auto Scaling group과 Create launch configuration을 클릭합니다.
-- 1.3.3	탐색 창에서 My AMIs를 클릭합니다.
-- 1.3.4	앞에서 생성한 Web Server AMI를 선택하기 위해 Select를 클릭합니다.
+- 1.3.1	탐색 창에서 `[Launch Configurations]`를 클릭합니다.
+- 1.3.2	`[Create Auto Scaling group]`과 `[Create launch configuration]`을 클릭합니다.
+- 1.3.3	탐색 창에서 `[My AMIs]`를 클릭합니다.
+- 1.3.4	앞에서 생성한 `[Web Server AMI]`를 선택하기 위해 `[Select]`를 클릭합니다.
 - 1.3.5	t2.micro 선택을 수락하려면 Next: Configure details를 클릭합니다.
 - 1.3.6	다음 정보를 입력하고, 나머지 값은 그대로 기본값으로 둡니다. 
     - Name : Lab3Config
