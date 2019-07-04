@@ -118,11 +118,7 @@
 * 웹브라우저에 정상적으로 말떼가 표시되는지 확인
 * 화면의 `GIDDY UP` 선택시 표시되는 것은?
 
-
 ---
-
-
-
 ## 2. Manage Users
 
 ![image](/images/Day2-2.png)
@@ -139,7 +135,7 @@ cognito에서 user 객체 확인 / 상태값 변경 확인
 
 ### 2-4. Test Your Implementation
 
-
+---
 ## 3. Bulid a Serverless Backend
 
 ![image](/images/Day2-3.png)
@@ -158,6 +154,7 @@ node.js 6.10 deprecated
   
 ### 3-4. Test Your Implementation
 
+---
 ## 4. Deploy a RESTful API
 
 ![image](/images/Day2-4.png)
@@ -180,7 +177,7 @@ node.js 6.10 deprecated
 cloudwatch logs 확인
 dynamodb item 확인
 
-
+---
 ## 5. Terminate Resources
 
 ![image](/images/Day2-5.png)
