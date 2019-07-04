@@ -394,60 +394,61 @@ fi
 - 1.3.2	`[Create Auto Scaling group]`과 `[Create launch configuration]`을 클릭합니다.
 - 1.3.3	탐색 창에서 `[My AMIs]`를 클릭합니다.
 - 1.3.4	앞에서 생성한 `[Web Server AMI]`를 선택하기 위해 `[Select]`를 클릭합니다.
-- 1.3.5	t2.micro 선택을 수락하려면 Next: Configure details를 클릭합니다.
+- 1.3.5	`[t2.micro]` 선택을 수락하려면 `[Next]`**: Configure details**를 클릭합니다.
 - 1.3.6	다음 정보를 입력하고, 나머지 값은 그대로 기본값으로 둡니다. 
-    - Name : Lab3Config
-    - Monitoring : Enable CloudWatch detailed monitoring 선택
-- 1.3.7	Next : Add Storage를 클릭합니다.
-- 1.3.8	Next : Configure Security Group을 클릭합니다.
-- 1.3.9	Select an existing security group을 클릭하고, 이름에 WebSecurityGroup이 포함되고 Enable HTTP access라는 Description이 있는 보안 그룹을 선택합니다.
-- 1.3.10 Review를 클릭합니다.
-- 1.3.11 시작 구성의 세부 정보를 확인하고, Create launch configuration을 클릭합니다. 
-- 1.3.12 Choose an existing key pair를 클릭하고, qwikLABS key pair를 선택하고, 승인 확인란을 선택한 후, Create launch configuration을 클릭합니다. 
+    - `[Name]` : **Lab3Config**
+    - `[Monitoring]` : **Enable CloudWatch detailed monitoring** 선택
+- 1.3.7	`[Next]` : **Add Storage**를 클릭합니다.
+- 1.3.8	`[Next]` : **Configure Security Group**을 클릭합니다.
+- 1.3.9	`[Select an existing security group]`을 클릭하고, 이름에 `[WebSecurityGroup]`이 포함되고 `[Enable HTTP access]`라는 `[Description]`이 있는 보안 그룹을 선택합니다.
+- 1.3.10 `[Review]`를 클릭합니다.
+- 1.3.11 시작 구성의 세부 정보를 확인하고, `[Create launch configuration]`을 클릭합니다. 
+- 1.3.12 `[Choose an existing key pair`]를 클릭하고, **AWSLABS key pair**를 선택하고
+    - 승인 확인란을 선택한 후, `[Create launch configuration`]을 클릭합니다. 
 - 1.3.13 Auto Scaling 그룹에 대한 다음 정보를 입력하고, 나머지 값은 그대로 기본값으로 둡니다.
-    - Group name : Lab3ASGroup
-    - Group size : 2개의 인스턴스로 시작
-    - Network: My Lab VPC 선택
-- 1.3.14 아래로 스크롤하여 Advanced Details를 확장하고 Receive traffic from one or more load balancers를 선택합니다. 
-- 1.3.15 Classic Load Balancers 텍스트 상자를 클릭한 다음, Lab3ELB를 클릭합니다.
+    - `[Group name]` : **Lab3ASGroup**
+    - `[Group size]` : **2개의 인스턴스로 시작**
+    - `[Network] : **My Lab VPC 선택**
+- 1.3.14 아래로 스크롤하여 `[Advanced Details]`를 확장하고 `[Receive traffic from one or more load balancers]`를 선택합니다. 
+- 1.3.15 `[Classic Load Balancers]` 텍스트 상자를 클릭한 다음, `[Lab3ELB]`를 클릭합니다.
 1.3.16 다음 정보를 입력하고, 나머지 값은 그대로 기본값으로 둡니다.
-    - Health Check Type: ELB 선택
-    - Monitoring: Enable CloudWatch detailed monitoring 선택
-- 1.3.17 Next: Configure scaling policies를 클릭합니다.
-- 1.3.18 Use scaling policies to adjust the capacity of this group을 선택합니다.
-- 1.3.19 2개와 6개의 인스턴스 범위 내에서 조정할 수 있도록 Scale between 텍스트 상자를 수정합니다.
-- 1.3.20 Increase Group Size에서 Execute policy when에 대해 Add New Alarm을 클릭합니다.
-- 1.3.21 Send a notification to :가 선택되어 있는지 확인한 후, create topic을 클릭합니다. (이메일 알람을 생성하는 것은 선택 사항이며, 나머지 실습에서 [*]로 표시된 관련 단계를 건너뛰어도 좋습니다. 이메일 알림을 받지 않으려면, Send a notification to :을 선택 해제해야 합니다.)
+    - `[Health Check Type]` : **ELB 선택**
+    - `[Monitoring]` : **Enable CloudWatch detailed monitoring** 선택
+- 1.3.17 `[Next]` : **Configure scaling policies**를 클릭합니다.
+- 1.3.18 `[Use scaling policies to adjust the capacity of this group]`을 선택합니다.
+- 1.3.19 `2`개와 `6`개의 인스턴스 범위 내에서 조정할 수 있도록 `[Scale between]` 텍스트 상자를 수정합니다.
+- 1.3.20 `[Increase Group Size]`에서 `[Execute policy when]`에 대해 `[Add New Alarm]`을 클릭합니다.
+- 1.3.21 `[Send a notification to :]`가 선택되어 있는지 확인한 후, `[create topic]`을 클릭합니다. (이메일 알람을 생성하는 것은 선택 사항이며, 나머지 실습에서 [*]로 표시된 관련 단계를 건너뛰어도 좋습니다. 이메일 알림을 받지 않으려면, `[Send a notification to :]`을 선택 해제해야 합니다.)
 - 1.3.22 다음 정보를 입력하고, 나머지 값은 그대로 기본값으로 둡니다. 
-    - ‘Send a notification to : ASTopic
-    - ‘With these recipients : 액세스 권한이 있는 이메일 주소를 입력
-    - Whenever: Average of CPU Utilization
-    - Is >= 65 Percent
-    - For at least: 1 consecutive period(s) of 1 minute
-    - Name of alarm: HighCPUUtilization
-- 1.3.23 Create Alarm을 클릭합니다. 
-- 1.3.24 Increase Group Size의 나머지 부분에 다음 정보를 입력합니다.
-    - Take the action: Add 선택. 1 입력, instances 선택. 65 입력
-    - Instances need : 각 단계 후 줁비에 60초
-- 1.3.25 Decrease Group Size에서 Execute policy when에 대해 Add New Alarm을 클릭합니다. 
-- 1.3.26 ‘Send a notification to:가 선택되어 있는지 확인하고, ASTopic (<your email address>)을 선택합니다. 이메일 알림을 받지 않으려면 이 항목을 선택 해제합니다.
+    - `[*Send a notification to]` : **ASTopic**
+    - `[*With these recipients]` : **액세스 권한이 있는 이메일 주소를 입력**
+    - `[Whenever: Average of CPU Utilization]`
+    - `[Is >= 65 Percent]`
+    - `[For at least]` : **1 consecutive period(s) of 1 minute**
+    - `[Name of alarm`] : **HighCPUUtilization**
+- 1.3.23 `[Create Alarm]`을 클릭합니다. 
+- 1.3.24 `[Increase Group Size]`의 나머지 부분에 다음 정보를 입력합니다.
+    - `[Take the action: Add]` 선택. **1** 입력, instances 선택. **65** 입력
+    - `[Instances need]` : 각 단계 후 준비에 **60**초
+- 1.3.25 `[Decrease Group Size]`에서 `[Execute policy when`에 대해 `[Add New Alarm`을 클릭합니다. 
+- 1.3.26 `[*Send a notification to:`가 선택되어 있는지 확인하고, `[ASTopic (<your email address>)]`을 선택합니다. 이메일 알림을 받지 않으려면 이 항목을 선택 해제합니다.
 - 1.3.27 다음 정보를 입력하고, 나머지 값은 그대로 기본값으로 둡니다.
-    - Whenever: Average of CPU Utilization
-    - Is <= 20 Percent
-    - For at least: 1 consecutive period(s) of 1 minute
-    - Name of alarm: LowCPUUtilization
-- 1.3.28 Create Alarm을 클릭합니다.
-- 1.3.29 Decrease Group Size의 나머지 부분에 다음 정보를 입력합니다.
-    - Take the action: Remove 선택, 1 입력. instances 선택. 20 입력
-- 1.3.30 Next: Configure Notifications를 클릭합니다.
-- 1.3.31 Next: Configure Tags를 클릭합니다.
+    - `[Whenever]` : **Average of CPU Utilization**
+    - `[Is <= 20 Percent`
+    - `[For at least]` : **1** consecutive period(s) of **1 minute**
+    - `[Name of alarm]` : **LowCPUUtilization**
+- 1.3.28 `[Create Alarm]`을 클릭합니다.
+- 1.3.29 `[Decrease Group Size`의 나머지 부분에 다음 정보를 입력합니다.
+    - `[Take the action: Remove]` 선택, **1** 입력. instances 선택. **20** 입력
+- 1.3.30 `[Next]` : **Configure Notifications**를 클릭합니다.
+- 1.3.31 `[Next]` : **Configure Tags**를 클릭합니다.
 - 1.3.32 다음 정보를 입력하고, 나머지 값은 그대로 기본값으로 둡니다.
-    - Key: Name
-    - Value: Lab3Weblnstance
-- 1.3.33 Review를 클릭합니다.
-- 1.3.34 Auto Scaling 그룹의 세부 정보를 확인한 다음, Create Auto Scaling group을 클릭합니다.
-- 1.3.35 Auto Scaling 그룹이 생성되면 Close를 클릭합니다.
-- 1.3.36 * Auto Scaling 그룹에 대한 알림 구독을 확인하는 이메일을 받게 됩니다. 이메일을 열고 Confirm subscription link를 클릭합니다.
+    - `[Key]` : **Name**
+    - `[Value]` : **Lab3Weblnstance**
+- 1.3.33 `[Review]`를 클릭합니다.
+- 1.3.34 Auto Scaling 그룹의 세부 정보를 확인한 다음, `[Create Auto Scaling group]`을 클릭합니다.
+- 1.3.35 Auto Scaling 그룹이 생성되면 `[Close]`를 클릭합니다.
+- 1.3.36 * Auto Scaling 그룹에 대한 알림 구독을 확인하는 이메일을 받게 됩니다. 이메일을 열고 `[Confirm subscription link]`를 클릭합니다.
 
 ### Task 1.4 : Auto Scaling이 작동하는지 확인하고 인스턴스를 로드 밸런서에 추가 
 이 작업에서는 Auto Scaling이 올바르게 작동하고 있는지 확인합니다.
