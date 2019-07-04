@@ -1,7 +1,8 @@
 # Build a Serverless Web Application
 
+2일차 블라블라
 
-## 0. Prerequisite
+## 0. Overview
 
 24시간이 지난 AWS 계정
 리전 선택, 언어 선택
