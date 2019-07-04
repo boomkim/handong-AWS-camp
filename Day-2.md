@@ -100,6 +100,7 @@
   
   - `Use this bucket to host a website' 선택
   - Index document: `index.html`
+  - 상단에 `Endpoint` 항목에 표시된 `http://`로 시작하는 주소를 별도 기록
   - 확인 후 `[Save]`
   - `Static website hosting` 부분에 보라색 체크표시가 되었는지 확인
 
