@@ -92,6 +92,17 @@
 
 ### 1-5. Enable Website Hosting
 
+단순 스토리지가 아닌 웹모듈을 활성화합니다
+
+* `[AWS Management Console]` ▷ `[S3]`
+* `1-2` 단계에서 생성한 S3 버킷 선택
+* `Properties` 탭 ▷ `Static website hosting`
+  
+  - `Use this bucket to host a website' 선택
+  - Index document: `index.html`
+  - 확인 후 `[Save]`
+  - `Static website hosting` 부분에 보라색 체크표시가 되었는지 확인
+
 ### 1-6. Validate Your Implementation
 
 이 시점에서 생각해봅시다
