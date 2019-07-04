@@ -1,12 +1,12 @@
 # Build a Serverless Web Application
 
-2일차 블라블라
+- 2일차 블라블라
 
 ## 0. Overview
 
 ![image](/images/Day2-0.png)
 
-생성 후 24시간이 지난 AWS 계정
+- 생성 후 24시간이 지난 AWS 계정
 리전 선택, 언어 선택
 에디터 등
 퀴즈 규칙
@@ -25,9 +25,12 @@
 30분
 
 ### 1-1. Select a Region
-- 본 실습 섹션에서는 Amazon Virtual Private Cloud(VPC)를 사용하여 자체 VPC를 생성합니다.
+- AWS 콘솔 우측 상단에 `Asia Pacific (Seoul)`을 선택
 
 ### 1-2. Create an S3 Bucket
+사전 설명
+a. Find Services에서 `S3`를 입력하여 S3 서비스 선택
+b. 파란색으로 표시되어 있는 `Create bucket`선택
 
 ### 1-3. Upload Content
 
