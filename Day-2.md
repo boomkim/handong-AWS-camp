@@ -100,18 +100,18 @@
   
   - `Use this bucket to host a website' 선택
   - Index document: `index.html`
-  - 상단에 `Endpoint` 항목에 표시된 `http://`로 시작하는 주소를 별도 기록
+  - 상단 `Endpoint` 항목에 표시된 `http://`로 시작하는 주소는 별도 기록
   - 확인 후 `[Save]`
   - `Static website hosting` 부분에 보라색 체크표시가 되었는지 확인
 
 ### 1-6. Validate Your Implementation
 
-이 시점에서 생각해봅시다
+* 웹브라우저에서 `1-5` 단계에서 기록해놓은 Endpoint 주소로 페이지 열기
+* 정상적으로 말그림이 표시되는지 확인
+* 메뉴의 `GIDDY UP` 선택시 표시되는것은?
 
 
-giddy up 클릭시 에러처리까지 해놨네 ㅋㅋ
-
-다음장으로 넘어가기 구현할 
+다음장으로 넘어가기 
 
 
 
