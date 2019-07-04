@@ -31,8 +31,11 @@
 
 사전 설명할것
 
-- AWS 콘솔 화면에서 `Find Services` 검색창에 `S3` 입력
+- AWS 콘솔 화면 中 `Find Services` 검색창에 `S3` 입력
 - `Create bucket`선택
+> Bucket name: `wildryde-firstname-lastname` 규칙으로 입력
+> Region: `Asia Pacific (Seoul)` 선택
+> 좌측 하단 `Create' 
 
 ### 1-3. Upload Content
 
