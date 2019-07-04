@@ -36,7 +36,7 @@
 * `AWS Management Console` ▷ `Find Services` 검색창에 `S3` 입력
 * `Create bucket`선택
 
-  - Bucket name: `wildryde-firstname-lastname` # 주의: 그대로 적지 말고 이름부분을 반드시 변경!
+  - Bucket name: `wildryde-firstname-lastname` # 그대로 적지 말고 이름부분을 반드시 변경!
   - Region: `Asia Pacific (Seoul)`
   - 확인 후 `Create`
 
@@ -49,10 +49,10 @@
   - `1-2` 단계에서 만든 S3 버킷 선택
   - 현재 'Overview' 탭 위치에 있는지 확인
   
-* 이 [링크](https://github.com/awslabs/aws-serverless-workshops/archive/master.zip) 파일을 로컬PC로 다운로드
+* 이 [링크](https://github.com/awslabs/aws-serverless-workshops/archive/master.zip)의 객체를 로컬 PC로 다운로드
   
-  - 적당한 위치에 압축해제
-  - 탐색기에서 `/WebApplication/1_StaticWebHosting/website` 경로 하위의 모든 파일 선택
+  - 적당한 위치에 압축 해제
+  - 탐색기에서 `/WebApplication/1_StaticWebHosting/website` 하위 경로의 모든 파일 선택 # website 경로는 반드시 제외
   - `1-2` 단계에서 만든 S3 버킷의 `Overview` (웹브라우저) 화면 위로 `Drag and Drop`
   - 확인 후 `Upload`
 
