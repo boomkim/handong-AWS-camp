@@ -27,24 +27,24 @@
 30분
 
 ### 1-1. Select a Region
-- `AWS Management Console` ▷ 우측 상단 `Asia Pacific (Seoul)` 선택
+- `[AWS Management Console]` ▷ 우측 상단 Region 부분에 `Asia Pacific (Seoul)` 선택
 
 ### 1-2. Create an S3 Bucket
 
 이번 단계에서는 무슨 용도의 S3 버킷을 생성합니다
 
-* `AWS Management Console` ▷ `Find Services` 검색창에 `S3` 입력
-* `Create bucket`선택
+* `[AWS Management Console]` ▷ `[Find Services]` 검색창에 `S3` 입력
+* `[Create bucket]`선택
 
   - Bucket name: `wildryde-firstname-lastname` # 그대로 적지 말고 이름부분을 반드시 변경!
   - Region: `Asia Pacific (Seoul)`
-  - 확인 후 `Create`
+  - 확인 후 `[Create]`
 
 ### 1-3. Upload Content
 
 이번 단계는 위에서 만든 S3 버킷에 무슨 용도의 컨텐츠를 업로드 합니다
 
-* `AWS Management Console` ▷ `S3`
+* `[AWS Management Console]` ▷ `[S3]`
 
   - `1-2` 단계에서 만든 S3 버킷 선택
   - 현재 `Overview` 탭 위치에 있는지 확인
@@ -55,7 +55,7 @@
   - 탐색기에서 `/WebApplication/1_StaticWebHosting/website` 하위 경로의 모든 파일 선택
   - 이때 선택 대상에서 website 경로는 불포함
   - `1-2` 단계에서 만든 S3 버킷의 `Overview` (웹브라우저) 화면 위로 `Drag and Drop`
-  - 확인 후 `Upload`
+  - 확인 후 `[Upload]`
 
 ### 1-4. Add a Bucket Policy to Allow Public Reads
 
