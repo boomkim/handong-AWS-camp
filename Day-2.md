@@ -96,8 +96,8 @@
     ] 
 }
 ```
-   - 확인 후 `[Save]`
-   - `Permissions` 탭에 주황색 `Public` 표시가 덧붙었는지 확인
+  - 확인 후 `[Save]`
+* `Permissions` 탭에 주황색 `Public` 표시가 덧붙었는지 확인
 
 ### 1-5. Enable Website Hosting
 
