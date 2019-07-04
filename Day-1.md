@@ -452,12 +452,12 @@ fi
 
 ### Task 1.4 : Auto Scaling이 작동하는지 확인하고 인스턴스를 로드 밸런서에 추가 
 이 작업에서는 Auto Scaling이 올바르게 작동하고 있는지 확인합니다.
-- 1.4.1	탐색 창에서 Instances를 클릭합니다.
-- 1.4.2	4개의 인스턴스 (Web Server 1, NAT Server, 그리고 Lab3WebInstance라는 이름의 새로운 인스턴스 2개)가 보일 것입니다.
-- 1.4.3	탐색 창에서 Load Balancer를 클릭합니다.
-- 1.4.4	Lab3ELB를 선택하고, 아래로 스크롤하여 Instances 탭을 클릭합니다. 이 로드 밸런서 목록에 Lab3WebInstance가 나열된 것이 보일 것입니다.
-- 1.4.5	Lab3ELB의 Instances 탭에서 이 인스턴스의 Status가 InService로 바뀔 때까지 기다립니다. 오른쪽 위에 있는 새로고침 버튼을 사용하여 업데이트를 확인합니다.
-- 1.4.6	로드 밸런서가 인스턴스가 실행되고 있는 가용 영역의 Healthy? 필드 아래에 Yes를 표시합니다.
+- 1.4.1	탐색 창에서 `[Instances]`를 클릭합니다.
+- 1.4.2	4개의 인스턴스 (`[[Web Server 1]`, `[NAT Server]`, 그리고 `[Lab3WebInstance]`라는 이름의 새로운 인스턴스 2개)가 보일 것입니다.
+- 1.4.3	탐색 창에서 `[Load Balancer]`를 클릭합니다.
+- 1.4.4	`[Lab3ELB]`를 선택하고, 아래로 스크롤하여 `[Instances]` 탭을 클릭합니다. 이 로드 밸런서 목록에 `[Lab3WebInstance]`가 나열된 것이 보일 것입니다.
+- 1.4.5	`[Lab3ELB]`의 `[Instances]` 탭에서 이 인스턴스의 `[Status]`가 InService로 바뀔 때까지 기다립니다. 오른쪽 위에 있는 새로고침 버튼을 사용하여 업데이트를 확인합니다.
+- 1.4.6	로드 밸런서가 인스턴스가 실행되고 있는 가용 영역의 `[Healthy?]` 필드 아래에 `[Yes]`를 표시합니다.
 
 ### Task 2 : 인프라 모니터링
 - 개요
@@ -469,22 +469,22 @@ fi
 
 ### Task 2.1 : Auto Scaling 테스트
 본 작업에서는 앞에서 구현한 Auto Scaling 구성을 테스트합니다. 
-- 2.1.1	Services 메뉴에서 CloudWatch를 클릭합니다.
-- 2.1.2	탐색 창에서 Alarms를 클릭합니다(ALARM 이 아님).
-- 2.1.3	HighCPUUtilization과 LowCPUUtilization 이라는 2개의 경보가 보입니다. LowCPUUtilization은 State가 Alarm 이어야 하고, HighCPUUtilization은 State가 OK 여야 합니다. 이는 현재 그룹 CPU 사용률이 20% 미만이기 때문입니다. 그룹 크기가 현재 최소 크기인 (2)이므로, Auto Scaling은 어떠한 인스턴스도 제거하지 않습니다.
-- 2.1.4	EMI 1.2.13에서 복사한 로드 밸런서의 DNS 이름을 새 브라우저 창 또는 탭에 복사합니다. 
-- 2.1.5	AWS 로고 오른쪽 옆에 있는 LOAD TEST를 클릭합니다. 애플리케이션이 인스턴스에 대한 부하 테스트를 수행하고 5초 간격으로 자동 새로 고침합니다. [Current CPU load]가 100% 상승한 것을 볼 수 있습니다. Load Test 링크는 간단한 백그라운드 프로세스를 트리거합니다.
-- 2.1.6	Services 메뉴에서 CloudWatch를 클릭합니다. 5분 이내에 Low CPU 경보 상태가 OK로 변경되고 High CPU 경보 상태가 ALARM으로 변경되는 것을 확인할 수 있습니다.
-- 2.1.7	Services 메뉴에서 EC2를 클릭합니다.
-- 2.1.8	탐색 창에서 Ai Instances를 클릭합니다.
-- 2.1.9	이제 Lab3Weblnstance라는 이름의 인스턴스가 2개 이상 실행되는 것을 볼 수 있습니다.
+- 2.1.1	`[Services]` 메뉴에서 `[CloudWatch]`를 클릭합니다.
+- 2.1.2	탐색 창에서 `[Alarms]` 를 클릭합니다(`[ALARM]`이 아님).
+- 2.1.3	`[HighCPUUtilization]`과 `[LowCPUUtilization]` 이라는 2개의 경보가 보입니다. `[LowCPUUtilization]`은 `[State가 Alarm` 이어야 하고, `[HighCPUUtilization]`은 `[State]`가 `[OK` 여야 합니다. 이는 현재 그룹 CPU 사용률이 20% 미만이기 때문입니다. 그룹 크기가 현재 최소 크기인 (2)이므로, Auto Scaling은 어떠한 인스턴스도 제거하지 않습니다.
+- 2.1.4 단계 1.2.13에서 복사한 로드 밸런서의 DNS 이름을 새 브라우저 창 또는 탭에 복사합니다. 
+- 2.1.5	AWS 로고 오른쪽 옆에 있는 `[LOAD TEST]`를 클릭합니다. 애플리케이션이 인스턴스에 대한 부하 테스트를 수행하고 5초 간격으로 자동 새로 고침합니다. `[Current CPU load]`가 100% 상승한 것을 볼 수 있습니다. `[Load Test` 링크는 간단한 백그라운드 프로세스를 트리거합니다.
+- 2.1.6	`[Services]` 메뉴에서 `[CloudWatch]`를 클릭합니다. 5분 이내에 `[Low CPU]` 경보 상태가 `[OK]`로 변경되고 `[High CPU]` 경보 상태가 `[ALARM]`으로 변경되는 것을 확인할 수 있습니다.
+- 2.1.7	`[Services]` 메뉴에서 `[EC2]`를 클릭합니다.
+- 2.1.8	탐색 창에서 `[Instances]`를 클릭합니다.
+- 2.1.9	이제 `[Lab3Weblnstance]`라는 이름의 인스턴스가 2개 이상 실행되는 것을 볼 수 있습니다.
 - 2.1.10 단계 2.1.3에서 연 브라우저 탭 또는 창을 닫습니다.
 
 ### Task 2.2 : 첫 번째 웹 서버 인스턴스 시작
 본 작업에서는 퍼블릭 서브넷2의 웹 서버 1을 종료합니다. Auto Scaling 그룹이 프라이빗 서브넷에서 인스턴스를 시작했으므로, 공개적으로 액세스 가능한 원래 웹 서버는 더 이상 필요없습니다. 
-- 2.2.1	Services 메뉴에서 EC2를 클릭합니다.
-- 2.2.2	탐색 창에서 Instances를 클릭합니다. 
-- 2.2.3	Web Server 1을 마우스 오른쪽 버튼으로 클릭하고 Instance State 와 Terminate를 각각클릭합니다.
+- 2.2.1	`[Services]` 메뉴에서 `[EC2]`를 클릭합니다.
+- 2.2.2	탐색 창에서 `[Instances]`를 클릭합니다. 
+- 2.2.3	`[Web Server 1]`을 마우스 오른쪽 버튼으로 클릭하고 `[Instance State]` 와 `[Terminate]`를 각각클릭합니다.
 
 실습3. 완료 <br>
 
