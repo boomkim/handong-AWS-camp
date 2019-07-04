@@ -44,11 +44,17 @@
 
 이번 단계는 위에서 만든 S3 버킷에 무슨 용도의 컨텐츠를 업로드 합니다
 
-* 이 [링크](https://github.com/awslabs/aws-serverless-workshops/archive/master.zip)의 파일을 로컬 PC로 다운로드
-* 적당한 위치에 압축 풀기
 * `AWS Management Console` ▷ `S3`
-  - `1-2`에서 만든 S3 버킷 선택
-  - 'Overview' 탭 위치에 있는지 확인
+
+  - `1-2` 단계에서 만든 S3 버킷 선택
+  - 현재 'Overview' 탭 위치에 있는지 확인
+  
+* 이 [링크](https://github.com/awslabs/aws-serverless-workshops/archive/master.zip) 파일을 로컬PC로 다운로드
+  
+  - 적당한 위치에 압축해제
+  - 탐색기에서 `/WebApplication/1_StaticWebHosting/website` 경로 하위의 모든 파일 선택
+  - `1-2` 단계에서 만든 S3 버킷의 `Overview` (웹브라우저) 화면 위로 `Drag and Drop`
+  - 확인 후 `Upload`
 
 ### 1-4. Add a Bucket Policy to Allow Public Reads
 
