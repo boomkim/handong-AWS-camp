@@ -94,9 +94,14 @@
 
 ### 1-6. Validate Your Implementation
 
+이 시점에서 생각해봅시다
+
+
 giddy up 클릭시 에러처리까지 해놨네 ㅋㅋ
 
 다음장으로 넘어가기 구현할 
+
+
 
 ## 2. Manage Users
 
