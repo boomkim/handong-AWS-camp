@@ -37,6 +37,7 @@
 
 ### 1-6. Validate Your Implementation
 
+giddy up 클릭시 에러처리까지 해놨네 ㅋㅋ
 
 ## 2. Manage Users
 
@@ -45,6 +46,8 @@
 30분
 
 ### 2-1. Create an Amazon Cognito User Pool
+
+cognito에서 user 객체 확인 / 상태값 변경 확인
 
 ### 2-2. Add an App to Your User Pool
 
@@ -65,6 +68,10 @@
 
 ### 3-3. Create a Lambda Function for Handling Requests
 
+node.js 6.10 deprecated
+	8.10 런타임에서 도나?
+	테스트상에는 문제없는듯
+  
 ### 3-4. Test Your Implementation
 
 ## 4. Deploy a RESTful API
@@ -85,6 +92,9 @@
 ### 4-5. Update the Website Config
 
 ### 4-6. Validate Your Implementation
+
+cloudwatch logs 확인
+dynamodb item 확인
 
 
 ## 5. Terminate Resources
