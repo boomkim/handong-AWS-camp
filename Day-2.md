@@ -7,8 +7,10 @@
 ![image](/images/Day2-0.png)
 
 - 생성 후 24시간이 지난 AWS 계정
-리전 선택, 언어 선택
-에디터 등
+리전 선택: 서울로 할겁니다
+언어 선택: 영어로 할겁니다
+
+에디터, 브라우저 
 퀴즈 규칙
 
 
@@ -29,15 +31,20 @@
 
 ### 1-2. Create an S3 Bucket
 
-사전 설명할것
+이번 단계에서는 무슨 용도의 S3 버킷을 생성합니다
 
 * AWS 콘솔 화면 中 `Find Services` 검색창에 `S3` 입력
 * `Create bucket`선택
+
   - Bucket name: `wildryde-firstname-lastname` # 그대로 적지 마세요!
   - Region: `Asia Pacific (Seoul)`
-  - `Create'  
+  - 확인 후 `Create'  
 
 ### 1-3. Upload Content
+
+이번 단계는 위에서 만든 S3 버킷에 무슨 용도의 컨텐츠를 업로드 합니다
+
+* 
 
 ### 1-4. Add a Bucket Policy to Allow Public Reads
 
