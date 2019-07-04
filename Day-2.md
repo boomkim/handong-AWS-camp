@@ -106,7 +106,7 @@
 * `1-2` 단계에서 생성한 S3 버킷 선택
 * `Properties` 탭 ▷ `Static website hosting`
   
-  - `Use this bucket to host a website' 선택
+  - `Use this bucket to host a website` 선택
   - Index document: `index.html`
   - 상단 `Endpoint` 항목에 표시된 `http://`로 시작하는 주소는 별도 기록
   - 확인 후 `[Save]`
