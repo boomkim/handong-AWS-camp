@@ -27,13 +27,13 @@
 30분
 
 ### 1-1. Select a Region
-- AWS 콘솔 우측 상단에 `Asia Pacific (Seoul)` 선택
+- AWS 관리콘솔 우측 상단에 `Asia Pacific (Seoul)` 선택
 
 ### 1-2. Create an S3 Bucket
 
 이번 단계에서는 무슨 용도의 S3 버킷을 생성합니다
 
-* AWS 콘솔 화면 中 `Find Services` 검색창에 `S3` 입력
+* AWS 관리콘솔 화면 中 `Find Services` 검색창에 `S3` 입력
 * `Create bucket`선택
 
   - Bucket name: `wildryde-firstname-lastname` # 그대로 적지 마세요!
@@ -44,7 +44,10 @@
 
 이번 단계는 위에서 만든 S3 버킷에 무슨 용도의 컨텐츠를 업로드 합니다
 
-* 
+* 이 [링크](https://github.com/awslabs/aws-serverless-workshops/archive/master.zip)의 파일을 로컬 PC로 다운로드
+* 적당한 위치에 압축 풀기
+* AWS 관리콘솔에서 `S3 서비스` 선택
+
 
 ### 1-4. Add a Bucket Policy to Allow Public Reads
 
