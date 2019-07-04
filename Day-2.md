@@ -25,12 +25,14 @@
 30분
 
 ### 1-1. Select a Region
-- AWS 콘솔 우측 상단에 `Asia Pacific (Seoul)`을 선택
+- AWS 콘솔 우측 상단에 `Asia Pacific (Seoul)` 선택
 
 ### 1-2. Create an S3 Bucket
-사전 설명
-a. Find Services에서 `S3`를 입력하여 S3 서비스 선택
-b. 파란색으로 표시되어 있는 `Create bucket`선택
+
+사전 설명할것
+
+- AWS 콘솔 화면에서 `Find Services` 검색창에 `S3` 입력
+- `Create bucket`선택
 
 ### 1-3. Upload Content
 
