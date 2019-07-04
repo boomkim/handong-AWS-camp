@@ -47,14 +47,14 @@
 * `[AWS Management Console]` ▷ `[S3]`
 
   - `1-2` 단계에서 만든 S3 버킷 선택
-  - 현재 `Overview` 탭 위치에 있는지 확인
+  - 현재 화면이 `Overview` 탭 위치에 있는지 확인
   
-* 이 [링크](https://github.com/awslabs/aws-serverless-workshops/archive/master.zip)의 객체를 로컬 PC로 다운로드
+* 이 [링크](https://github.com/awslabs/aws-serverless-workshops/archive/master.zip) 파일을 로컬 PC로 다운로드
   
   - 적당한 위치에 압축 해제
   - 탐색기에서 `/WebApplication/1_StaticWebHosting/website` 하위 경로의 모든 파일 선택
-  - 이때 선택 대상에서 website 경로는 불포함
-  - `1-2` 단계에서 만든 S3 버킷의 `Overview` (웹브라우저) 화면 위로 `Drag and Drop`
+  - 단, 이때 선택 대상에서 website 경로는 불포함
+  - 위 S3 버킷의 `Overview` (웹브라우저) 화면 위로 `Drag and Drop`
   - 확인 후 `[Upload]`
 
 ### 1-4. Add a Bucket Policy to Allow Public Reads
