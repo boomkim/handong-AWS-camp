@@ -53,7 +53,7 @@
   
   - 적당한 위치에 압축 해제
   - 탐색기에서 `/WebApplication/1_StaticWebHosting/website` 하위 경로의 모든 파일 선택
-  - 단, 이때 선택 대상에서 website 경로는 불포함
+  - 단, 선택 대상에서 website 경로는 불포함
   - 위 S3 버킷의 `Overview` (웹브라우저) 화면 위로 `Drag and Drop`
   - 확인 후 `[Upload]`
   - 업로드한 파일목록이 정상적으로 표시되는지 확인
@@ -66,13 +66,13 @@
 * `1-2` 단계에서 생성한 S3 버킷 선택
 * `Permissions` 탭 ▷ `Block public access` ▷ `[Edit]`
   
-  - `Block all public access` 체크표시를 해제
+  - `Block all public access` 체크표시 해제
   - 확인 후 `[Save]`
   - `confirm` 문자열 입력 후 `[Confirm]`
   
 * `Permissions` 탭 ▷ `Bucket Policy`
 
-  - 하단 빈공간에 아래 문자열을 입력
+  - 하단 빈공간에 아래 문자열 입력
   - 이때 `[YOUR_BUCKET_NAME]` 항목은 반드시 본인이 생성한 버킷명으로 대체
 ```
 {
