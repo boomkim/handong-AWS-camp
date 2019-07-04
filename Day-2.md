@@ -3,7 +3,7 @@
 * 2일차 블라블라
 
 
-[1) Host a Static Website](#host-a-static-website)
+[1) Host a Static Website](#-1.-host-a-static-website)
 
 
 
