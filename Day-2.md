@@ -16,7 +16,7 @@
 
 주의사항
 모든 컴포넌트를 수동으로 구성합니다
-명칭은 대소문자 구분
+모든 객체 명칭은 대소문자를 
 
 ## 1. Host a Static Website
 
@@ -46,7 +46,7 @@
 
 * `[AWS Management Console]` ▷ `[S3]`
 
-  - `1-2` 단계에서 만든 S3 버킷 선택
+  - `1-2` 단계에서 생성한 S3 버킷 선택
   - 현재 화면이 `Overview` 탭 위치에 있는지 확인
   
 * 이 [링크](https://github.com/awslabs/aws-serverless-workshops/archive/master.zip) 파일을 로컬 PC로 다운로드
@@ -56,8 +56,38 @@
   - 단, 이때 선택 대상에서 website 경로는 불포함
   - 위 S3 버킷의 `Overview` (웹브라우저) 화면 위로 `Drag and Drop`
   - 확인 후 `[Upload]`
+  - 업로드한 파일목록이 정상적으로 표시되는지 확인
 
 ### 1-4. Add a Bucket Policy to Allow Public Reads
+
+무슨 권한을 부여하겠습니다
+
+* `[AWS Management Console]` ▷ `[S3]`
+* `1-2` 단계에서 생성한 S3 버킷 선택
+* `Permissions` 탭 ▷ `Block public access` ▷ `[Edit]`
+  
+  - `Block all public access` 체크표시를 해제
+  - 확인 후 `[Save]`
+  - `confirm` 문자열 입력 후 `[Confirm]`
+  
+* `Permissions` 탭 ▷ `Bucket Policy`
+
+  - 하단 빈공간에 아래 문자열을 입력
+  - 이때 `[YOUR_BUCKET_NAME]` 항목은 반드시 본인이 생성한 버킷명으로 대체
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow", 
+            "Principal": "*", 
+            "Action": "s3:GetObject", 
+            "Resource": "arn:aws:s3:::[YOUR_BUCKET_NAME]/*" 
+        } 
+    ] 
+}
+```
+
 
 ### 1-5. Enable Website Hosting
 
