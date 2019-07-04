@@ -4,6 +4,8 @@
 
 ## 0. Overview
 
+![image](/images/Day2-0.png)
+
 24시간이 지난 AWS 계정
 리전 선택, 언어 선택
 에디터 등
@@ -15,6 +17,8 @@
 명칭은 대소문자 구분
 
 ## 1. Host a Static Website
+
+![image](/images/Day2-1.png)
 
 사용하는 서비스 아이콘
 객체간 상관관계
@@ -36,6 +40,8 @@
 
 ## 2. Manage Users
 
+![image](/images/Day2-2.png)
+
 30분
 
 ### 2-1. Create an Amazon Cognito User Pool
@@ -49,6 +55,8 @@
 
 ## 3. Bulid a Serverless Backend
 
+![image](/images/Day2-3.png)
+
 30분
 
 ### 3-1. Create an Amazon DynamoDB Table
@@ -60,6 +68,8 @@
 ### 3-4. Test Your Implementation
 
 ## 4. Deploy a RESTful API
+
+![image](/images/Day2-4.png)
 
 15분
 
@@ -78,6 +88,8 @@
 
 
 ## 5. Terminate Resources
+
+![image](/images/Day2-5.png)
 
 10분
 
