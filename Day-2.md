@@ -151,11 +151,14 @@
   - `Create app client` 선택
   - 표시되는 `App client id` 항목값은 별도 기록
 
-cognito에서 user 객체 확인 / verify 상태값 변경 확인
-
 ### 2-3. Update the config.js File in Your Website Bucket
 
+* `1-3` 단계의 파일중 `/WebApplication/1_StaticWebHosting/website/js/config.js` 에디터로 열기
+* 먼시
+
 ### 2-4. Test Your Implementation
+
+cognito에서 user 객체 확인 / verify 상태값 변경 확인
 
 ---
 ## 3. Bulid a Serverless Backend
