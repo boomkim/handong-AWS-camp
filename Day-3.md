@@ -45,7 +45,7 @@ git clone https://github.com/boomkim/handong-AWS-camp.git
 
 ### 7. Internet-facing 앱 개발 
 
-**3일간의 코스 중 마지막을 장식할 세션입니다**
+3일간의 코스 중 마지막을 장식할 세션입니다
 
 Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠르게 구성, 학습하고 어떤 규모 로든 기계 학습된 모델을 배포할 수 있도록 해주는 관리형 서비스 입니다. 이 워크샵을 통해 Sagemaker notebook instance 를 생성하고 샘플 Jupyter notebook 을 실습하면서 SageMaker 의 일부 기능을 알아보도록 합니다.
 
@@ -112,7 +112,7 @@ Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠�
 
 ### Lambda 함수 코딩하기 
 
-#### 아래 코드를 붙여넣습니다. (**endpoint는 자신이 만든 endpoint로 바꿔줍니다.**)
+* 아래 코드를 붙여넣습니다. `endpoint`는 자신이 만든 endpoint로 바꿔줍니다.(Sagemaker Endpoint)
 
 ```python
 import boto3
@@ -129,7 +129,7 @@ def lambda_handler(event, context):
     for sent in sentences:
         payload["instances"].append({"data" : sent["query"]})
     
-    response = sagemaker.invoke_endpoint(EndpointName=endpoint_name, 
+    response = sagemaker.invoke_endpoint(EndpointName={endpoint_name}, 
                                        ContentType='application/json', 
                                        Body=json.dumps(payload))
     
@@ -139,7 +139,8 @@ def lambda_handler(event, context):
     return response
 ```
 
-#### Lambda의 Timeout 시간을 10초로 늘입니다. 
+
+* Lambda의 Timeout 시간을 10초로 늘입니다.
 
 
 #### test event 생성 
@@ -166,7 +167,7 @@ def lambda_handler(event, context):
 
 #### API Gateway 생성 및 Lambda 함수 연결하기
 
-* Amazon API Gateway 콘솔 접속 
+*  Amazon API Gateway 콘솔 접속 
 * `Create API` -> `New API` 선택
 * `API NAME`: (예: `SageMakerSeq2SeqLambdaGateWay`)
 * `Endpoint Type`: `Regional` 선택 후 `Create API`
@@ -174,6 +175,38 @@ def lambda_handler(event, context):
 * 하단의 콤보 박스에서 `POST` 선택 후 체크(V) 버튼 클릭 
 * 오른쪽의 셋업 창에서 다음과 같이 입력 
     * `Integration type`: `Lambda function`
-    *  `Lambda region` : Labmda 를 생성하신 Region (ap-northeast-2) 입력 
+    * `Lambda region` : Labmda 를 생성하신 Region (ap-northeast-2) 입력 
     * `Lambda function`: Lambda 함수 이름 입력
     * `Save` 선택
+* Lambda Test
+    * `Test` 클릭 
+    * `Request Body` 의 아래 내용 입력 후 `Test` 클릭
+
+```json
+{
+    "sentences": [
+        {
+            "query": "I love you"
+        }, {
+            "query": "I love you, too" }
+    ] 
+}
+```
+
+* Enable CORS 
+    * `Actions` -> `Enable CORS`
+    * `Enable CORS and Replace existing CORS headers` 선택 
+    * `Yes, Replace existing values` 선택 
+* `Actions` ->  `Deploy API`
+* `Stage name`: `Prod` 입력 후 `Deploy`
+* Inkoke URL 메모장에 기록 
+* `SDK Generation` -> `Platform`: `JavaScript` -> `Generate SDK` 선택
+
+#### S3를 이용해 Static web server를 설정하기 위한 파일 준비
+
+* API Gateway SDK 생성으로 다운받은 압축파일을 unzip 
+* S3 Static 웹 서버에 사용될 index.html 과 error.html 파일 압축이 풀린 폴더에 저장
+
+{그림이 들어갈 자리 } 
+
+#### S3 Static Web Server 생성하기 
