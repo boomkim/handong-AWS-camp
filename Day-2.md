@@ -146,12 +146,19 @@
 * `WildRydes` 객체 선택
 * `General settings` 탭 ▷ `App clients` ▷ `App an app client`
 
-
-cognito에서 user 객체 확인 / verify 상태값 변경 확인
+  - App client name: `WildRydesWebApp`
+  - `Generate client secret` 체크표시 해제  
+  - `Create app client` 선택
+  - 표시되는 `App client id` 항목값은 별도 기록
 
 ### 2-3. Update the config.js File in Your Website Bucket
 
+* `1-3` 단계의 `/WebApplication/1_StaticWebHosting/website/js/config.js` 파일을 로컬에서 에디터로 열기
+* 맥스 먼시
+
 ### 2-4. Test Your Implementation
+
+cognito에서 user 객체 확인 / verify 상태값 변경 확인
 
 ---
 ## 3. Bulid a Serverless Backend
