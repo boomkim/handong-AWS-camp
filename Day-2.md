@@ -250,6 +250,17 @@ IAM은 또 뭐람?
 
 ### 3-3. Create a Lambda Function for Handling Requests
 
+람다라라라라
+
+* `[AWS Management Console]` ▷ `[Lambda]` ▷ `[Create a function]`
+  - `Author from scratch` 선택
+  - Function name: `RequestUnicorn`
+  - Runtime: `node.js 8.10`
+  - Permissions: `Choose or create an execution role` ▷ `Use an existing role` ▷ `WildRydesLambda`
+  - 확인 후 `[Create function]`
+  
+
+
 node.js 6.10 deprecated
 	8.10 런타임에서 도나?
 	테스트상에는 문제없는듯
