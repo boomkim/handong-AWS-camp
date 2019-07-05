@@ -138,11 +138,11 @@
   - Pool name: `WildRydes`
   - `Review defaults` 선택
   - 확인 후 `[Create pool]`
-
-
-cognito에서 user 객체 확인 / verify 상태값 변경 확인
+  - 상단 `Pool Id` 항목값은 별도 기록
 
 ### 2-2. Add an App to Your User Pool
+
+cognito에서 user 객체 확인 / verify 상태값 변경 확인
 
 ### 2-3. Update the config.js File in Your Website Bucket
 
