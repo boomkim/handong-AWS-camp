@@ -275,6 +275,7 @@ IAM은 또 뭐람?
   - `RequestUnicorn` 선택
 
     - 우측 상단 `Select a test event` dropdown ▷ `Configure test events`
+
       - Event name: `TestRequestEvent`
       - 하단에 아래 내용 붙여넣은 후 `[Create]`
 ```
