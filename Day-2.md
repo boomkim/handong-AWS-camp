@@ -78,10 +78,10 @@
     - 확인 후 `[Save]`
     - `confirm` 문자열 입력 후 `[Confirm]`
   
-* `Permissions` 탭 ▷ `Bucket Policy`
+  - `Permissions` 탭 ▷ `Bucket Policy`
 
-  - 하단 빈공간에 아래 문자열 입력 후 `[Save]`
-  - 이때 `[YOUR_BUCKET_NAME]` 항목은 반드시 본인이 생성한 버킷명으로 대체
+    - 하단 빈공간에 아래 문자열 입력 후 `[Save]`
+    - 이때 `[YOUR_BUCKET_NAME]` 항목은 반드시 본인이 생성한 버킷명으로 대체
 ```
 {
     "Version": "2012-10-17",
@@ -95,29 +95,28 @@
     ] 
 }
 ```
-* `Permissions` 탭에 주황색 `Public` 표시가 덧붙었는지 확인
+  - `Permissions` 탭에 주황색 `Public` 표시가 덧붙었는지 확인
 
 ### 1-5. Enable Website Hosting
 
 단순 스토리지가 아닌 웹모듈을 활성화합니다
 
 * `[AWS Management Console]` ▷ `[S3]`
-* `1-2` 단계에서 생성한 S3 버킷 선택
-* `Properties` 탭 ▷ `Static website hosting`
+  - `1-2` 단계에서 생성한 S3 버킷 선택
+  - `Properties` 탭 ▷ `Static website hosting`
   
-  - `Use this bucket to host a website` 선택
-  - Index document: `index.html`
-  - 상단 `Endpoint` 항목에 표시된 `http://`로 시작하는 주소는 별도 기록
-  - 확인 후 `[Save]`
-  - `Static website hosting` 부분에 보라색 체크표시가 되었는지 확인
+    - `Use this bucket to host a website` 선택
+    - Index document: `index.html`
+    - 상단 `Endpoint` 항목에 표시된 `http://`로 시작하는 주소는 별도 기록
+    - 확인 후 `[Save]`
+    - `Static website hosting` 부분에 보라색 체크표시가 되었는지 확인
 
 ### 1-6. Validate Your Implementation
 
 * `1-5` 단계에서 기록한 Endpoint 주소로 웹페이지 열기
 
-* 웹브라우저에 정상적으로 말떼가 표시되는지 확인
-
-* 화면의 `GIDDY UP` 선택시 표시되는 것은?
+  - 웹브라우저에 정상적으로 말떼가 표시되는지 확인
+  - 화면의 `GIDDY UP` 선택시 표시되는 것은?
 
 ---
 ## 2. Manage Users
@@ -128,69 +127,73 @@
 
 ### 2-1. Create an Amazon Cognito User Pool
 
-유저 그릇을 만들도록 하겠습니다
+유저를 담는 그릇을 만들도록 하겠습니다
 
 * `[AWS Management Console]` ▷ `[Cognito]`
-* `[Manage User Pools]` 선택
-* `[Create a user pool]` 선택
+  - `[Manage User Pools]` 선택
+  - `[Create a user pool]` 선택
 
-  - Pool name: `WildRydes`
-  - `Review defaults` 선택
-  - 확인 후 `[Create pool]`
-  - 상단 `Pool Id` 항목값은 별도 기록
+    - Pool name: `WildRydes`
+    - `Review defaults` 선택
+    - 확인 후 `[Create pool]`
+    - 상단 `Pool Id` 항목값은 별도 기록
 
 ### 2-2. Add an App to Your User Pool
 
 * `[AWS Management Console]` ▷ `[Cognito]` ▷ `[Manage User Pools]`
-* `WildRydes` 객체 선택
-* `General settings` 탭 ▷ `App clients` ▷ `App an app client`
+  - `WildRydes` 객체 선택
+  - `General settings` 탭 ▷ `App clients` ▷ `App an app client`
 
-  - App client name: `WildRydesWebApp`
-  - `Generate client secret` 체크표시 해제  
-  - `Create app client` 선택
-  - 표시되는 `App client id` 항목값은 별도 기록
+    - App client name: `WildRydesWebApp`
+    - `Generate client secret` 체크표시 해제  
+    - `Create app client` 선택
+    - 표시되는 `App client id` 항목값은 별도 기록
 
 ### 2-3. Update the config.js File in Your Website Bucket
 
 여기선 뭘 할거다
 
-* `1-3` 단계의 `/WebApplication/1_StaticWebHosting/website/js/config.js` 파일을 로컬에서 에디터로 열기
+* 로컬 PC에서 다음 작업
+  - `1-3` 단계의 `/WebApplication/1_StaticWebHosting/website/js/config.js` 파일을 에디터로 열기
 
-  - userPoolId: `2-1` 단계에서 기록한 `Pool Id`값 붙여넣기
-  - userPoolClientId: `2-2` 단계에서 기록한 `App client id`값 붙여넣기
-  - region: `ap-northeast-2`
-  - 에디터에서 `Save`
+    - userPoolId: `2-1` 단계에서 기록한 `Pool Id`값 붙여넣기
+    - userPoolClientId: `2-2` 단계에서 기록한 `App client id`값 붙여넣기
+    - region: `ap-northeast-2`
+    - 에디터에서 `Save`
 
 * `[AWS Management Console]` ▷ `[S3]`
-* `1-2` 단계에서 생성한 S3 버킷 선택
-* 위에서 수정한 `config.js` 파일을 `/js` 경로에 업로드(덮어쓰기)
+  - `1-2` 단계에서 생성한 S3 버킷 선택
+  - 위에서 수정한 `config.js` 파일을 `/js` 경로에 업로드(덮어쓰기)
 
 ### 2-4. Test Your Implementation
 
 이거 왜 이리 기냐..
 
-* `1-5` 단계에서 기록한 `Endpoint 주소/register.html` 주소로 웹페이지 열기
-
-  - Email: 1
-  - Password: 2
-  - Confirm Password: 3
+* `1-5` 단계에서 기록한 `Endpoint주소/register.html` 주소로 웹페이지 열기
+  - 아래 항목을 다음과 같이 입력
+  
+    - Email: 1
+    - Password: 2
+    - Confirm Password: 3
   - 해당 메일주소로 수신된 인증코드 확인
 
 * `[AWS Management Console]` ▷ `[Cognito]`
-* `WildRydes` 객체 선택
-* `General settings` 탭 ▷ `Users and groups` ▷ `Users` 탭에서 방금 생성한 유저 확인
-  - `Email verified` 값이 `false`임을 확인
+  - `WildRydes` 객체 선택
+  - `General settings` 탭 ▷ `Users and groups` ▷ `Users` 탭에서 방금 생성한 유저 확인
 
-* `1-5` 단계에서 기록한 `Endpoint 주소/verify.html` 주소로 웹페이지 열기
+    - `Email verified` 값이 `false`임을 확인
 
-  - Email:
-  - Verification Code: 메일에서  인증코드 입력
-  - 확인 후 `[VERIFY]`
+* `1-5` 단계에서 기록한 `Endpoint주소/verify.html` 주소로 웹페이지 열기
+  - 아래 항목을 다음과 같이 입력
+    - Email:
+    - Verification Code: 메일에서  인증코드 입력
+    - 확인 후 `[VERIFY]`
 
 * `[AWS Management Console]` ▷ `[Cognito]`
-* `WildRydes` 객체 선택
-* `General settings` 탭 ▷ `Users and groups` ▷ `Users` 탭에서 방금 생성한 유저 확인
-  - `Email verified` 값이 `true`로 변경되었음을 확인
+  - `WildRydes` 객체 선택
+  - `General settings` 탭 ▷ `Users and groups` ▷ `Users` 탭에서 방금 생성한 유저 확인
+
+    - `Email verified` 값이 `true`로 변경되었음을 확인
 
 
 ---
