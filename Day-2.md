@@ -321,8 +321,8 @@ IAM은 또 뭐람?
 
 단위 객체를 만듭니다.
 
-* `[AWS Management Console]` ▷ `[API Gateway]` ▷ `Get Started` (표시되지 않을 수도 있음)
-  - `[Create API]` 선택 (`Get Started`가 대신 표시되는 경우 선택)
+* `[AWS Management Console]` ▷ `[API Gateway]` 
+  - `[Create API]` 또는 `[Get Started]` 선택
     
     - Choose the protocol: `REST`
     - Create new API: `New API`
