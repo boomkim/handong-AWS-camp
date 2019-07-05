@@ -370,7 +370,7 @@ IAM은 또 뭐람?
       - Resource Path: `ride`
       - Enable API Gateway CORS: 체크함
       - 확인 후 `[Create Resource]`
-    - `Resources` 탭 ▷ `/ride` 선택 ▷ `[Actions]` ▷ `[Create Methods]` ▷ dropdown에서 `POST` 선택 ▷ 체크표시
+    - `Resources` 탭 ▷ `/ride` 선택 ▷ `[Actions]` ▷ `[Create Methods]` ▷ dropdown에서 `POST` 선택 ▷ 체크
     
       - Integration type: `Lambda Function`
       - User Lambda Proxy Integration: 체크함
