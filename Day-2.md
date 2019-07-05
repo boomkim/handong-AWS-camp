@@ -378,9 +378,12 @@ IAM은 또 뭐람?
       - Lambda Function: `RequestUnicorn`
       - 확인 후 `[Save]`
       - Add Permission to Lambda Function 창이 뜨면 `[OK]`
-      
-      
+
+    - `Resources` 탭 ▷ `/ride` 하위 `POST` 선택 ▷ `[Method Request]` 선택
     
+      - Authorization: `WildRydes` ▷ 체크
+      
+이제 한스텝만 더 가면 됩니다
 
 ### 4-4. Deploy Your API
 
