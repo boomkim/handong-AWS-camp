@@ -186,7 +186,8 @@
 * `1-5` 단계에서 기록한 `Endpoint 주소/verify.html` 주소로 웹페이지 열기
 
   - Email:
-  - Verification Code: 위에서 확인한 인증코드 입력
+  - Verification Code: 메일에서  인증코드 입력
+  - `[VERIFY]` 선택
 
 verify 상태값 변경 확인
 
