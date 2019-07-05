@@ -136,6 +136,8 @@
 * `Create a user pool` 선택
 
   - Pool name: `WildRydes`
+  - `Review defaults` 선택
+  - 확인 후 `[Create pool]`
 
 
 cognito에서 user 객체 확인 / verify 상태값 변경 확인
