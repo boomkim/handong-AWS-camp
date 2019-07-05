@@ -1,16 +1,17 @@
-# 한동대 AWS Camp Day-3 
+# 한동대 AWS Camp Day-3-2 AI/ML 실습
 
-## Big Data 
+## 0. Overview
 
+### Sagemaker?
 
-## AI/ML - Sagemaker: 번역 ML 모델 학습 
+Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠르게 구성, 학습하고 어떤 규모 로든 기계 학습된 모델을 배포할 수 있도록 해주는 관리형 서비스 입니다. 이 워크샵을 통해 Sagemaker notebook instance 를 생성하고 샘플 Jupyter notebook 을 실습하면서 SageMaker 의 일부 기능을 알아보도록 합니다.
 
-### 1. S3 버킷 생성
+## 1. S3 버킷 생성
 
 * AWS 콘솔 Sign in -> S3 콘솔 접속 
 * AWS S3 버킷 생성 `sagemaker-{userid}`
 
-### 2. Notebook instance 생성 
+## 2. Notebook instance 생성 
 
 * Sagemaker 콘솔 접속 
 * 좌측 `Notebook Instance` -> `Create notebook instance` 클릭 
@@ -20,12 +21,12 @@
 * (팝업창에서) Specific S3 Buckets: `sagemaker-{userid}` (위에서 생성한 버킷) 입력 후 `Create role`
 * 다시 Create Notebook instance 페이지로 돌아온 뒤 `Create notebook instance` 를 클릭합니다.
 
-### 3. Notebook Instance 접근 
+## 3. Notebook Instance 접근 
 
 * 서버 상태가 `InService` 로 바뀔 때까지 기다립니다. 보통 5 분정도의 시간이 소요 됩니다.
 * `InService` 가 된 후 Open을 클릭하면 Notebook으로 접속할 수 있습니다. 
 
-### 4. 실습용 코드 다운로드 
+## 4. 실습용 코드 다운로드 
 
 * 터미널 실행 (우측에 `New` -> `Terminal`)
 * 터미널에서 깃 클론 
@@ -37,17 +38,15 @@ git clone https://github.com/boomkim/handong-AWS-camp.git
 
 {그림이 들어갈 자리}
 
-### 5. 알고리즘 하나 골라서 테스트
+## 5. 알고리즘 하나 골라서 테스트
 
 ~~XGBoost 그냥 그대로 쓸지, 아니면 이미지 분류 할지 생각중~~
 
-### 6. ~~영화추천도 한번 해볼까...........~~
+## 6. ~~영화추천도 한번 해볼까...........~~
 
-### 7. Internet-facing 앱 개발 
+## 7. Internet-facing 앱 개발 
 
 3일간의 코스 중 마지막을 장식할 세션입니다
-
-Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠르게 구성, 학습하고 어떤 규모 로든 기계 학습된 모델을 배포할 수 있도록 해주는 관리형 서비스 입니다. 이 워크샵을 통해 Sagemaker notebook instance 를 생성하고 샘플 Jupyter notebook 을 실습하면서 SageMaker 의 일부 기능을 알아보도록 합니다.
 
 이 모듈에서는 영어를 독일어로 변환하는 SageMaker 의 Sequence-to-Sequence 알고리즘을 이용한 언어번역기를 학습해보고 이 서비스를 인터넷을 통해 활용할 수 있는 방법에 대해 실습해 보겠습니다.
 
@@ -55,9 +54,9 @@ Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠�
 
 **예상시간: 약 1시간 ~ 1시간 30분**
 
-### 7.1 영어-독어 번역 ML 모델 생성
+## 7.1 영어-독어 번역 ML 모델 생성
 
-#### 노트북 소개 
+### 노트북 소개 
 
 * 노트북 오픈 
 * 원본: `/sample-notebooks/introduction_to_amazon_algorithms/seq2seq_translation_en-de/SageMaker- Seq2Seq-Translation-English-German.ipynb`
@@ -68,11 +67,11 @@ Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠�
 
 이 Pre-trained model 을 사용하기 위해서는 노트북의 코드 중 Endpoint Configuration 직전의 코드를 아래와 같이 수정해서 이미 훈련된 모델을 다운로드 한 다음 본인의 S3 버켓으로 업로드 하시면 됩니다. 이때 Jupyter 노트북 마지막 줄의 sage.delete_endpoint 는 데모를 계속 진행하기 위해 실행하지 않습니다. 이를 위해 이번에는 가장 마지막 줄에 있는 코드를 주석 처리하겠습니다.
 
-#### Pre-trained 모델을 사용 하기 위한 노트북 수정
+### Pre-trained 모델을 사용 하기 위한 노트북 수정
 
 노트북에서 하단의 S3 bucket 이름에 상기 생성한 S3 이름을 입력하시고 우측의 예와 비슷한 형식으로 prefix 를 입력하시면 됩니다 (Figure 11 참조).
 
-#### 노트북 실행 방법
+### 노트북 실행 방법
 
 `Shift+Enter`: 셀안의 코드를 실행하고 다음 셀로 이동 
 
@@ -84,11 +83,11 @@ Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠�
 
 **노트북 가장 하단의 delete_endpoint는 실행시키지 마세요**
 
-### 7-2 Samemaker Endpoint 호출 Lambda 함수 개발 
+## 7-2 Samemaker Endpoint 호출 Lambda 함수 개발 
 
 본 모듈에서는 방금 생성한 SageMaker 의 Inference service 를 호출하는 Lambda 함수를 개발해 보겠습니다.
 
-#### Lambda 함수 생성하기 
+## Lambda 함수 생성하기 
 
 * lambda 콘솔로 이동 
 * `Create function` 클릭 
@@ -98,7 +97,7 @@ Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠�
     * `Role`: `Create a custome role` 선택 후 팝업창에서 `Allow` 클릭 
     * Lambda 콘솔로 돌아와서 `Create Function` 클릭 
 
-#### Lambda 함수에 Sagemaker 실행 권한(Role) 추가 
+### Lambda 함수에 Sagemaker 실행 권한(Role) 추가 
 
 * IAM 콘솔로 이동 
 * 왼쪽 메뉴에서 `Roles` 클릭 
@@ -110,7 +109,7 @@ Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠�
 * `Review policy` 클릭 
 * 새로운 Policy 이름 입력 (예: `sagemaker_endpoint_policy`)후 `Create Policy` 클릭 
 
-### Lambda 함수 코딩하기 
+## Lambda 함수 코딩하기 
 
 * 아래 코드를 붙여넣습니다. `endpoint`는 자신이 만든 endpoint로 바꿔줍니다.(Sagemaker Endpoint)
 
@@ -143,7 +142,7 @@ def lambda_handler(event, context):
 * Lambda의 Timeout 시간을 10초로 늘입니다.
 
 
-#### test event 생성 
+### test event 생성 
 
 * configure test events 
 * Event name 입력 (예:`SampleEnglishSentence`)
@@ -163,9 +162,9 @@ def lambda_handler(event, context):
 * `Create` 클릭 
 * `Test` 클릭 후 결과 확인 
 
-### 7-3 AWS API Gateway 와 S3 Static Web Server 를 이용한 웹서비스 연결하기
+## 7-3 AWS API Gateway 와 S3 Static Web Server 를 이용한 웹서비스 연결하기
 
-#### API Gateway 생성 및 Lambda 함수 연결하기
+### API Gateway 생성 및 Lambda 함수 연결하기
 
 *  Amazon API Gateway 콘솔 접속 
 * `Create API` -> `New API` 선택
@@ -202,11 +201,29 @@ def lambda_handler(event, context):
 * Inkoke URL 메모장에 기록 
 * `SDK Generation` -> `Platform`: `JavaScript` -> `Generate SDK` 선택
 
-#### S3를 이용해 Static web server를 설정하기 위한 파일 준비
+### S3를 이용해 Static web server를 설정하기 위한 파일 준비
 
 * API Gateway SDK 생성으로 다운받은 압축파일을 unzip 
 * S3 Static 웹 서버에 사용될 index.html 과 error.html 파일 압축이 풀린 폴더에 저장
 
-{그림이 들어갈 자리 } 
+{그림이 들어갈 자리- 폴더 구조 예시} 
 
-#### S3 Static Web Server 생성하기 
+### S3 Static Web Server 생성하기 
+
+* Amazon S3 콘솔 접속 
+* `Create Bucket` 선택
+* 새로운 버킷 이름 입력 (ex: `chulsoo-sagemaker-public-test`) -> `Next` -> `Next` 선택 
+* `Set permissions` 에서 `Manage public permission`를 `Grant public read access to this bucket`으로 설정 
+* `Next`-> `Create Bucket` 선택 
+* 생성된 S3 bucket 선택 
+* `Properties` -> `Static website hosting` -> `Use this bucket to host a website` 선택 후 `Index document`: `index.html`, `Error document`: `error.html` 입력 
+* `Save` 선택 
+* 상단의 Endpoint 메모장에 기록 
+* `Overview` 탭 선택 -> `Upload` 선택 
+* 파일들 업로드, `Set permissions` 에서 `Grant public read access to this object(s)` 설정 
+
+### 서비스 테스트하기 
+
+* 웹브라우저(Chrome, IE, Safari 뭐든... )에서 기록해둔 S3 Endpoint URL에 접속. 
+* Translate to German 오른편의 텍스트 입력창에 영문 문장을 입력 (Ex. "I love you")
+* 잠시 뒤에 결과가 보여집니다.(보이길 바랍니다ㅜㅜ)
