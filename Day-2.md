@@ -254,6 +254,7 @@ IAM은 또 뭐람?
 
 * `[AWS Management Console]` ▷ `[Lambda]` ▷ `[Create a function]`
   - `Author from scratch` 선택
+
     - Function name: `RequestUnicorn`
     - Runtime: `node.js 8.10`
     - Permissions: `Choose or create an execution role` ▷ `Use an existing role` ▷ `WildRydesLambda`
