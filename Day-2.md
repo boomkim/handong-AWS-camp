@@ -323,10 +323,10 @@ IAM은 또 뭐람?
 
 * `[AWS Management Console]` ▷ `[API Gateway]` 
   - `[Create API]` 또는 `[Get Started]` 선택
+
     - Choose the protocol: `REST`
     - Create new API: `New API`
     - Settings
-  
       - API name: `WildRydes`
       - Endpoint Type: `Edge optimized`
     - 확인 후 `[Create API]`
