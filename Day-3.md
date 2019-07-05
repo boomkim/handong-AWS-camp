@@ -47,11 +47,11 @@ git clone https://github.com/boomkim/handong-AWS-camp.git
 
 **3일간의 코스 중 마지막을 장식할 세션입니다**
 
-    Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠르게 구성, 학습하고 어떤 규모 로든 기계 학습된 모델을 배포할 수 있도록 해주는 관리형 서비스 입니다. 이 워크샵을 통해 Sagemaker notebook instance 를 생성하고 샘플 Jupyter notebook 을 실습하면서 SageMaker 의 일부 기능을 알아보도록 합니다.
-    
-    이 모듈에서는 영어를 독일어로 변환하는 SageMaker 의 Sequence-to-Sequence 알고리즘을 이용한 언어번역기를 학습해보고 이 서비스를 인터넷을 통해 활용할 수 있는 방법에 대해 실습해 보겠습니다.
-    
-    본 Hands-on 에서는 SageMaker 에서 생성한 Endpoint inference service 를 웹 상에서 호출하기 위해 AWS Lambda 와 AWS API Gateway 를 Figure 4 과 같은 데모를 만들어 보겠습니다.
+Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠르게 구성, 학습하고 어떤 규모 로든 기계 학습된 모델을 배포할 수 있도록 해주는 관리형 서비스 입니다. 이 워크샵을 통해 Sagemaker notebook instance 를 생성하고 샘플 Jupyter notebook 을 실습하면서 SageMaker 의 일부 기능을 알아보도록 합니다.
+
+이 모듈에서는 영어를 독일어로 변환하는 SageMaker 의 Sequence-to-Sequence 알고리즘을 이용한 언어번역기를 학습해보고 이 서비스를 인터넷을 통해 활용할 수 있는 방법에 대해 실습해 보겠습니다.
+
+본 Hands-on 에서는 SageMaker 에서 생성한 Endpoint inference service 를 웹 상에서 호출하기 위해 AWS Lambda 와 AWS API Gateway 를 Figure 4 과 같은 데모를 만들어 보겠습니다.
 
 **예상시간: 약 1시간 ~ 1시간 30분**
 
@@ -164,3 +164,16 @@ def lambda_handler(event, context):
 
 ### 7-3 AWS API Gateway 와 S3 Static Web Server 를 이용한 웹서비스 연결하기
 
+#### API Gateway 생성 및 Lambda 함수 연결하기
+
+* Amazon API Gateway 콘솔 접속 
+* `Create API` -> `New API` 선택
+* `API NAME`: (예: `SageMakerSeq2SeqLambdaGateWay`)
+* `Endpoint Type`: `Regional` 선택 후 `Create API`
+* 바뀐 화면에서 `Actions` -> `Create Method` 선택
+* 하단의 콤보 박스에서 `POST` 선택 후 체크(V) 버튼 클릭 
+* 오른쪽의 셋업 창에서 다음과 같이 입력 
+    * `Integration type`: `Lambda function`
+    *  `Lambda region` : Labmda 를 생성하신 Region (ap-northeast-2) 입력 
+    * `Lambda function`: Lambda 함수 이름 입력
+    * `Save` 선택
