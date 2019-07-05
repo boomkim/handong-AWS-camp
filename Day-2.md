@@ -171,9 +171,9 @@
 * `1-5` 단계에서 기록한 `Endpoint주소/register.html` 주소로 웹페이지 열기
   - 아래 항목을 다음과 같이 입력
   
-    - Email: 1
-    - Password: 2
-    - Confirm Password: 3
+    - Email: 인증에 사용할 이메일 주소
+    - Password: 원하는 암호
+    - Confirm Password: 암호입력 재확인
   - 해당 메일주소로 수신된 인증코드 확인
 
 * `[AWS Management Console]` ▷ `[Cognito]`
@@ -184,8 +184,9 @@
 
 * `1-5` 단계에서 기록한 `Endpoint주소/verify.html` 주소로 웹페이지 열기
   - 아래 항목을 다음과 같이 입력
-    - Email:
-    - Verification Code: 메일에서  인증코드 입력
+
+    - Email: 등록한 이메일 주소
+    - Verification Code: 메일에서 확인한 인증코드 입력
     - 확인 후 `[VERIFY]`
 
 * `[AWS Management Console]` ▷ `[Cognito]`
