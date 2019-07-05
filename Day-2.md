@@ -187,7 +187,7 @@
 
   - Email:
   - Verification Code: 메일에서  인증코드 입력
-  - `[VERIFY]` 선택
+  - 확인 후 `[VERIFY]`
 
 verify 상태값 변경 확인
 
