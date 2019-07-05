@@ -10,7 +10,7 @@
 ### [⑤ Terminate Resources](#5-terminate-resources)
 
 
-## 0. Overview
+## 
 
 ![image](/images/Day2-0.png)
 
