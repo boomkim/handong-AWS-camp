@@ -377,6 +377,7 @@ IAM은 또 뭐람?
       - Lambda Region: `ap-northeast-2`
       - Lambda Function: `RequestUnicorn`
       - 확인 후 `[Save]`
+      - Add Permission to Lambda Function 창이 뜨면 `[OK]`
       
       
     
