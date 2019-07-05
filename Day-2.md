@@ -201,7 +201,7 @@
     - Email: 등록한 이메일 주소
     - Password: 등록한 암호
     - 확인 후 `[SIGN IN]`
-    - `/ride` 주소로 리다이렉트되면서 `auth token`값이 발급되었는지 확인
+    - `/ride` 주소로 리다이렉트되면서 `auth token`값 출력, 해당값 별도 기록
 
 ---
 ## 3. Bulid a Serverless Backend
@@ -327,12 +327,36 @@ IAM은 또 뭐람?
     - Choose the protocol: `REST`
     - Create new API: `New API`
     - Settings
+      
       - API name: `WildRydes`
       - Endpoint Type: `Edge optimized`
     - 확인 후 `[Create API]`
 
-
 ### 4-2. Create a Cognito User Pools Authorizer
+
+오쏘라이저 변신
+
+* `[AWS Management Console]` ▷ `[API Gateway]` 
+  - `WildRydes` 선택
+  
+    - `Authorizers` 탭 ▷ `[Create New Authorizer]`
+    
+      - Name: `WildRydes`
+      - Type: `Cognito`
+      - Cognito User Pool: `ap-northeast-2' `WildRydes`
+      - Token Source: `Authorization`
+      - 확인 후 `[Create]`
+
+중간 설명
+
+* `[AWS Management Console]` ▷ `[API Gateway]` 
+  - `WildRydes` 선택
+  
+    - `Authorizers` 탭 ▷ `WildRydes` ▷ `[Test]`
+    
+      - `2-4` 단계에서 기록한 `Authorization Token` 값 붙여넣기 ▷ '[Test]'
+      - Response Code가 `200`인지 확인
+
 
 ### 4-3. Create a New Resource and Method
 
