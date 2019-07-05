@@ -173,7 +173,7 @@
   
     - Email: 인증에 사용할 이메일 주소
     - Password: 원하는 암호
-    - Confirm Password: 암호입력 재확인
+    - Confirm Password: 암호 재
   - 해당 메일주소로 수신된 인증코드 확인
 
 * `[AWS Management Console]` ▷ `[Cognito]`
