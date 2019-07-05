@@ -201,7 +201,7 @@
     - Email: 등록한 이메일 주소
     - Password: 등록한 암호
     - 확인 후 `[SIGN IN]`
-    - `/ride` 주소로 변경되면서 화면에 auth token값이 발급되었는지 확인
+    - `/ride` 주소로 리다이렉트되면서 `auth token`값이 발급되었는지 확인
 
     
 ---
