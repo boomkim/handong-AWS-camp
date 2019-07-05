@@ -132,8 +132,8 @@
 유저 그릇을 만들도록 하겠습니다
 
 * `[AWS Management Console]` ▷ `[Cognito]`
-* `Manage User Pools` 선택
-* `Create a user pool` 선택
+* `[Manage User Pools]` 선택
+* `[Create a user pool]` 선택
 
   - Pool name: `WildRydes`
   - `Review defaults` 선택
@@ -141,6 +141,11 @@
   - 상단 `Pool Id` 항목값은 별도 기록
 
 ### 2-2. Add an App to Your User Pool
+
+* `[AWS Management Console]` ▷ `[Cognito]` ▷ `[Manage User Pools]`
+* `WildRydes` 객체 선택
+* `General settings` 탭 ▷ `App clients` ▷ `App an app client`
+
 
 cognito에서 user 객체 확인 / verify 상태값 변경 확인
 
