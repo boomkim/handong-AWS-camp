@@ -357,8 +357,29 @@ IAM은 또 뭐람?
       - `2-4` 단계에서 기록한 `Authorization Token` 값 붙여넣기 ▷ `[Test]`
       - Response Code가 `200`인지 확인
 
-
 ### 4-3. Create a New Resource and Method
+
+설명을 부탁합니다
+
+* `[AWS Management Console]` ▷ `[API Gateway]` 
+  - `WildRydes` 선택
+
+    - `Resources` 탭 ▷ `[Actions]` ▷ `[Create Resource]`
+    
+      - Resource Name: `ride`
+      - Resource Path: `ride`
+      - Enable API Gateway CORS: 체크함
+      - 확인 후 `[Create Resource]`
+    - `Resources` 탭 ▷ `/ride` 선택 ▷ `[Actions]` ▷ `[Create Methods]` ▷ dropdown에서 `POST` 선택 ▷ 체크표시
+    
+      - Integration type: `Lambda Function`
+      - User Lambda Proxy Integration: 체크함
+      - Lambda Region: `ap-northeast-2`
+      - Lambda Function: `RequestUnicorn`
+      - 확인 후 `[Save]`
+      
+      
+    
 
 ### 4-4. Deploy Your API
 
