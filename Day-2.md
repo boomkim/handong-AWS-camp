@@ -168,6 +168,8 @@
 
 ### 2-4. Test Your Implementation
 
+이거 왜 이리 기냐..
+
 cognito에서 user 객체 확인 / verify 상태값 변경 확인
 
 ---
