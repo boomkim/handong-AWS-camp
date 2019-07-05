@@ -10,7 +10,6 @@
 * [5. Terminate Resources](#5-terminate-resources)
 
 
-
 ## 0. Overview
 
 ![image](/images/Day2-0.png)
@@ -72,12 +71,12 @@
 무슨 권한을 부여하겠습니다
 
 * `[AWS Management Console]` ▷ `[S3]`
-* `1-2` 단계에서 생성한 S3 버킷 선택
-* `Permissions` 탭 ▷ `Block public access` ▷ `[Edit]`
+  - `1-2` 단계에서 생성한 S3 버킷 선택
+  - `Permissions` 탭 ▷ `Block public access` ▷ `[Edit]`
   
-  - `Block all public access` 체크표시 해제
-  - 확인 후 `[Save]`
-  - `confirm` 문자열 입력 후 `[Confirm]`
+    - `Block all public access` 체크표시 해제
+    - 확인 후 `[Save]`
+    - `confirm` 문자열 입력 후 `[Confirm]`
   
 * `Permissions` 탭 ▷ `Bucket Policy`
 
