@@ -3,11 +3,11 @@
 * 2일차 블라블라
 
 ## 바로가기
-### [① Host a Static Website](#1-host-a-static-website-1)
-### [② Manage Users](#2-manage-users-1)
+### [① Host a Static Website](#1-host-a-static-website)
+### [② Manage Users](#2-manage-users)
 ### [③ Build a Serverless Backend](#3-bulid-a-serverless-backend)
-### [④ Deploy a RESTful API](#4-deploy-a-restful-api-1)
-### [⑤ Terminate Resources](#5-terminate-resources-1)
+### [④ Deploy a RESTful API](#4-deploy-a-restful-api)
+### [⑤ Terminate Resources](#5-terminate-resources)
 
 
 ## 0. Overview
