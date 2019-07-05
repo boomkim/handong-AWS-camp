@@ -238,9 +238,10 @@ IAM은 또 뭐람?
   - 좌측탭 `Roles` ▷ Search Window: `WildRydesLambda` ▷ 검색된 Role 객체 선택
     
     - `Permissions` 탭 ▷ `Add inline policy`
-    - Service: `DynamoDB`
-    - Actions: `PutItem`
-    - Resources: `Specific`, Add ARN → Specify ARN for table: `3-1` 단계에서 기록한 ARN값 입력 ▷ `[Add]`
+      - Service: `DynamoDB`
+      - Actions: `PutItem`
+      - Resources: `Specific`
+      - Add ARN → Specify ARN for table: `3-1` 단계에서 기록한 ARN값 입력 ▷ `[Add]`
     
 
 ### 3-3. Create a Lambda Function for Handling Requests
