@@ -115,7 +115,9 @@
 ### 1-6. Validate Your Implementation
 
 * `1-5` 단계에서 기록해놓은 Endpoint 주소로 웹페이지 열기
+
 * 웹브라우저에 정상적으로 말떼가 표시되는지 확인
+
 * 화면의 `GIDDY UP` 선택시 표시되는 것은?
 
 ---
