@@ -81,7 +81,8 @@
   - `Permissions` 탭 ▷ `Bucket Policy`
 
     - 하단 빈공간에 아래 문자열 입력 후 `[Save]`
-    - 이때 `[YOUR_BUCKET_NAME]` 항목은 반드시 본인이 생성한 버킷명으로 대체
+    - `[YOUR_BUCKET_NAME]` 항목은 반드시 본인이 생성한 버킷명으로 대체
+    - `Permissions` 탭에 주황색 `Public` 표시가 덧붙었는지 확인    
 ```
 {
     "Version": "2012-10-17",
@@ -95,7 +96,6 @@
     ] 
 }
 ```
-  - `Permissions` 탭에 주황색 `Public` 표시가 덧붙었는지 확인
 
 ### 1-5. Enable Website Hosting
 
