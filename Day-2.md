@@ -215,9 +215,19 @@
 
 좀 설명을 해주시면 안되겠습니까?
 
-
+* `[AWS Management Console]` ▷ `[DynamoDB]`
+  - `[Create table]` 선택
+    - Table name: `Rides`
+    - Partition key: `RideId`
+    - Use default settings: 체크함
+    - 확인 후 `[Create]`
+    - `Overview` 탭 ▷ Table details 하단에 `Amazon Resource Name(ARN)` 항목값 별도 기록
 
 ### 3-2. Create an IAM Role for Your Lambda function
+
+IAM은 대체 뭐죠?
+
+
 
 ### 3-3. Create a Lambda Function for Handling Requests
 
