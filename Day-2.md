@@ -180,8 +180,7 @@
 * `[AWS Management Console]` ▷ `[Cognito]`
 * `WildRydes` 객체 선택
 * `General settings` 탭 ▷ `Users and groups` ▷ `Users` 탭에서 방금 생성한 유저 확인
-  - `Email verified` 항목값이 `false`임을 확인
-
+  - `Email verified` 값이 `false`임을 확인
 
 * `1-5` 단계에서 기록한 `Endpoint 주소/verify.html` 주소로 웹페이지 열기
 
@@ -189,7 +188,11 @@
   - Verification Code: 메일에서  인증코드 입력
   - 확인 후 `[VERIFY]`
 
-verify 상태값 변경 확인
+* `[AWS Management Console]` ▷ `[Cognito]`
+* `WildRydes` 객체 선택
+* `General settings` 탭 ▷ `Users and groups` ▷ `Users` 탭에서 방금 생성한 유저 확인
+  - `Email verified` 값이 `true`로 변경되었음을 확인
+
 
 ---
 ## 3. Bulid a Serverless Backend
