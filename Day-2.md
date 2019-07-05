@@ -175,9 +175,16 @@
   - Email: 1
   - Password: 2
   - Confirm Password: 3
+  - 해당 메일주소로 수신된 인증코드 확인
 
+여기서 뭐 Cognito 콘솔화면 한번 보자
 
-cognito에서 user 객체 확인 / verify 상태값 변경 확인
+* `1-5` 단계에서 기록한 `Endpoint 주소/verify.html` 주소로 웹페이지 열기 (자동 전환됨)
+
+  - Email:
+  - Verification Code: 위에서 확인한 인증코드 입력
+
+verify 상태값 변경 확인
 
 ---
 ## 3. Bulid a Serverless Backend
