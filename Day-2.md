@@ -127,7 +127,16 @@
 
 ### 2-1. Create an Amazon Cognito User Pool
 
-cognito에서 user 객체 확인 / 상태값 변경 확인
+유저 그릇을 만들도록 하겠습니다
+
+* `[AWS Management Console]` ▷ `[Cognito]`
+* `Manage User Pools` 선택
+* `Create a user pool` 선택
+
+  - Pool name: `WildRydes`
+
+
+cognito에서 user 객체 확인 / verify 상태값 변경 확인
 
 ### 2-2. Add an App to Your User Pool
 
