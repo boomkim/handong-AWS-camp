@@ -213,6 +213,10 @@
 
 ### 3-1. Create an Amazon DynamoDB Table
 
+좀 설명을 해주시면 안되겠습니까?
+
+
+
 ### 3-2. Create an IAM Role for Your Lambda function
 
 ### 3-3. Create a Lambda Function for Handling Requests
