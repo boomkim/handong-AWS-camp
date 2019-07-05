@@ -343,7 +343,7 @@ IAM은 또 뭐람?
     
       - Name: `WildRydes`
       - Type: `Cognito`
-      - Cognito User Pool: `ap-northeast-2' `WildRydes`
+      - Cognito User Pool: `ap-northeast-2` - `WildRydes`
       - Token Source: `Authorization`
       - 확인 후 `[Create]`
 
