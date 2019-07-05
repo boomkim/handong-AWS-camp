@@ -180,7 +180,7 @@
 * `[AWS Management Console]` ▷ `[Cognito]`
 * `WildRydes` 객체 선택
 * `General settings` 탭 ▷ `Users and groups` ▷ `Users` 탭에서 방금 생성한 유저 확인
-  - `Account status` 상태가 `UNCONFIRMED`임을 확인
+  - `Email verified` 항목값이 `false`임을 확인
 
 
 * `1-5` 단계에서 기록한 `Endpoint 주소/verify.html` 주소로 웹페이지 열기
