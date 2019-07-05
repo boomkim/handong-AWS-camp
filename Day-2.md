@@ -144,7 +144,7 @@
   - `General settings` 탭 ▷ `App clients` ▷ `App an app client`
 
     - App client name: `WildRydesWebApp`
-    - `Generate client secret` 체크표시 해제  
+    - Generate client secret: 체크표시 해제  
     - `Create app client` 선택
     - 표시되는 `App client id` 항목값은 별도 기록
 
