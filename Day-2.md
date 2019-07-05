@@ -153,6 +153,8 @@
 
 ### 2-3. Update the config.js File in Your Website Bucket
 
+여기선 뭘 할거다
+
 * `1-3` 단계의 `/WebApplication/1_StaticWebHosting/website/js/config.js` 파일을 로컬에서 에디터로 열기
 
   - userPoolId: `2-1` 단계에서 기록한 `Pool Id`값 붙여넣기
@@ -160,6 +162,9 @@
   - region: `ap-northeast-2`
   - 에디터에서 `Save`
 
+* `[AWS Management Console]` ▷ `[S3]`
+* `1-2` 단계에서 생성한 S3 버킷 선택
+* 위에서 수정한 `config.js` 파일을 동일 경로에 업로드(덮어쓰기)
 
 ### 2-4. Test Your Implementation
 
