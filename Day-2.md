@@ -177,7 +177,10 @@
   - Confirm Password: 3
   - 해당 메일주소로 수신된 인증코드 확인
 
-여기서 뭐 Cognito 콘솔화면 한번 보자
+* `[AWS Management Console]` ▷ `[Cognito]`
+* `WildRydes` 객체 선택
+* `General settings` 탭 ▷ `Users and groups` ▷ `Users` 탭 확인
+
 
 * `1-5` 단계에서 기록한 `Endpoint 주소/verify.html` 주소로 웹페이지 열기 (자동 전환됨)
 
