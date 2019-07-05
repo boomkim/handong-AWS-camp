@@ -315,8 +315,21 @@ IAM은 또 뭐람?
 
 15분
 
+앞에다 뭐 붙여가지고 API를 받아주고. 몇가지 역할을 합니다요.
 
 ### 4-1. Create a New REST API
+
+단위 객체를 만듭니다.
+
+* `[AWS Management Console]` ▷ `[API Gateway]` ▷ `Get Started` (표시되지 않을 수도 있음)
+  - Choose the protocol: `REST`
+  - Create new API: `New API`
+  - Settings
+  
+    - API name: `WildRydes`
+    - Endpoint Type: `Edge optimized`
+  - 확인 후 `[Create API]`
+
 
 ### 4-2. Create a Cognito User Pools Authorizer
 
