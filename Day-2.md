@@ -195,7 +195,15 @@
 
     - `Email verified` 값이 `true`로 변경되었음을 확인
 
+* `1-5` 단계에서 기록한 `Endpoint주소/signin.html` 주소로 웹페이지 열기
+  - 아래 항목을 다음과 같이 입력
 
+    - Email: 등록한 이메일 주소
+    - Password: 등록한 암호
+    - 확인 후 `[SIGN IN]`
+    - `/ride` 주소로 변경되면서 화면에 auth token값이 발급되었는지 확인
+
+    
 ---
 ## 3. Bulid a Serverless Backend
 
