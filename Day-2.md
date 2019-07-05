@@ -203,7 +203,6 @@
     - 확인 후 `[SIGN IN]`
     - `/ride` 주소로 리다이렉트되면서 `auth token`값이 발급되었는지 확인
 
-    
 ---
 ## 3. Bulid a Serverless Backend
 
@@ -235,7 +234,10 @@ IAM은 또 뭐람?
     - Search Window: `AWSLambdaBasicExecutionRole` ▷ 검색된 항목에 체크 ▷ `[Next: Tags]`
     - Add tags: 공란으로 두고 ▷ `[Next: Review]`
     - Role name: `WildRydesLambda` ▷ `[Create role]`
+
+  - 좌측탭 `Roles` ▷ Search Window: `WildRydesLambda` ▷ 검색된 Role 객체 선택
     
+    - 그렇습니다요
 
 ### 3-3. Create a Lambda Function for Handling Requests
 
