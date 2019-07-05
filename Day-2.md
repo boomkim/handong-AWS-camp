@@ -217,6 +217,7 @@
 
 * `[AWS Management Console]` ▷ `[DynamoDB]`
   - `[Create table]` 선택
+
     - Table name: `Rides`
     - Partition key: `RideId`
     - Use default settings: 체크함
