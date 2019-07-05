@@ -354,7 +354,7 @@ IAM은 또 뭐람?
   
     - `Authorizers` 탭 ▷ `WildRydes` ▷ `[Test]`
     
-      - `2-4` 단계에서 기록한 `Authorization Token` 값 붙여넣기 ▷ '[Test]'
+      - `2-4` 단계에서 기록한 `Authorization Token` 값 붙여넣기 ▷ `[Test]`
       - Response Code가 `200`인지 확인
 
 
