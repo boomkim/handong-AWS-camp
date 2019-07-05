@@ -43,11 +43,10 @@
 이번 단계에서는 무슨 용도의 S3 버킷을 생성합니다
 
 * `[AWS Management Console]` ▷ `[Find Services]` 검색창에 `S3` 입력
-* `[Create bucket]`선택
-
-  - Bucket name: `wildryde-firstname-lastname` # 그대로 적지 말고 이름부분을 반드시 변경!
-  - Region: `Asia Pacific (Seoul)`
-  - 확인 후 `[Create]`
+  - `[Create bucket]`선택
+    - Bucket name: `wildryde-firstname-lastname` # 그대로 적지 말고 이름부분을 반드시 변경!
+    - Region: `Asia Pacific (Seoul)`
+    - 확인 후 `[Create]`
 
 ### 1-3. Upload Content
 
