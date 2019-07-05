@@ -154,7 +154,11 @@
 ### 2-3. Update the config.js File in Your Website Bucket
 
 * `1-3` 단계의 `/WebApplication/1_StaticWebHosting/website/js/config.js` 파일을 로컬에서 에디터로 열기
-* 맥스 먼시
+
+  - userPoolId: `2-1` 단계에서 기록한 `Pool Id`값 붙여넣기
+  - userPoolClientId: `2-2` 단계에서 기록한 `App client id`값 붙여넣기
+  - region: `ap-northeast-2`  
+
 
 ### 2-4. Test Your Implementation
 
