@@ -114,7 +114,7 @@
 
 ### 1-6. Validate Your Implementation
 
-* `1-5` 단계에서 기록해놓은 Endpoint 주소로 웹페이지 열기
+* `1-5` 단계에서 기록한 Endpoint 주소로 웹페이지 열기
 
 * 웹브라우저에 정상적으로 말떼가 표시되는지 확인
 
@@ -164,11 +164,18 @@
 
 * `[AWS Management Console]` ▷ `[S3]`
 * `1-2` 단계에서 생성한 S3 버킷 선택
-* 위에서 수정한 `config.js` 파일을 동일 경로에 업로드(덮어쓰기)
+* 위에서 수정한 `config.js` 파일을 `/js` 경로에 업로드(덮어쓰기)
 
 ### 2-4. Test Your Implementation
 
 이거 왜 이리 기냐..
+
+* `1-5` 단계에서 기록한 `Endpoint 주소/register.html` 주소로 웹페이지 열기
+
+  - Email: 1
+  - Password: 2
+  - Confirm Password: 3
+
 
 cognito에서 user 객체 확인 / verify 상태값 변경 확인
 
