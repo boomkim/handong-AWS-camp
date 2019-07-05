@@ -226,9 +226,16 @@
 
 ### 3-2. Create an IAM Role for Your Lambda function
 
-IAM은 대체 뭐죠?
+IAM은 또 뭐람?
 
-
+* `[AWS Management Console]` ▷ `[IAM]`
+  - 좌측탭 `Roles` ▷ `[Create role]`
+  
+    - Choose the service that will use this role: `Lambda` ▷ `[Next: Permissions]`
+    - Search Window: `AWSLambdaBasicExecutionRole` ▷ 검색된 항목에 체크 ▷ `[Next: Tags]`
+    - Add tags: 공란으로 두고 ▷ `[Next: Review]`
+    - Role name: `WildRydesLambda` ▷ `[Create role]`
+    
 
 ### 3-3. Create a Lambda Function for Handling Requests
 
