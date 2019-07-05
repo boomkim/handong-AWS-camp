@@ -10,7 +10,7 @@
 ### [⑤ Terminate Resources](#5-terminate-resources)
 
 
-## 
+## 개요
 
 ![image](/images/Day2-0.png)
 
