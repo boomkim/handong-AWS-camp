@@ -259,6 +259,11 @@ IAM은 또 뭐람?
     - Runtime: `node.js 8.10`
     - Permissions: `Choose or create an execution role` ▷ `Use an existing role` ▷ `WildRydesLambda`
     - 확인 후 `[Create function]`
+
+* `[AWS Management Console]` ▷ `[Lambda]`
+  - `RequestUnicorn` 선택
+  
+    - Function code 내 `index.js` 공간에 `1-3` 단계의 `/WebApplication/3_ServerlessBackend/requestUnicorn.js` 내용 붙여넣기
   
   
 ### 3-4. Test Your Implementation
