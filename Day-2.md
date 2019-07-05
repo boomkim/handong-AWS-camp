@@ -300,8 +300,13 @@ IAM은 또 뭐람?
 }
 ```
 
-      
-    
+* `[AWS Management Console]` ▷ `[Lambda]`
+  - `RequestUnicorn` 선택
+
+    - 우측 상단 `TestRequestEvent` 지정 후 `[Test]`
+
+      - Execution result: `succeeded`로 표시되는지 확인
+      - Details: 응답값에 `statusCode`가 `201`로 표시되는지 확인
 
 ---
 ## 4. Deploy a RESTful API
