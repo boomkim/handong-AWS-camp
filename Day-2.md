@@ -130,8 +130,7 @@
 유저를 담는 그릇을 만들도록 하겠습니다
 
 * `[AWS Management Console]` ▷ `[Cognito]`
-  - `[Manage User Pools]` 선택
-  - `[Create a user pool]` 선택
+  - `[Manage User Pools]` ▷ `[Create a user pool]` 선택
 
     - Pool name: `WildRydes`
     - `Review defaults` 선택
