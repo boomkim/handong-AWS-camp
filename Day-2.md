@@ -157,7 +157,8 @@
 
   - userPoolId: `2-1` 단계에서 기록한 `Pool Id`값 붙여넣기
   - userPoolClientId: `2-2` 단계에서 기록한 `App client id`값 붙여넣기
-  - region: `ap-northeast-2`  
+  - region: `ap-northeast-2`
+  - 에디터에서 `Save`
 
 
 ### 2-4. Test Your Implementation
