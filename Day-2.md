@@ -263,10 +263,44 @@ IAM은 또 뭐람?
 * `[AWS Management Console]` ▷ `[Lambda]`
   - `RequestUnicorn` 선택
   
-    - Function code 내 `index.js` 공간에 `1-3` 단계의 `/WebApplication/3_ServerlessBackend/requestUnicorn.js` 내용 붙여넣기
-  
+    - Function code 내 `index.js` 공간 확인
+    - `1-3` 단계의 `/WebApplication/3_ServerlessBackend/requestUnicorn.js` 내용 붙여넣기
+    - 우측 상단 `[Save]`
   
 ### 3-4. Test Your Implementation
+
+함수를 개별실행 해보겠습니다.
+
+* `[AWS Management Console]` ▷ `[Lambda]`
+  - `RequestUnicorn` 선택
+
+    - 우측 상단 `Select a test event` dropdown ▷ `Configure test events`
+      - Event name: `TestRequestEvent`
+      - 하단에 아래 내용 붙여넣은 후 `[Create]`
+```
+{
+    "path": "/ride",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "*/*",
+        "Authorization": "eyJraWQiOiJLTzRVMWZs",
+        "content-type": "application/json; charset=UTF-8"
+    },
+    "queryStringParameters": null,
+    "pathParameters": null,
+    "requestContext": {
+        "authorizer": {
+            "claims": {
+                "cognito:username": "the_username"
+            }
+        }
+    },
+    "body": "{\"PickupLocation\":{\"Latitude\":47.6174755835663,\"Longitude\":-122.28837066650185}}"
+}
+```
+
+      
+    
 
 ---
 ## 4. Deploy a RESTful API
