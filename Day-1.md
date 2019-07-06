@@ -51,76 +51,82 @@ VPC를 생성하면 각 가용 영역에 하나 이상의 서브넷을 추가할
 
 
 ### Task 1.1 : VPC 생성 
-이 작업에서는 하나의 가용 영역에서 2개의 서브넷으로 구성된 VPC를 생성
-- 1.1.1 `AWS Management Console`의 `서비스` 메뉴에서 `[VPC]`를 클릭
-- 1.1.2 `[Start VPC Wizard]`를 클릭
-- 1.1.3 탐색 창에서 `[VPC with Public and Private Subnets]`를 클릭
-- 1.1.4 `[Select]`를 클릭
-    - 다음 정보를 입력
-    - ` [IP CIDR block]` : **10.0.0.0/16**
-    - ` [VPC name]` : **My Lab VPC**
-    - ` [Public Subnet]` : **10.0.1.0/24**
-    - ` [Availability Zone]` : **가용 영역 2a 선택** 
-    - ` [Public Subnet Name]` : **Public_Subnet1** 
-    - ` [Private Subent]` : **10.0.3.0/24**
-    - ` [Availability Zone]` : **가용 영역 2a 선택** 
-    - ` [Private Subnet Name]` : **Private_Subnet3**
-- 1.1.5 `[Specify the details of your NAT gateway]`에서
-    - 화면 오른쪽의 `[Use a NAT instance instead]`를 클릭
-- 1.1.6 `[Instance type]`에 나열된 첫 번재 인스턴스 유형을 선택 (**예 : t2.micro**)
-- 1.1.7 `[Key pair name]`에서 **AWSLABS** 키 페어를 선택
-- 1.1.8 `[Create VPC]`를 클릭
-- 1.1.9 VPC가 생성되면, VPC가 성공적으로 생성되었다는 메시지가 표시된 페이지 확인, `[OK]`클릭
+이 작업에서는 EC2 인스턴스용 Keypair 생성과 하나의 가용 영역에서 2개의 서브넷으로 구성된 VPC를 생성
+- 1.1.1 `AWS Management Console`의 `서비스` 메뉴에서 `[EC2]`를 클릭
+    - `[네트워크 및 보안]` 탭 아래 `[키페어]` 항목 클릭
+    - `[키 페어 생성]` 클릭 후 키 페어 이름에 **AWSLABS** 입력 후 생성
+    - AWSLABS.pem 파일을 안전하게 보관 (EC2 인스턴스 접속 용도로 사용)
+- 1.1.2 `AWS Management Console`의 `서비스` 메뉴에서 `[VPC]`를 클릭
+- 1.1.3 좌측 상단에 위치한 `[VPC 대시보드]`를 클릭 후 `[VPC 마법사 시작]`을 클릭
+
+    ![image](/images/Day1-Create-VPC.png)
+
+- 1.1.4 탐색 창에서 `[퍼블릭 및 프라이빗 서브넷이 있는 VPC]`를 클릭
+- 1.1.5 `[선택]`을 클릭하고 다음 정보를 입력
+    - `[IPv4 CIDR 블록:*]` : **10.0.0.0/16**
+    - `[VPC 이름]` : **My Lab VPC**
+    - `[퍼블릭 서브넷의 IPv4 CIDR:*]` : **10.0.1.0/24**
+    - `[가용 영역:*]` : **ap-northeast-2a** 
+    - `[퍼블릭 서브넷 이름:]` : **Public_Subnet1** 
+    - `[프라이빗 서브넷의 IPv4 CIDR:*]` : **10.0.3.0/24**
+    - `[가용 영역:*]` : **ap-northeast-2a*** 
+    - `[프라이빗 서브넷 이름:]` : **Private_Subnet3**
+- 1.1.6 `[NAT 게이트웨이의 세부 정보를 지정합니다.]`에서
+    - 화면 오른쪽의 `[대신 NAT 인스턴스 사용]`를 클릭
+- 1.1.7 `[인스턴스 유형:*]`에 나열된 첫 번재 인스턴스 유형을 선택 (**예 : t2.micro**)
+- 1.1.8 `[키 페어 이름]`에서 **AWSLABS** 키 페어를 선택
+- 1.1.9 `[VPC 생성]`를 클릭
+- 1.1.10 VPC가 생성되면, VPC가 성공적으로 생성되었다는 메시지가 표시된 페이지 확인
 
 
 ### Task 1.2 : 추가 서브넷 생성
 본 작업에서는 다른 가용 영역에 서브넷 2개를 추가로 생성하고 기존 라우팅 테이블을 통해 서브넷을 연결
-- 1.2.1 탐색 창에서 `[Subnets]`를 클릭 
-- 1.2.2 `[Create Subnet]`을 클릭
-- 1.2.3 `[Create Subnet]` 대화 상자에서 다음 세부 정보를 입력
-    - `[Name tag]` : **Public Subnet2**
-    - `[VPC]` : **My Lab VPC 클릭**
-    - `[Availability Zone]` : **가용 영역 2c 선택**
-    - `CIDR block` : **10.0.2.0/24**
-- 1.2.4 `[Yes, Create]`를 클릭
-- 1.2.5 `[Create Subnet]`을 클릭
-- 1.2.6 `[Create Subent]` 대화 상자에서 다음 세부 정보를 입력
-    - `[Name tag]` : **Private Subnet4**
-    - `[VPC]` : **My Lab VPC 클릭**
-    - `[Availability Zone]` : **가용 영역 2c 선택**
-    - `[CIDR block]` : **10.0.4.0/24**
-- 1.2.7 `[Yes, Create]`를 클릭
+- 1.2.1 VPC 탐색 창에서 `[서브넷]`를 클릭 
+- 1.2.2 `[서브넷 생성]`을 클릭
+- 1.2.3 `[서브넷 생성]` 대화 상자에서 다음 세부 정보를 입력
+    - `[이름 태그]` : **Public_Subnet2**
+    - `[VPC]` : **My Lab VPC** 클릭
+    - `[가용 영역]` : **ap-northeast-2c** 선택
+    - `[IPv4 CIDR 블록*]` : **10.0.2.0/24** 입력
+- 1.2.4 `[생성]` 클릭 후 `[닫기]` 클릭
+- 1.2.5 `[서브넷 생성]`을 클릭
+- 1.2.6 `[서브넷 생성]` 대화 상자에서 다음 세부 정보를 입력
+    - `[이름 태그]` : **Private_Subnet4**
+    - `[VPC]` : **My Lab VPC** 클릭
+    - `[가용 영역]` : **ap-northeast-2c** 선택
+    - `[IPv4 CIDR 블록*]` : **10.0.4.0/24** 입력
+- 1.2.7 `[생성]` 클릭 후 `[닫기]` 클릭
 - 1.2.8 `[Public_Subnet2]`를 선택하고, 모든 다른 서브넷이 선택 해제되었는지 확인
-    - 아래쪽 창에 있는 `[Route Table]`을 클릭
-    - 아래로 스크롤하여 `[Destination]` **0.0.0.0/0**의 `[Target]`에 접두사 `[IGW]`가 포함되어 있는지 확인
-    - 포함되어 있지 않은 경우, `[Edit]`를 클릭하고 `Change to:` 목록에 있는 다른 라우팅 테이블을 클릭
-    - `[Destination]` **0.0.0.0/0**의 `[Target]`이 접두사 `[IGW]`를 포함하도록 변경 후 `[저장]`을 클릭
-- 1.2.9 `[Private_Subnet2]`를 선택하고, 모든 다른 서브넷이 선택 해제되었는지 확인한 다음
-    - 아래쪽 창에 있는 `[Route Table]`을 클릭
-    - 아래로 스크롤하여 `[Destination]` **0.0.0.0/0**의 `[Target]`에 접두사 **eni**가 포함되어 있는지 확인 
-    - 포함되어 있지 않은경우, `[Edit]`를 클릭하고 `Change to:` 목록에 있는 다른 라우팅 테이블을 클릭
-    - `[Destination]` **0.0.0.0/0**의 `[Target]`이 접두사 **eni**를 포함하도록 변경 후 `[저장]`을 클릭
+    - 아래쪽 창에 있는 `[라우팅 테이블]`을 클릭
+    - `[대상]` **0.0.0.0/0**의 `[대상]`이 접두사 `[IGW]`가 포함되어 있는지 확인
+    - 포함되어 있지 않은 경우, `[라우팅 테이블 연결 편집]`를 클릭하고 `[라우팅 테이블 ID*]` 목록에 있는 다른 라우팅 테이블을 클릭
+    - `[대상]` **0.0.0.0/0**의 `[대상]`이 접두사 `[IGW]`가 포함되어 있다면 `[저장]` 클릭
+- 1.2.9 `[Private_Subnet4]`를 선택하고, 모든 다른 서브넷이 선택 해제되었는지 확인한 다음
+    - 아래쪽 창에 있는 `[라우팅 테이블]`을 클릭
+    - `[대상]` **0.0.0.0/0**의 `[대상]`이 접두사 **eni**가 포함되어 있는지 확인 
+    - 포함되어 있지 않은경우, `[라우팅 테이블 연결 편집]`를 클릭하고 `[라우팅 테이블 ID*]` 목록에 있는 다른 라우팅 테이블을 클릭
+    - `[대상]` **0.0.0.0/0**의 `[대상]`이 접두사 **eni**를 포함되어 있다면 `[저장]`을 클릭
 
 
 ### Task 1.3 : VPC 보안 그룹 생성
 웹 및 SSH 트래픽에 대한 액세스 권한을 부여하는 VPC 보안 그룹을 생성
-- 1.3.1 탐색 창에서 `[Security Group]`를 클릭
-- 1.3.2 `[Create Security Group]`을 클릭
-- 1.3.3 `[Create Security Group]` 대화 상자에서 다음 정보를 입력
-    - `[Name tag]` : **WebSecurityGroup**
-    - `[Group name]` : **WebSecurityGroup**
-    - `[Description]` : **Enable HTTP access**
+- 1.3.1 EC2 탐색 창에서 `[네트워크 및 보안]`탭에서 `[보안 그룹]`를 클릭
+- 1.3.2 `[보안 그룹 생성]`을 클릭
+- 1.3.3 `[보안 그룹 생성]` 대화 상자에서 다음 정보를 입력
+    - `[보안 그룹 이름]` : **WebSecurityGroup**
+    - `[설명]` : **Enable HTTP access**
     - `[VPC]` : **작업 1.1에서 생성한 VPC를 클릭(My Lab VPC)**
-- 1.3.4 `[Yes, Create]`를 클릭
+- 1.3.4 `[생성]` 클릭
 - 1.3.5 `[WebSecurityGroup]`을 선택
-- 1.3.6 `[Inbound Rules]` 탭을 클릭
-- 1.3.7 `[Edit]`를 클릭
-- 1.3.8 `[Type]`에서 `HTTP(80)`를 클릭
-- 1.3.9 `[Source]` 상자를 클릭하고 **0.0.0.0/0**를 입력
-- 1.3.10 `[Add another rule]`을 클릭
-- 1.3.11 `[Type]`에서 `SSH(22)`를 클릭
-- 1.3.12 `[Source]` 상자를 클릭하고 **0.0.0.0/0**을 입력
-- 1.3.13 `[저장]`를 클릭
+- 1.3.6 `[인바운드 규칙]` 탭을 클릭
+- 1.3.7 `[규칙 편집]`을 클릭
+- 1.3.8 `[규칙 추가]`를 클릭
+- 1.3.8 `[유형]`에서 스크롤을 내려 `HTTP(80)`를 클릭
+- 1.3.9 `[소스]` 입력란에 **0.0.0.0/0**를 입력
+- 1.3.10 `[규칙 추가]`를 클릭
+- 1.3.11 `[유형]`에서 스크롤을 내려 `SSH(22)`를 클릭
+- 1.3.12 `[소스]` 입력란에  **0.0.0.0/0**을 입력
+- 1.3.13 `[저장]`를 클릭 후 `[닫기]` 클릭
 
 
 ### Task 2 : Web Server 시작
@@ -132,16 +138,16 @@ VPC를 생성하면 각 가용 영역에 하나 이상의 서브넷을 추가할
 ### Task 2.1 : 첫 번째 웹 서버 인스턴스 시작
 본 작업에서는 VPC에서 EC2 인스턴스를 시작하는 과정을 확인. 이 인스턴스는 웹 서버의 역할을 함.
 - 2.1.1 `[서비스]` 메뉴에서 `[EC2]`를 클릭
-- 2.1.2 `[Launch Instance]`를 클릭
-- 2.1.3 `[Amazon Linux AMI]` 행에서 `[Select]`를 클릭
-- 2.1.4 `[Step2 : Choose an Instance Type]` 페이지에서 **t2.micro**가 선택되었는지 확인
-    - `[Next : Configure Instance Details]`를 클릭
-- 2.1.5 `[Step3 : Configure Instance Details]` 페이지에서 다음 정보를 입력, 나머지 값은 모두 기본값 적용
-    - `[Network]` : 작업 1.1에서 생성한 VPC를 클릭(**My Lab VPC**)
-    - `[Subnet]` : 작업 1.2에서 생성한 **Public_Subnet2 (10.0.2.0/24)**를 클릭
-    - `[Auto-assign PublicIP]` : **Enable**을 클릭
-- 2.1.6 아래로 스크롤하여 `[Advanced Details`] 섹션을 확장
-- 2.1.7 명령 참조 파일에서 다음 사용자 데이터를 복사하여 `[User data]` 상자에 붙여 넣고, `[As text]`가 선택되었는지 확인
+- 2.1.2 화면 좌측 중앙에 `[인스턴스 시작]`를 클릭
+- 2.1.3 `[Step1 : AMI 선택]` 페이지에서 Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type 옆에 `[선택]`을 클릭
+- 2.1.4 `[Step2 : 인스턴스 유형 선택]` 페이지에서 **t2.micro**가 선택되었는지 확인
+    - `[다음 : 인스턴스 세부 정보 구성]`을 클릭
+- 2.1.5 `[Step3 : 인스턴스 구성]` 페이지에서 다음 정보를 입력, 나머지 값은 모두 기본값 적용
+    - `[네트워크]` : 작업 1.1에서 생성한 VPC를 클릭(**My Lab VPC**)
+    - `[서브넷]` : 작업 1.2에서 생성한 **Public_Subnet2 (10.0.2.0/24)**를 클릭
+    - `[퍼블릭 IP 자동 할당]` : **활성화**로 변경 후 클릭
+- 2.1.6 제일 하단으로 스크롤하여 `[고급 세부 정보]` 섹션을 확장
+- 2.1.7 명령 참조 파일에서 다음 사용자 데이터를 복사하여 `[사용자 데이터]` 상자에 붙여 넣고, `[텍스트로]`가 선택되었는지 확인
 
 ```sql
 #!/bin/bash -ex
@@ -156,26 +162,31 @@ tar xvfz lab2-app.tar.gz
 chown apache:root /var/www/html/lab2-app/rds.conf.php
 fi
 ```
-- 2.1.8 `[Next]` : **Add Storage**를 클릭
-- 2.1.9 `[Next]` : **Add Tags**를 클릭
-- 2.1.10 `[Step 5]` : **Add Tags** 페이지에서 다음 정보를 입력
-    - `[Key]` : **Name**
-    - `[Value]` : **Web Server 1**
-- 2.1.11 `[Next]` : **Configure Security Group을** 클릭
-- 2.1.12 `[Step 6]` : **Configure Security Group** 페이지에서 **Select an existing security group**을 클릭
+- 2.1.8 `[다음: 스토리지 추가]`를 클릭
+- 2.1.9 `[다음: 태그 추가]`를 클릭
+- 2.1.10 `[Step 5 : 태그추가]` 페이지에서 다음 정보를 입력
+    - `[태그 추가]` 클릭
+    - `[키]` : **Name**
+    - `[값]` : **Web Server 1**
+- 2.1.11 `[다음: 보안 그룹 구성]`을 클릭
+- 2.1.12 `[Step 6 : 보안 그룹 구성]` 페이지에서 **기존 보안 그룹 선택**을 클릭
     - 작업 1.3에서 생성한 보안 그룹을 선택 (**WebSecurityGroup**)
-- 2.1.13 `[Reveiw and Launch]`를 클릭
-- 2.1.14 인스턴스 정보를 확인한 후 `[Launch]`를 클릭
+- 2.1.13 `[검토 및 시작]`을 클릭
+- 2.1.14 인스턴스 정보를 확인한 후 `[시작하기]`를 클릭
 - 2.1.15 `[Choose an existing key pair]`를 클릭
-    - `[AWSLABS]` 키 페어를 클릭하고, 승인 확인란을 선택
-    - `[Launch Instance]`를 클릭
-- 2.1.16 아래로 스크롤하여 `[View Instance]`를 클릭
-- 2.1.17 2개의 인스턴스(`Web Server1`과 VPC 마법사에서 시작한 NAT 인스턴스) 확인
-- 2.1.18 `[Web Server 1]`의 `[Status Checks]` 열에 2/2 cheks passed가 표시될 때까지 대기
+    - `[AWSLABS]` 키 페어를 클릭하고, 아래 승인 확인란 체크
+    - `[인스턴스 시작]`을 클릭
+- 2.1.16 아래로 스크롤하여 `[인스턴스 보기]`를 클릭
+- 2.1.17 2개의 인스턴스(**Web Server1**과 VPC 마법사에서 시작한 **NAT 인스턴스**) 확인
+    - t2.nano 타입의 EC2 인스턴스 선택 후 `[Name]` 탭 연필 표시 클릭 후  **NAT Instance**로 변경
+- 2.1.18 `[Web Server 1]`의 `[Status Checks]` 열에 **2/2 검사 통과**가 표시될 때까지 대기
     - 3~5분 정도 소요. 오른쪽 위에 있는 새로 고침 아이콘을 사용하여 업데이트를 확인
-- 2.1.19 `[Web Server 1]`을 선택하고 **Public DNS** 값을 복사
-- 2.1.20 새 웹 브라우저 창이나 탭에 **Public DNS** 값을 붙여 넣고 `[Enter]` 클릭
+- 2.1.19 `[Web Server 1]`을 선택하고 **퍼블릭 DNS(IPv4)** 값을 복사
+    - 다음과 같은 주소(예시) : ec2-54-180-82-138.ap-northeast-2.compute.amazonaws.com
+- 2.1.20 새 웹 브라우저 창이나 탭에 **퍼블릭 DNS(IPv4)** 값을 붙여 넣고 `[Enter]` 클릭
     -  `[Amazon Linux AMI Test Page]` 확인
+    ![image](/images/Day1-Create-EC2.png)
+
 
 실습1. 완료 <br>
 
