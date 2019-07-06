@@ -5,49 +5,56 @@
 
 * * *
 
+### 1-1. 개요 
+- 본 실습 섹션에서는 `[Amazon Virtual Private Cloud(VPC)`를 사용하여 자체 VPC를 생성합니다.
+- AWS VPC에 구성 요소를 추가하여 사용자 정의된 네트워크를 구성합니다.
+- AWS EC2 인스턴스에 대한 보안 그룹을 생성합니다.
+- 웹 서버를 실행하고 이를 VPC에서 시작하도록 EC2 인스턴스를 구성 및 사용자 정의합니다.
+
 `[Amazon Virtual Private Cloud(VPC)]`는 Amazon Web 서비스(AWS) 리소스를 고객이 정의한 가상 네트워크에서 실행할 수 있는 서비스입니다. 이 가상 네트워크는 고객의 자체 데이터 센터에서 운영하는 기존 네트워크와 매우 유사하며 AWS의 확장 가능한 인프라를 사용한다는 이점이 있습니다. 여러 가용 영역을 포괄하는 VPC를 생성할 수 있습니다. 보안 그룹은 하나 이상의 인스턴스에 대한 트래픽을 제어하는 가상 방화벽 역할을 합니다. 인스턴스를 시작할 때 하나 이상의 보안 그룹을 인스턴스와 연결합니다. 연결된 인스턴스로 트래픽의 송신 또는 수신을 허용하는 규칙을 각 보안 그룹에 추가합니다.
 
 `[인터넷게이트웨이(IGW)]`는 VPC에 있는 인스턴스와 인터넷 간 통신을 허용하는 VPC 구성요소입니다. 라우팅 테이블은 네트워크 트래픽이 향하는 방향을 결정하는 데 사용되는 경로라고 부르는 규칙 세트를 포함합니다. VPC에 있는 각 서브넷은 라우팅 테이블에 연결되어 있어야합니다. 라우팅 테이블이 서브넷에 대한 라우팅을 제어합니다.
 
 VPC를 생성하면 각 가용 영역에 하나 이상의 서브넷을 추가할 수 있습니다. 각 서브넷은 하나의 가용 영역 내에 모두 상주하며, 다른 영역으로 확장할 수 없습니다. 서브넷 트래픽이 인터넷 게이트웨이로 라우팅되는 경우 해당 서브넷을 퍼블릭 서브넷이라고 합니다. 서브넷이 인터넷 게이트웨이로 라우팅되지 않으면 해당 서브넷을 프라이빗 서브넷이라고 합니다.
 
-### 1-1. 개요 
-- 본 실습 섹션에서는 Amazon Virtual Private Cloud(VPC)를 사용하여 자체 VPC를 생성합니다.
-- AWS VPC에 구성 요소를 추가하여 사용자 정의된 네트워크를 구성합니다.
-- AWS EC2 인스턴스에 대한 보안 그룹을 생성합니다.
-- 웹 서버를 실행하고 이를 VPC에서 시작하도록 EC2 인스턴스를 구성 및 사용자 정의합니다.
 
 ### 1-2. 목표
 본 실습을 마친 후 다음을 할 수 있게 됩니다.
-- AWS VPC를 생성합니다.
-- 서브넷(Subnet)을 생성합니다.
-- 보안 그룹(Security Group)을 생성합니다.
-- AWS VPC에서 EC2 인스턴스 시작합니다.
+- AWS VPC를 생성
+- 서브넷(Subnet)을 생성
+- 보안 그룹(Security Group)을 생성
+- AWS VPC에서 EC2 인스턴스 시작
+
 
 ### 1-3. 사전 조건
 본 실습을 위해서는 다음이 필요합니다.
 - Microsoft Windows, Mac OS X 또는 Linux(Ubuntu,SuSE, Red Hat)가 실행되며 Wi-Fi가 되는 컴퓨터 사용
 - Chrome, Firefox 또는 IE9 이상 버전과 같은 인터넷 브라우저 (IE9 이전 버전은 지원 안됨)
 
+
 ### 1-4. 기간 
-본 실습에는 약 45분 정도가 소요됩니다.
+본 실습에는 약 45분 정도가 소요
+
 
 ### Task 1 : VPC 생성 
+
 - 개요
     - 이 섹션에서는 VPC를 생성합니다.
+
 - 시나리오
 
 본 실습에서는 다음과 같은 인프라를 구축하게 됩니다.
 
 ![image](/images/Day1-Task-WEB.png)
 
+
 ### Task 1.1 : VPC 생성 
-이 작업에서는 하나의 가용 영역에서 2개의 서브넷으로 구성된 VPC를 생성합니다.
-- 1.1.1 `AWS Management Console`의 `서비스` 메뉴에서 `[VPC]`를 클릭합니다.
-- 1.1.2 `[Start VPC Wizard]`를 클릭합니다.
-- 1.1.3 탐색 창에서 `[VPC with Public and Private Subnets]`를 클릭합니다.
-- 1.1.4 `[Select]`를 클릭합니다.
-    - 다음 정보를 입력합니다.
+이 작업에서는 하나의 가용 영역에서 2개의 서브넷으로 구성된 VPC를 생성
+- 1.1.1 `AWS Management Console`의 `서비스` 메뉴에서 `[VPC]`를 클릭
+- 1.1.2 `[Start VPC Wizard]`를 클릭
+- 1.1.3 탐색 창에서 `[VPC with Public and Private Subnets]`를 클릭
+- 1.1.4 `[Select]`를 클릭
+    - 다음 정보를 입력
     - ` [IP CIDR block]` : **10.0.0.0/16**
     - ` [VPC name]` : **My Lab VPC**
     - ` [Public Subnet]` : **10.0.1.0/24**
@@ -57,79 +64,82 @@ VPC를 생성하면 각 가용 영역에 하나 이상의 서브넷을 추가할
     - ` [Availability Zone]` : **가용 영역 2a 선택** 
     - ` [Private Subnet Name]` : **Private_Subnet3**
 - 1.1.5 `[Specify the details of your NAT gateway]`에서
-    - 화면 오른쪽의 `[Use a NAT instance instead]`를 클릭합니다.
-- 1.1.6 `[Instance type]`에 나열된 첫 번재 인스턴스 유형을 선택합니다. (**예 : t2.micro**)
-- 1.1.7 `[Key pair name]`에서 **AWSLABS** 키 페어를 선택합니다.
-- 1.1.8 `[Create VPC]`를 클릭합니다.
-- 1.1.9 VPC가 생성되면, VPC가 성공적으로 생성되었다는 메시지가 표시된 페이지가 보입니다.
-    -  `[OK]`를 클릭합니다.
+    - 화면 오른쪽의 `[Use a NAT instance instead]`를 클릭
+- 1.1.6 `[Instance type]`에 나열된 첫 번재 인스턴스 유형을 선택 (**예 : t2.micro**)
+- 1.1.7 `[Key pair name]`에서 **AWSLABS** 키 페어를 선택
+- 1.1.8 `[Create VPC]`를 클릭
+- 1.1.9 VPC가 생성되면, VPC가 성공적으로 생성되었다는 메시지가 표시된 페이지 확인, `[OK]`클릭
+
 
 ### Task 1.2 : 추가 서브넷 생성
-본 작업에서는 다른 가용 영역에 서브넷 2개를 추가로 생성하고 기존 라우팅 테이블을 통해 서브넷을 연결합니다.
-- 1.2.1 탐색 창에서 `[Subnets]`를 클릭합니다. 
-- 1.2.2 `[Create Subnet]`을 클릭합니다.
-- 1.2.3 `[Create Subnet]` 대화 상자에서 다음 세부 정보를 입력합니다.
+본 작업에서는 다른 가용 영역에 서브넷 2개를 추가로 생성하고 기존 라우팅 테이블을 통해 서브넷을 연결
+- 1.2.1 탐색 창에서 `[Subnets]`를 클릭 
+- 1.2.2 `[Create Subnet]`을 클릭
+- 1.2.3 `[Create Subnet]` 대화 상자에서 다음 세부 정보를 입력
     - `[Name tag]` : **Public Subnet2**
     - `[VPC]` : **My Lab VPC 클릭**
     - `[Availability Zone]` : **가용 영역 2c 선택**
     - `CIDR block` : **10.0.2.0/24**
-- 1.2.4 `[Yes, Create]`를 클릭합니다.
-- 1.2.5 `[Create Subnet]`을 클릭합니다.
-- 1.2.6 `[Create Subent]` 대화 상자에서 다음 세부 정보를 입력합니다. 
+- 1.2.4 `[Yes, Create]`를 클릭
+- 1.2.5 `[Create Subnet]`을 클릭
+- 1.2.6 `[Create Subent]` 대화 상자에서 다음 세부 정보를 입력
     - `[Name tag]` : **Private Subnet4**
     - `[VPC]` : **My Lab VPC 클릭**
     - `[Availability Zone]` : **가용 영역 2c 선택**
     - `[CIDR block]` : **10.0.4.0/24**
-- 1.2.7 `[Yes, Create]`를 클릭합니다.
-- 1.2.8 `[Public_Subnet2]`를 선택하고, 모든 다른 서브넷이 선택 해제되었는지 확인한 다음
-    - 아래쪽 창에 있는 `[Route Table]`을 클릭합니다.
-    - 아래로 스크롤하여 `[Destination]` **0.0.0.0/0**의 `[Target]`에 접두사 `[IGW]`가 포함되어 있는지 확인합니다. 
-    - 포함되어 있지 않은 경우, `[Edit]`를 클릭하고 `Change to:` 목록에 있는 다른 라우팅 테이블을 클릭합니다.
-    - `[Destination]` **0.0.0.0/0**의 `[Target]`이 접두사 `[IGW]`를 포함하도록 변경합니다. `[저장]`를 클릭합니다.
+- 1.2.7 `[Yes, Create]`를 클릭
+- 1.2.8 `[Public_Subnet2]`를 선택하고, 모든 다른 서브넷이 선택 해제되었는지 확인
+    - 아래쪽 창에 있는 `[Route Table]`을 클릭
+    - 아래로 스크롤하여 `[Destination]` **0.0.0.0/0**의 `[Target]`에 접두사 `[IGW]`가 포함되어 있는지 확인
+    - 포함되어 있지 않은 경우, `[Edit]`를 클릭하고 `Change to:` 목록에 있는 다른 라우팅 테이블을 클릭
+    - `[Destination]` **0.0.0.0/0**의 `[Target]`이 접두사 `[IGW]`를 포함하도록 변경 후 `[저장]`을 클릭
 - 1.2.9 `[Private_Subnet2]`를 선택하고, 모든 다른 서브넷이 선택 해제되었는지 확인한 다음
-    - 아래쪽 창에 있는 `[Route Table]`을 클릭합니다. 
-    - 아래로 스크롤하여 `[Destination]` **0.0.0.0/0**의 `[Target]`에 접두사 **eni**가 포함되어 있는지 확인합니다. 
-    - 포함되어 있지 않은경우, `[Edit]`를 클릭하고 `Change to:` 목록에 있는 다른 라우팅 테이블을 클릭합니다.
-    - `[Destination]` **0.0.0.0/0**의 `[Target]`이 접두사 **eni**를 포함하도록 변경합니다. `[저장]`를 클릭합니다.
+    - 아래쪽 창에 있는 `[Route Table]`을 클릭
+    - 아래로 스크롤하여 `[Destination]` **0.0.0.0/0**의 `[Target]`에 접두사 **eni**가 포함되어 있는지 확인 
+    - 포함되어 있지 않은경우, `[Edit]`를 클릭하고 `Change to:` 목록에 있는 다른 라우팅 테이블을 클릭
+    - `[Destination]` **0.0.0.0/0**의 `[Target]`이 접두사 **eni**를 포함하도록 변경 후 `[저장]`을 클릭
+
 
 ### Task 1.3 : VPC 보안 그룹 생성
-웹 및 SSH 트래픽에 대한 액세스 권한을 부여하는 VPC 보안 그룹을 생성합니다.
-- 1.3.1 탐색 창에서 `[Security Group]`를 클릭합니다.
-- 1.3.2 `[Create Security Group]`을 클릭합니다.
-- 1.3.3 `[Create Security Group]` 대화 상자에서 다음 정보를 입력합니다.
+웹 및 SSH 트래픽에 대한 액세스 권한을 부여하는 VPC 보안 그룹을 생성
+- 1.3.1 탐색 창에서 `[Security Group]`를 클릭
+- 1.3.2 `[Create Security Group]`을 클릭
+- 1.3.3 `[Create Security Group]` 대화 상자에서 다음 정보를 입력
     - `[Name tag]` : **WebSecurityGroup**
     - `[Group name]` : **WebSecurityGroup**
     - `[Description]` : **Enable HTTP access**
     - `[VPC]` : **작업 1.1에서 생성한 VPC를 클릭(My Lab VPC)**
-- 1.3.4 `[Yes, Create]`를 클릭합니다.
-- 1.3.5 `[WebSecurityGroup]`을 선택합니다.
-- 1.3.6 `[Inbound Rules]` 탭을 클릭합니다.
-- 1.3.7 `[Edit]`를 클릭합니다.
-- 1.3.8 `[Type]`에서 `HTTP(80)`를 클릭합니다.
-- 1.3.9 `[Source]` 상자를 클릭하고 **0.0.0.0/0**를 입력합니다.
-- 1.3.10 `[Add another rule]`을 클릭합니다.
-- 1.3.11 `[Type]`에서 `SSH(22)`를 클릭합니다.
-- 1.3.12 `[Source]` 상자를 클릭하고 **0.0.0.0/0**을 입력합니다. 
-- 1.3.13 `[저장]`를 클릭합니다. 
+- 1.3.4 `[Yes, Create]`를 클릭
+- 1.3.5 `[WebSecurityGroup]`을 선택
+- 1.3.6 `[Inbound Rules]` 탭을 클릭
+- 1.3.7 `[Edit]`를 클릭
+- 1.3.8 `[Type]`에서 `HTTP(80)`를 클릭
+- 1.3.9 `[Source]` 상자를 클릭하고 **0.0.0.0/0**를 입력
+- 1.3.10 `[Add another rule]`을 클릭
+- 1.3.11 `[Type]`에서 `SSH(22)`를 클릭
+- 1.3.12 `[Source]` 상자를 클릭하고 **0.0.0.0/0**을 입력
+- 1.3.13 `[저장]`를 클릭
+
 
 ### Task 2 : Web Server 시작
+
 - 개요
     - VPC를 생성한 후, 생성한 VPC에서 EC2 인스턴스를 시작합니다.
     - EC2 웹 서버의 역할을 하도록 부트스트랩합니다.
 
 ### Task 2.1 : 첫 번째 웹 서버 인스턴스 시작
-본 작업에서는 VPC에서 EC2 인스턴스를 시작하는 과정을 살펴봅니다. 이 인스턴스는 웹 서버의 역할을 합니다.
-- 2.1.1 `[서비스]` 메뉴에서 `[EC2]`를 클릭합니다.
-- 2.1.2 `[Launch Instance]`를 클릭합니다.
-- 2.1.3 `[Amazon Linux AMI]` 행에서 `[Select]`를 클릭합니다.
+본 작업에서는 VPC에서 EC2 인스턴스를 시작하는 과정을 확인. 이 인스턴스는 웹 서버의 역할을 함.
+- 2.1.1 `[서비스]` 메뉴에서 `[EC2]`를 클릭
+- 2.1.2 `[Launch Instance]`를 클릭
+- 2.1.3 `[Amazon Linux AMI]` 행에서 `[Select]`를 클릭
 - 2.1.4 `[Step2 : Choose an Instance Type]` 페이지에서 **t2.micro**가 선택되었는지 확인
-    - `[Next : Configure Instance Details]`를 클릭합니다.
-- 2.1.5 `[Step3 : Configure Instance Details]` 페이지에서 다음 정보를 입력하고 나머지 값은 모두 기본값으로 둡니다.
+    - `[Next : Configure Instance Details]`를 클릭
+- 2.1.5 `[Step3 : Configure Instance Details]` 페이지에서 다음 정보를 입력, 나머지 값은 모두 기본값 적용
     - `[Network]` : 작업 1.1에서 생성한 VPC를 클릭(**My Lab VPC**)
     - `[Subnet]` : 작업 1.2에서 생성한 **Public_Subnet2 (10.0.2.0/24)**를 클릭
     - `[Auto-assign PublicIP]` : **Enable**을 클릭
-- 2.1.6 아래로 스크롤하여 `[Advanced Details`] 섹션을 확장합니다.
-- 2.1.7 명령 참조 파일에서 다음 사용자 데이터를 복사하여 `[User data]` 상자에 붙여 넣고, `[As text]`가 선택되었는지 확인합니다.
+- 2.1.6 아래로 스크롤하여 `[Advanced Details`] 섹션을 확장
+- 2.1.7 명령 참조 파일에서 다음 사용자 데이터를 복사하여 `[User data]` 상자에 붙여 넣고, `[As text]`가 선택되었는지 확인
 
 ```sql
 #!/bin/bash -ex
@@ -144,25 +154,26 @@ tar xvfz lab2-app.tar.gz
 chown apache:root /var/www/html/lab2-app/rds.conf.php
 fi
 ```
-- 2.1.8 `[Next]` : **Add Storage**를 클릭합니다.
-- 2.1.9 `[Next]` : **Add Tags**를 클릭합니다.
-- 2.1.10 `[Step 5]` : **Add Tags** 페이지에서 다음 정보를 입력합니다.
+- 2.1.8 `[Next]` : **Add Storage**를 클릭
+- 2.1.9 `[Next]` : **Add Tags**를 클릭
+- 2.1.10 `[Step 5]` : **Add Tags** 페이지에서 다음 정보를 입력
     - `[Key]` : **Name**
     - `[Value]` : **Web Server 1**
-- 2.1.11 `[Next]` : **Configure Security Group을** 클릭합니다.
-- 2.1.12 `[Step 6]` : **Configure Security Group** 페이지에서 **Select an existing security group**을 클릭한 후
-    - 작업 1.3에서 생성한 보안 그룹을 선택합니다. (**WebSecurityGroup**)
-- 2.1.13 `[Reveiw and Launch]`를 클릭합니다.
-- 2.1.14 인스턴스 정보를 확인한 후 `[Launch]`를 클릭합니다.
-- 2.1.15 `[Choose an existing key pair]`를 클릭하고, `[AWSLABS]` 키 페어를 클릭하고, 승인 확인란을 선택한 후
-    - `[Launch Instance]`를 클릭합니다.
-- 2.1.16 아래로 스크롤하여 `[View Instance]`를 클릭합니다.
-- 2.1.17 2개의 인스턴스(`Web Server1`과 VPC 마법사에서 시작한 NAT 인스턴스)가 보일 것입니다.
-- 2.1.18 `[Web Server 1]`의 `[Status Checks]` 열에 2/2 cheks passed가 표시될 때까지 기다립니다.
-    - 3~5분 정도 걸립니다. 오른쪽 위에 있는 새로 고침 아이콘을 사용하여 업데이트를 확인합니다.
-- 2.1.19 `[Web Server 1]`을 선택하고 **Public DNS** 값을 복사합니다.
-- 2.1.20 새 웹 브라우저 창이나 탭에 **Public DNS** 값을 붙여 넣고 `[Enter]`를 누릅니다.
-    -  `[Amazon Linux AMI Test Page]`가 보일 것입니다.
+- 2.1.11 `[Next]` : **Configure Security Group을** 클릭
+- 2.1.12 `[Step 6]` : **Configure Security Group** 페이지에서 **Select an existing security group**을 클릭
+    - 작업 1.3에서 생성한 보안 그룹을 선택 (**WebSecurityGroup**)
+- 2.1.13 `[Reveiw and Launch]`를 클릭
+- 2.1.14 인스턴스 정보를 확인한 후 `[Launch]`를 클릭
+- 2.1.15 `[Choose an existing key pair]`를 클릭
+    - `[AWSLABS]` 키 페어를 클릭하고, 승인 확인란을 선택
+    - `[Launch Instance]`를 클릭
+- 2.1.16 아래로 스크롤하여 `[View Instance]`를 클릭
+- 2.1.17 2개의 인스턴스(`Web Server1`과 VPC 마법사에서 시작한 NAT 인스턴스) 확인
+- 2.1.18 `[Web Server 1]`의 `[Status Checks]` 열에 2/2 cheks passed가 표시될 때까지 대기
+    - 3~5분 정도 소요. 오른쪽 위에 있는 새로 고침 아이콘을 사용하여 업데이트를 확인
+- 2.1.19 `[Web Server 1]`을 선택하고 **Public DNS** 값을 복사
+- 2.1.20 새 웹 브라우저 창이나 탭에 **Public DNS** 값을 붙여 넣고 `[Enter]` 클릭
+    -  `[Amazon Linux AMI Test Page]` 확인
 
 실습1. 완료 <br>
 
@@ -177,15 +188,16 @@ fi
 
 * * *
 
+### 2-1. 개요
+- 이 실습은 이전 실습을 기반으로 합니다.
+- `[Amazon Relational Database Service(RDS)` DB 인스턴스를 시작하는 과정을 살펴봅니다.
+- 관계형 데이터베이스 관리 시스템(RDBMS) 요구사항에 맞게 Amazon RDS를 사용하도록 앞에서 생성한 웹 서버를 구성합니다.
+- 본 실습은 AWS 관리형 데이터베이스 인스턴스를 활용하여 관계형 데이터베이스 요구 사항을 해결하는 개념을 강화하도록 설계되었습니다.
+
 `[Amazon Relational Database Service(RDS)]`를 사용하면 클라우드에서 관계형 데이터베이스를 더욱 간편하게 설정, 관리 및 확장할 수 있습니다. 시간 소모적인 데이터베이스 관리 작업을 관리하는 한편, 효율적인 비용으로 크기 조정이 가능한 용량을 제공하므로 고객은 애플리케이션과 비즈니스에 좀 더 집중할 수 있습니다. Amazon RDS를 사용하면 6개의 익숙한 데이터베이스 엔진 Amazon Aurora, Oracle, Microsoft SQL Server, PostgresSQL, MySQL 및 MariaDB 중에서 원하는 것을 선택할 수 있습니다.
 
 Amazon RDS 다중 AZ 배포는 데이터베이스(DB) 인스턴스의 가용성 및 내구성을 높여주므로 프로덕션 데이터베이스 워크로드에 적합합니다. 다중 AZ DB 인스턴스를 프로비저닝하면, Amazon RDS는 기본 DB 인스턴스를 자동으로 생성하고. 다른 가용 영역(AZ)에 있는 대기 인스턴스에 데이터를 동기식으로 복제합니다.
 
-### 2-1. 개요
-- 이 실습은 이전 실습을 기반으로 합니다.
-- Amazon Relational Database Service(RDS) DB 인스턴스를 시작하는 과정을 살펴봅니다.
-- 관계형 데이터베이스 관리 시스템(RDBMS) 요구사항에 맞게 Amazon RDS를 사용하도록 앞에서 생성한 웹 서버를 구성합니다.
-- 본 실습은 AWS 관리형 데이터베이스 인스턴스를 활용하여 관계형 데이터베이스 요구 사항을 해결하는 개념을 강화하도록 설계되었습니다.
 
 ### 2-2. 목표
 본 실습을 마친 후 다음을 할 수 있게 됩니다.
@@ -193,12 +205,14 @@ Amazon RDS 다중 AZ 배포는 데이터베이스(DB) 인스턴스의 가용성 
 - 웹 서버로부터의 연결을 허용하도록 DB 인스턴스를 구성합니다.
 - 웹 애플리케이션을 열고 데이터베이스와 상호 작용합니다.
 
+
 ### 2-3. 기간
-본 실습에는 약 45분 정도가 소요됩니다.
+본 실습에는 약 45분 정도가 소요
+
 
 ### Task 1 : Amazon RDS DB 인스턴스 시작
 - 개요
-    - 이 작업에서는 MySQL이 지원되는 Amazon RDS DB 인스턴스를 시작합니다.
+    - 이 작업에서는 MySQL이 지원되는 Amazon RDS DB 인스턴스를 시작
 - 시나리오
 
 다음 인프라에서 시작합니다.
@@ -209,112 +223,131 @@ Amazon RDS 다중 AZ 배포는 데이터베이스(DB) 인스턴스의 가용성 
 
 ![image](/images/Day1-Task-RDS.png)
 
+
 ### Task 1.1 : RDS DB 인스턴스에 대한 VPC 보안 그룹 생성
-이 작업에서는 웹 서버가 RDS DB 인스턴스에 액세스하도록 허용하는 VPC 보안 그룹을 생성합니다.
-- 1.1.1 `[AWS Management Console의 서비스]` 메뉴에서 `[VPC]`를 클릭합니다.
-- 1.1.2 탐색 창에서 `[Security Groups]`를 클릭합니다.
-- 1.1.3 `[Create Security Group]`을 클릭합니다.
-- 1.1.4 `[Create Security Group]` 대화 상자에서 다음 세부 정보를 입력합니다.
+이 작업에서는 웹 서버가 RDS DB 인스턴스에 액세스하도록 허용하는 VPC 보안 그룹을 생성
+- 1.1.1 `[AWS Management Console의 서비스]` 메뉴에서 `[VPC]`를 클릭
+- 1.1.2 탐색 창에서 `[Security Groups]`를 클릭
+- 1.1.3 `[Create Security Group]`을 클릭
+- 1.1.4 `[Create Security Group]` 대화 상자에서 다음 세부 정보를 입력
     - `[Name tag]` : **DBSecurityGroup**
     - `[Group name]` : **DBSeurityGroup**
     - `[Description]` : **DB Instance Security Group**
     - `[VPC]` : **My LAB VPC** 클릭
-- 1.1.5 `[Yes, Create]`를 클릭합니다.
-- 1.1.6 방금 생성한 `[DBSecurityGroup]`을 선택하고, 다른 모든 보안 그룹이 선택 해제되어 있는지 확인합니다. 
-- 1.1.7	`[Inbound Rules]` 탭을 선택하고 `[Edit]`를 클릭합니다.
-- 1.1.8	다음 세부 정보로 인바운드 규칙을 생성합니다.
+- 1.1.5 `[Yes, Create]`를 클릭
+- 1.1.6 방금 생성한 `[DBSecurityGroup]`을 선택하고, 다른 모든 보안 그룹이 선택 해제되어 있는지 확인
+- 1.1.7	`[Inbound Rules]` 탭을 선택하고 `[Edit]`를 클릭
+- 1.1.8	다음 세부 정보로 인바운드 규칙을 생성
     - `[Type]` : **MySQUAurora (3306)**
     - `[Protocol]` : **TCP(6)**
     - `[Source]` : **WebSecurityGroup** 클릭
-- 1.1.9	`[저장]`를 클릭합니다.
+- 1.1.9	`[저장]`를 클릭
+
 
 ### Task 1.2 : Amazon RDS 인스턴스용 프라이빗 서브넷 생성
-이 작업에서는 Amazon RDS 인스턴스용 프라이빗 서브넷을 2개 생성합니다.
-- 1.2.1	탐색 창에서 `[Subnet]`를 클릭합니다.
-- 1.2.2	`[Public_Subnet1]`을 선택하고, 모든 다른 서브넷을 선택 해제한 다음, 아래쪽 창에 있는 `[Summary]` 탭으로 스크롤합니다. 이 서브넷의 `[Availability Zone]`을 적어둡니다. `(가용 영역 2a)`
-- 1.2.3	`[Public_Subnet2]`를 선택하고, 모든 다른 서브넷을 선택 해제한 다음, 아래쪽 창에 있는 `[Summary]` 탭으로 스크롤합니다. 이 서브넷의 `[Availability Zone]`을 적어둡니다. `(가용 영역 2c)`
-- 1.2.4	`[Create Subnet]`을 클릭합니다.
-- 1.2.5	`[Create Subnet]` 대화 상자에서 다음 세부 정보를 입력합니다.
+이 작업에서는 Amazon RDS 인스턴스용 프라이빗 서브넷을 2개 생성
+- 1.2.1	탐색 창에서 `[Subnet]`를 클릭
+- 1.2.2	`[Public_Subnet1]`을 선택하고, 모든 다른 서브넷을 선택 해제
+    - 아래쪽 창에 있는 `[Summary]` 탭으로 스크롤
+    - 이 서브넷의 `[Availability Zone]`을 기록 `(가용 영역 2a)`
+- 1.2.3	`[Public_Subnet2]`를 선택하고, 모든 다른 서브넷을 선택 해제
+    - 아래쪽 창에 있는 `[Summary]` 탭으로 스크롤
+    - 이 서브넷의 `[Availability Zone]`을 기록 `(가용 영역 2c)`
+- 1.2.4	`[Create Subnet]`을 클릭
+- 1.2.5	`[Create Subnet]` 대화 상자에서 다음 세부 정보를 입력
     - `[Name tag]` : **Private Subnet 5**
     - `[VPC]` : **My Lab VPC** 선택
-    - `[Availability Zone]` : 앞에서 퍼블릿 서브넷 1용으로 적어둔 **가용 영역 2a**를 클릭
+    - `[Availability Zone]` : 앞에서 **Public_Subnet1**용으로 적어둔 **가용 영역 2a**를 클릭
     - `[CIDR block]` : **10.0.5.0/24**
-- 1.2.6	`[Yes, Create]`를 클릭합니다.
-- 1.2.7	`[Create Subnet]`을 클릭합니다. 
-- 1.2.8	`[Create Subnet]` 대화 상자에서 다음 세부 정보를 입력합니다.
+- 1.2.6	`[Yes, Create]`를 클릭
+- 1.2.7	`[Create Subnet]`을 클릭
+- 1.2.8	`[Create Subnet]` 대화 상자에서 다음 세부 정보를 입력
     - `[Name tag]` : **Private Subnet 6**
     - `[VPC]` : **My Lab VPC** 클릭
-    - `[Availability Zone]` : 앞에서 퍼블릭 서브넷 2용으로 적어둔 **가용 영역 2c**을 클릭
+    - `[Availability Zone]` : 앞에서 **Public_Subnet2**용으로 적어둔 **가용 영역 2c**을 클릭
     - `[CIDR block]` : **10.0.6.0/24**
-- 1.2.9	`[Yes, Create]`를 클릭합니다.
-- 1.2.10 `[Private Subnet 5]`를 선택하고, 모든 다른 서브넷이 선택 해제되었는지 확인한 다음, 아래쪽 창에 있는 `[Route Table]`을 클릭합니다. 아래로 스크롤하여 `[Destination]` **0.0.0.0/0**의 `[Target]`에 접두사 `[eni]`가 포함되어 있는지 확인합니다. 포함되어 있지 않거나 `[Destination]` **0.0.0.0/0**이 없는 경우, `[Edit]`를 클릭하고 `Change to :` 목록에서 `[Private Route Table]`을 클릭하여 `[Destination]` **0.0.0.0/0**의 `[Target]`이 접두사 `[eni]`를 포함하도록 변경합니다. `[저장]`를 클릭합니다.
-- 1.2.11 `[Private Subnet 6]`에서 앞에서 수행한 단계를 반복합니다. 
+- 1.2.9	`[Yes, Create]`를 클릭
+- 1.2.10 `[Private Subnet 5]`를 선택하고, 모든 다른 서브넷이 선택 해제되었는지 확인
+    - 아래쪽 창에 있는 `[Route Table]`을 클릭
+    - 아래로 스크롤하여 `[Destination]` **0.0.0.0/0**의 `[Target]`에 접두사 `[eni]`가 포함되어 있는지 확인.
+    - 포함되어 있지 않거나 `[Destination]` **0.0.0.0/0**이 없는 경우, `[Edit]`를 클릭
+    - `Change to :` 목록에서 `[Private Route Table]`을 클릭
+    - `[Destination]` **0.0.0.0/0**의 `[Target]`이 접두사 `[eni]`를 포함하도록 변경합니다. `[저장]`를 클릭
+- 1.2.11 `[Private Subnet 6]`에서 앞에서 수행한 단계를 반복
+
 
 ### Task 1.3 : DB 서브넷 그룹 생성 
-이 작업에서는 DB 서브넷 그룹을 생성합니다. 각 DB 서브넷 그룹은 지정된 리전에서 두 개 이상의 가용 영역에 서브넷이 있어야 합니다.
-- 1.3.1 `[서비스]` 메뉴에서 `[RDS]`를 클릭합니다.
-- 1.3.2 탐색 창에서 `[Subnet Groups]`를 클릭합니다.
-- 1.3.3 `[Create DB Subnet Group]`을 클릭합니다.
-- 1.3.4 `[Create DB Subnet Group]` 페이지에서 다음 세부 정보를 입력합니다.
+이 작업에서는 DB 서브넷 그룹을 생성. 각 DB 서브넷 그룹은 지정된 리전에서 두 개 이상의 가용 영역에 서브넷이 있어야 함.
+- 1.3.1 `[서비스]` 메뉴에서 `[RDS]`를 클릭
+- 1.3.2 탐색 창에서 `[Subnet Groups]`를 클릭
+- 1.3.3 `[Create DB Subnet Group]`을 클릭
+- 1.3.4 `[Create DB Subnet Group]` 페이지에서 다음 세부 정보를 입력
     - `[Name]` : **dbsubnetgroup**
     - `[Description]` : **Lab DB Subnet Group**
     - `[VPC ID]` : **My Lab VPC** 클릭
-- 1.3.5 `[Availability Zone]`의 경우, `[Private_Subnet5]`용으로 선택한 가용 영역을 클릭합니다.
-- 1.3.6 `[Subnet ID]`의 경우, `10.0.5.0/24`를 클릭한 다음 `[Add]`를 클릭합니다.
-- 1.3.7 `[Availability Zone]`의 경우, `[Private_Subnet6]`용으로 선택한 가용 영역을 클릭합니다.
-- 1.3.8 `[Subnet ID]`의 경우, `10.0.6.0/24`를 클릭한 다음 `[Add]`를 클릭합니다.
-- 1.3.9 `[Create]`를 클릭합니다.
-- 1.3.10 새 서브넷 그룹이 보이지 않으면, 콘솔의 오른쪽 위 모서리에 있는 새로고침 아이콘을 클릭합니다.
+- 1.3.5 `[Availability Zone]`의 경우, `[Private_Subnet5]`용으로 선택한 가용 영역을 클릭
+- 1.3.6 `[Subnet ID]`의 경우, `10.0.5.0/24`를 클릭한 다음 `[Add]`를 클릭
+- 1.3.7 `[Availability Zone]`의 경우, `[Private_Subnet6]`용으로 선택한 가용 영역을 클릭
+- 1.3.8 `[Subnet ID]`의 경우, `10.0.6.0/24`를 클릭한 다음 `[Add]`를 클릭
+- 1.3.9 `[Create]`를 클릭
+- 1.3.10 새 서브넷 그룹이 보이지 않으면, 콘솔의 오른쪽 위 모서리에 있는 새로고침 아이콘을 클릭
 
 ### Task 1.4 : RDS DB 인스턴스 생성
-이 작업에서는 MySQL 지원 Amazon RDS DB 인스턴스를 구성 및 시작합니다.
-- 1.4.1	`[서비스]` 메뉴에서 `[RDS]`를 클릭합니다.
-- 1.4.2	`[Get Started Now`]를 클릭합니다.
-- 1.4.3	`[MySQL]`을 클릭하고 `[Select]`를 클릭합니다.
-- 1.4.4	`[Production]` 아래의 `[MySQL]`을 클릭합니다.
-- 1.4.5	`[Next Step]`을 클릭합니다.
-- 1.4.6	`[Specify DB Details]` 페이지에서 다음 세부 정보를 입력합니다.
+이 작업에서는 MySQL 지원 Amazon RDS DB 인스턴스를 구성 및 시작
+- 1.4.1	`[서비스]` 메뉴에서 `[RDS]`를 클릭
+- 1.4.2	`[Get Started Now]`를 클릭
+- 1.4.3	`[MySQL]`을 클릭하고 `[Select]`를 클릭
+- 1.4.4	`[Production]` 아래의 `[MySQL]`을 클릭
+- 1.4.5	`[Next Step]`을 클릭
+- 1.4.6	`[Specify DB Details]` 페이지에서 다음 세부 정보를 입력
     - `[DB Instance Class]` : 목록에 있는 첫 번째 옵션을 클릭
     - `[Multi-AZ Deployment]` : **Yes** 클릭
     - `[DB Instance Identifier]` : **labdbinstance**
     - `[Master Username]` : **labuser**
     - `[Master Password]` : **labpassword**
     - `[Confirm Password]` : **labpassword**
-- 1.4.7	`[Next Step]`을 클릭합니다.
-- 1.4.8	`[Configure Advanced Settings]` 페이지에서 다음 정보를 입력하고 나머지 값은 모두 기본값으로 둡니다.
+- 1.4.7	`[Next Step]`을 클릭
+- 1.4.8	`[Configure Advanced Settings]` 페이지에서 다음 정보를 입력하고 나머지 값은 모두 기본값 적용
     - `[VPC]` : **My Lab VPC**
     - `[Subnet Group]` : **dbsubnetgroup**
     - `[Publicly Accessible]` : **No**
     - `[VPC Security Group(s)]` : **DBSecurityGroup (VPC)**
     - `[Database Name]` : **sampledb**
-    - 다음으로 Monitoring 항목에서 Enable Enhanced Monitoring : No를 설정합니다.
-- 1.4.9	`[Launch DB Instance]`를 클릭합니다.
-- 1.4.10 `[View Your DB Instances]`를 클릭합니다.
-- 1.4.11 `[labdbinstance]`를 선택하고, `[Endpoint]`가 available 또는 modifying으로 변할 때까지 기다립니다. 최대 10분 정도 걸릴 수 있습니다. 오른쪽 위에 있는 새로고침 아이콘을 사용하여 업데이트를 확인합니다. 
-- 1.4.12 `[Endpoint]`를 복사하여 저장합니다. 3306을 복사하지 않도록 주의합니다. `[Endpoint]`는 **"qr7g2qco3oeq5h.cze6p5rivinc.us-west-2.rds.amazon.com"**과 비슷한 형태입니다.
+    - 다음으로 Monitoring 항목에서 Enable Enhanced Monitoring : No를 설정
+- 1.4.9	`[Launch DB Instance]`를 클릭
+- 1.4.10 `[View Your DB Instances]`를 클릭
+- 1.4.11 `[labdbinstance]`를 선택하고, `[Endpoint]`가 available 또는 modifying으로 변할 때까지 대기
+    - 최대 10분 정도 서요
+    - 오른쪽 위에 있는 새로고침 아이콘을 사용하여 업데이트를 확인
+- 1.4.12 `[Endpoint]`를 복사하여 저장
+    - 3306을 같이 복사하지 않도록 주의
+    - `[Endpoint]`는 **"qr7g2qco3oeq5h.cze6p5rivinc.us-west-2.rds.amazon.com"**과 비슷한 형태
+
 
 ### Task 2 : 데이터베이스와 상호 작용
 - 개요
-    - 이 작업에서는 이전 실습에서 생성한 웹 서버에 배포된 PHP 웹 애플리케이션을 통해 데이터베이스와 상호 작용합니다.
+    - 이 작업에서는 이전 실습에서 생성한 웹 서버에 배포된 PHP 웹 애플리케이션을 통해 데이터베이스와 상호 작용
+
 
 ### Task 2.1 : 데이터베이스 웹 애플리케이션에 액세스
-웹 서버에서 실행되는 웹 애플리케이션을 엽니다.
-- 2.1.1	`[서비스]` 메뉴에서 `[EC2]`를 클릭합니다.
-- 2.1.2	탐색 창에서 `[Instances]`를 클릭합니다.
-- 2.1.3	`[Web Server1]`을 선택하고, 모든 다른 인스턴스가 선택 해제되었는지 확인한 후, 아래쪽 창에 있는 `[Description]` 탭까지 아래로 스크롤합니다.
-- 2.1.4	`[Web Server1]`의 `[Public IP]`주소를 복사합니다. 
-- 2.1.5	IP 주소를 새 브라우저 탭 또는 창에 붙여넣습니다. 웹 애플리케이션이 웹 서버의 인스턴스 메타데이터와 함께 표시됩ㄴ디ㅏ.
-- 2.1.6	AWS 로고 오른쪽 옆에 있는 `[RDS]` 링크를 클릭합니다.
-- 2.1.7	다음 정보를 입력합니다. 
-    - `[Endpoint]` : 앞에서 복사한 엔드포인트를 붙여 넣습니다. 3306이 생략되어 있는지 확인합니다.
+웹 서버에서 실행되는 웹 애플리케이션을 확인
+- 2.1.1	`[서비스]` 메뉴에서 `[EC2]`를 클릭
+- 2.1.2	탐색 창에서 `[Instances]`를 클릭
+- 2.1.3	`[Web Server1]`을 선택하고, 모든 다른 인스턴스가 선택 해제되었는지 확인
+    - 아래쪽 창에 있는 `[Description]` 탭까지 아래로 스크롤
+- 2.1.4	`[Web Server1]`의 `[Public IP]`주소를 복사
+- 2.1.5	IP 주소를 새 브라우저 탭 또는 창에 복사
+    - 웹 애플리케이션이 웹 서버의 인스턴스 메타데이터와 함께 표시
+- 2.1.6	AWS 로고 오른쪽 옆에 있는 `[RDS]` 링크를 클릭
+- 2.1.7	다음 정보를 입력
+    - `[Endpoint]` : 앞에서 복사한 엔드포인트를 붙여 넣습니다. 3306이 생략되어 있는지 확인
     - `[Database]` : **sampledb**
     - `[Username]` : **labuser**
     - `[Password]` : **labpassword**
-- 2.1.8	`[Submit]`을 클릭합니다. 연결 문자열이 표시된 후, 페이지가 리디렉션됩니다. 2개의 새로운 레코드가 주소 테이블에 추가되어 표시됩니다.
-- 2.1.9	또 다른 담당자를 추가하려면 `[Add Contact]`을 클릭하고 `[Name]`, `[Phone]` 및 `[Email]`을 입력한 후, `[Submit]`를 클릭합니다.
-- 2.1.10 담당자를 수정하려면, `[Edit]`를 클릭하고, 원하는 필드를 수정한 다음, `[Submit]`를 클릭합니다. 
-- 2.1.11 레코드를 삭제하려면, `[Remove]`를 클릭합니다. 
-- 2.1.12 이제 이 브라우저 탭이나 창을 닫아도 됩니다.
+- 2.1.8	`[Submit]`을 클릭. 연결 문자열이 표시된 후, 페이지가 리디렉션 2개의 새로운 레코드가 주소 테이블에 추가되어 표시
+- 2.1.9	또 다른 담당자를 추가하려면 `[Add Contact]`을 클릭하고 `[Name]`, `[Phone]` 및 `[Email]`을 입력한 후, `[Submit]`를 클릭
+- 2.1.10 담당자를 수정하려면, `[Edit]`를 클릭하고, 원하는 필드를 수정한 다음, `[Submit]`를 클릭
+- 2.1.11 레코드를 삭제하려면, `[Remove]`를 클릭
 
 
 실습2. 완료 <br>
