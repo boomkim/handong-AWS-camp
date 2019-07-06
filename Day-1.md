@@ -188,11 +188,11 @@ fi
     ![image](/images/Day1-Create-EC2.png)
 
 
-실습1. 완료 <br>
+<br>
 
-축하드립니다.
+Day-1 실습1을 완료하셨습니다. 축하드립니다!
 
-성공적으로 VPC를 생성하고 생성한 VPC에서 EC2 인스턴스를 시작했습니다.
+성공적으로 VPC를 생성하고 생성한 VPC에서 EC2 인스턴스를 시작했습니다. ^^
 
 
 * * *
@@ -226,8 +226,10 @@ Amazon RDS 다중 AZ 배포는 데이터베이스(DB) 인스턴스의 가용성 
 
 
 ### Task 1 : Amazon RDS DB 인스턴스 시작
+
 - 개요
-    - 이 작업에서는 MySQL이 지원되는 Amazon RDS DB 인스턴스를 시작
+    - 이 작업에서는 MySQL이 지원되는 Amazon RDS DB 인스턴스를 시작합니다.
+
 - 시나리오
 
 다음 인프라에서 시작합니다.
@@ -242,53 +244,51 @@ Amazon RDS 다중 AZ 배포는 데이터베이스(DB) 인스턴스의 가용성 
 ### Task 1.1 : RDS DB 인스턴스에 대한 VPC 보안 그룹 생성
 이 작업에서는 웹 서버가 RDS DB 인스턴스에 액세스하도록 허용하는 VPC 보안 그룹을 생성
 - 1.1.1 `[AWS Management Console의 서비스]` 메뉴에서 `[VPC]`를 클릭
-- 1.1.2 탐색 창에서 `[Security Groups]`를 클릭
-- 1.1.3 `[Create Security Group]`을 클릭
-- 1.1.4 `[Create Security Group]` 대화 상자에서 다음 세부 정보를 입력
-    - `[Name tag]` : **DBSecurityGroup**
-    - `[Group name]` : **DBSeurityGroup**
-    - `[Description]` : **DB Instance Security Group**
+- 1.1.2 VPC 탐색 창에서 `[보안]`탭에 속한 `[보안 그룹]`을 클릭
+- 1.1.3 `[보안 그룹 생성]`을 클릭
+- 1.1.4 `[보안 그룹 생성]` 대화 상자에서 다음 세부 정보를 입력
+    - `[보안 그룹 이름]` : **DBSecurityGroup**
+    - `[설명]` : **DB Instance Security Group**
     - `[VPC]` : **My LAB VPC** 클릭
-- 1.1.5 `[Yes, Create]`를 클릭
-- 1.1.6 방금 생성한 `[DBSecurityGroup]`을 선택하고, 다른 모든 보안 그룹이 선택 해제되어 있는지 확인
-- 1.1.7	`[Inbound Rules]` 탭을 선택하고 `[Edit]`를 클릭
+- 1.1.5 `[생성]`을 클릭 후 `[닫기]`
+- 1.1.6 방금 생성한 `[DBSecurityGroup]`을 선택
+- 1.1.7	아래 `[인바운드 규칙]` 탭을 선택하고 `[규칙 편집]`을 클릭
 - 1.1.8	다음 세부 정보로 인바운드 규칙을 생성
-    - `[Type]` : **MySQUAurora (3306)**
-    - `[Protocol]` : **TCP(6)**
-    - `[Source]` : **WebSecurityGroup** 클릭
-- 1.1.9	`[저장]`를 클릭
+    - `[규칙 추가]` 클릭
+    - `[유형]` : 스크롤을 내려 **MySQUAurora (3306)** 선택
+    - `[소스]` : 입력 창에 **sg** 입력 후  **WebSecurityGroup** 항목을 클릭
+- 1.1.9	`[규칙 저장]` 클릭 후 `[닫기]`
 
 
 ### Task 1.2 : Amazon RDS 인스턴스용 프라이빗 서브넷 생성
 이 작업에서는 Amazon RDS 인스턴스용 프라이빗 서브넷을 2개 생성
-- 1.2.1	탐색 창에서 `[Subnet]`를 클릭
+- 1.2.1	VPC 탐색 창에서 `[서브넷]`을 클릭
 - 1.2.2	`[Public_Subnet1]`을 선택하고, 모든 다른 서브넷을 선택 해제
-    - 아래쪽 창에 있는 `[Summary]` 탭으로 스크롤
-    - 이 서브넷의 `[Availability Zone]`을 기록 `(가용 영역 2a)`
+    - 아래쪽 창에 있는 `[설명]` 탭으로 스크롤
+    - 이 서브넷의 `[가용 영역]`을 기록 `ap-northeast-2a`
 - 1.2.3	`[Public_Subnet2]`를 선택하고, 모든 다른 서브넷을 선택 해제
-    - 아래쪽 창에 있는 `[Summary]` 탭으로 스크롤
-    - 이 서브넷의 `[Availability Zone]`을 기록 `(가용 영역 2c)`
-- 1.2.4	`[Create Subnet]`을 클릭
-- 1.2.5	`[Create Subnet]` 대화 상자에서 다음 세부 정보를 입력
-    - `[Name tag]` : **Private Subnet 5**
+    - 아래쪽 창에 있는 `[설명]` 탭으로 스크롤
+    - 이 서브넷의 `[가용 영역]`을 기록 `ap-northeast-2c`
+- 1.2.4	`[서브넷 생성]`을 클릭
+- 1.2.5	`[서브넷 생성]` 대화 상자에서 다음 세부 정보를 입력
+    - `[이름 태그]` : **Private_Subnet5**
     - `[VPC]` : **My Lab VPC** 선택
-    - `[Availability Zone]` : 앞에서 **Public_Subnet1**용으로 적어둔 **가용 영역 2a**를 클릭
+    - `[가용 영역]` : 앞에서 **Public_Subnet1**용으로 적어둔 **ap-northeast-2a**를 클릭
     - `[CIDR block]` : **10.0.5.0/24**
-- 1.2.6	`[Yes, Create]`를 클릭
-- 1.2.7	`[Create Subnet]`을 클릭
-- 1.2.8	`[Create Subnet]` 대화 상자에서 다음 세부 정보를 입력
-    - `[Name tag]` : **Private Subnet 6**
-    - `[VPC]` : **My Lab VPC** 클릭
-    - `[Availability Zone]` : 앞에서 **Public_Subnet2**용으로 적어둔 **가용 영역 2c**을 클릭
+- 1.2.6	`[생성]`후 `[닫기]`클릭
+- 1.2.7	`[서브넷 생성]`을 클릭
+- 1.2.8	`[서브넷 생성]` 대화 상자에서 다음 세부 정보를 입력
+    - `[이름 태그]` : **Private_Subnet6**
+    - `[VPC]` : **My Lab VPC** 선택
+    - `[가용 영역]` : 앞에서 **Public_Subnet2**용으로 적어둔 **ap-northeast-2c**를 클릭
     - `[CIDR block]` : **10.0.6.0/24**
-- 1.2.9	`[Yes, Create]`를 클릭
-- 1.2.10 `[Private Subnet 5]`를 선택하고, 모든 다른 서브넷이 선택 해제되었는지 확인
-    - 아래쪽 창에 있는 `[Route Table]`을 클릭
-    - 아래로 스크롤하여 `[Destination]` **0.0.0.0/0**의 `[Target]`에 접두사 `[eni]`가 포함되어 있는지 확인.
-    - 포함되어 있지 않거나 `[Destination]` **0.0.0.0/0**이 없는 경우, `[Edit]`를 클릭
-    - `Change to :` 목록에서 `[Private Route Table]`을 클릭
-    - `[Destination]` **0.0.0.0/0**의 `[Target]`이 접두사 `[eni]`를 포함하도록 변경합니다. `[저장]`를 클릭
-- 1.2.11 `[Private Subnet 6]`에서 앞에서 수행한 단계를 반복
+- 1.2.9	`[생성]`후 `[닫기]`클릭
+- 1.2.10 `[Private_Subnet5]`를 선택하고, 모든 다른 서브넷이 선택 해제되었는지 확인
+    - 아래쪽 창에 있는 `[라우팅 테이블]`을 클릭
+    - `[대상]` **0.0.0.0/0**의 `[대상]`이 접두사 **eni**가 포함되어 있는지 확인 
+    - 포함되어 있지 않은경우, `[라우팅 테이블 연결 편집]`를 클릭하고 `[라우팅 테이블 ID*]` 목록에 있는 다른 라우팅 테이블을 클릭
+    - `[대상]` **0.0.0.0/0**의 `[대상]`이 접두사 **eni**를 포함되어 있다면 `[저장]`을 클릭
+- 1.2.11 `[Private_Subnet6]`에서 앞에서 수행한 단계를 반복
 
 
 ### Task 1.3 : DB 서브넷 그룹 생성 
@@ -341,7 +341,7 @@ Amazon RDS 다중 AZ 배포는 데이터베이스(DB) 인스턴스의 가용성 
 
 ### Task 2 : 데이터베이스와 상호 작용
 - 개요
-    - 이 작업에서는 이전 실습에서 생성한 웹 서버에 배포된 PHP 웹 애플리케이션을 통해 데이터베이스와 상호 작용
+    - 이 작업에서는 이전 실습에서 생성한 웹 서버에 배포된 PHP 웹 애플리케이션을 통해 데이터베이스와 상호 작용합니다.
 
 
 ### Task 2.1 : 데이터베이스 웹 애플리케이션에 액세스
@@ -365,11 +365,9 @@ Amazon RDS 다중 AZ 배포는 데이터베이스(DB) 인스턴스의 가용성 
 - 2.1.11 레코드를 삭제하려면, `[Remove]`를 클릭
 
 
-실습2. 완료 <br>
+Day-1 실습2을 완료하셨습니다. 축하드립니다!
 
-축하드립니다.
-
-웹 사이트를 위한 관계형 데이터 스토어 구성을 성공적으로 완료했습니다. <br>
+웹 사이트를 위한 관계형 데이터 스토어 구성을 성공적으로 완료했습니다. ^^<br>
 
 
 * * *
@@ -593,10 +591,11 @@ Amazon RDS 다중 AZ 배포는 데이터베이스(DB) 인스턴스의 가용성 
 - 2.2.3	`[Web Server 1]`을 마우스 오른쪽 버튼으로 클릭
     -  `[인스턴스 상태]`에서 `[종료]`를 클릭
 
-실습3. 완료 <br>
 
-축하드립니다. <br>
+Day-1 실습3을 완료하셨습니다. 축하드립니다!
 
-Auto Scaling과 Elastic Load Balancer을 사용하여 인프라를 관리하는 작업을 성공적으로 완료했습니다. 
+Auto Scaling과 Elastic Load Balancer을 사용하여 인프라를 관리하는 작업을 성공적으로 완료했습니다. ^^
+
+Day-2을 기대해주세요~
 
 # Thank you
