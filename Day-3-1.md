@@ -92,7 +92,7 @@
 - `Master public DNS`는 Zeppelin이나 ssh 접속 시 사용할 수 있습니다.
 - `Security groups for Master`에서 보안그룹을 설정하여 접근권한을 제어할 수 있는데, 실습을 위해 현재 IP 기준으로 접근을 허가하도록 하겠습니다.
 
-![구성된 EMR 클러스터](./images/day3-08.png)
+![구성된 EMR 클러스터](./images/Day3-08.png)
 
 - `ElasticMapReduce-master`을 클릭하면 EC2 콘솔 보안 그룹 메뉴로 이동합니다.
 - ElasticMapReduce-master 보안그룹의 인바운드을 편집합니다.
@@ -181,7 +181,7 @@ Zeppelin에 접속하여 노트북을 생성합니다.
   from datetime import datetime
   from dateutil.relativedelta import relativedelta
   import time
-  
+
   ```
 
 - S3 데이터 불러오기 (PySpark 이용)
@@ -189,11 +189,11 @@ Zeppelin에 접속하여 노트북을 생성합니다.
   ```
   %pyspark
 
-  dat = spark.read.csv("s3n://[your_id]-handong2019/original_data/*", header = True)
+  dat = spark.read.csv("s3://[your_id]-handong2019/original_data/*", header = True)
   z.show(dat)
   ```
   
-  ![데이터 불러오기](./images/emr-014_2.png)
+  ![데이터 불러오기](./images/Day3-12.png)
   
   요일별 분석을 위해 요일 정보가 있으면 좋겠습니다. [이 페이지](https://stackoverflow.com/questions/38928919/how-to-get-the-weekday-from-day-of-month-using-pyspark)를 참고하면 날짜에서 요일정보를 만들 수 있을 것 같습니다. 새로운 블록을 만들어서 아래와 같이 시도해봅니다.
   
@@ -266,7 +266,7 @@ Zeppelin에 접속하여 노트북을 생성합니다.
         .filter(col("일자").startswith(date_yyyy_mm))\
         .repartition(1)\
         .write\
-        .csv("s3n://[your_id]-handong2019/result/{}".format(date_yyyy_mm), header=True, mode="overwrite")
+        .csv("s3://[your_id]-handong2019/result/{}".format(date_yyyy_mm), header=True, mode="overwrite")
   ```
 
 해당 버켓의 result 폴더에 가보면 의도한대로 데이터가 월별로 폴더링 되어 적재되어 있습니다.
@@ -279,81 +279,170 @@ Zeppelin에 접속하여 노트북을 생성합니다.
 
 이를 위해 AWS Glue 서비스의 가장 강력한 기능인 크롤러를 통해 자동으로 데이터 카탈로그를 생성하는것을 만들어 보겠습니다.
 
-[AWS Glue](https://ap-northeast-2.console.aws.amazon.com/glue) 콘솔화면으로 이동합니다.
+[AWS Glue](https://ap-northeast-1.console.aws.amazon.com/glue) 콘솔화면으로 이동합니다.
 
 ### 데이터베이스 만들기
 
-- 데이터베이스를 생성합니다. 이름은 *handong2019*로 입력합니다.
+- 데이터베이스를 생성합니다. 이름은 `handong2019`로 입력합니다.
 
-![AWS Glue 데이터베이스 만들기](./images/glue-001.png)
+![AWS Glue 데이터베이스 만들기](./images/Day3-13.png)
 
-만들어진 데이터베이스 하위메뉴에 *테이블* 클릭해보면 아무런 테이블이 정의되어 있지 않다고 나옵니다. *테이블 추가* 메뉴로 수동으로 테이블을 입력할 수 있지만, 우리는 크롤러를 이용하여 자동으로 테이블을 생성하도록 하겠습니다. 왼쪽에 *크롤러* 메뉴로 이동합니다.
+만들어진 데이터베이스 하위메뉴에 `Tables` 클릭해보면 아무런 테이블이 정의되어 있지 않다고 나옵니다. `Create Table` 메뉴로 수동으로 테이블을 입력할 수 있지만, 우리는 크롤러를 이용하여 자동으로 테이블을 생성하도록 하겠습니다. 왼쪽에 `Crawlers` 메뉴로 이동합니다.
 
-- *크롤러 추가* 버튼을 눌러 크롤러를 생성합니다.
+- `Add Crawlers` 버튼을 눌러 크롤러를 생성합니다.
 
-![크롤러 추가하기](./images/glue-002.png)
+![크롤러 추가하기](./images/Day3-14.png)
 
-- 크롤러 이름을 입력합니다. *crawler-handong2019*로 입력합니다.
-
-![크롤러 이름 입력](./images/glue-003.png)
+- 크롤러 이름을 입력합니다. `crawler-handong2019`로 입력합니다.
 
 - 크롤링을 진행할 데이터소스를 지정합니다. 데이터 전처리 한 데이터를 S3에 적재해두었기 때문에 S3의 데이터를 데이터 소스로 사용하겠습니다. S3 경로를 입력 해 줍니다.
-경로는 *s3://[your_id]-handong2019/result* 입니다.
+경로는 `s3://[your_id]-handong2019/result` 입니다.
 
-![데이터 소스 입력](./images/glue-004.png)
+- `Add another source` 에서는 `No` 를 선택해줍니다. 크롤링할 source가 s3버킷 하나뿐이기 때문입니다. 
 
-- 이번 핸즈온에서는 1개 데이터 소스를 이용하고 있지만, 데이터소스가 여러개인 경우 추가로 등록 해 주시면 됩니다.
+![데이터 소스 추가 옵션](./images/Day3-15.png)
 
-![데이터 소스 추가 옵션](./images/glue-005.png)
+- 크롤러의 IAM 역할을 지정해줍니다. 역할을 직접 생성하셔서 필요한만큼의 권한을 부여하셔도 됩니다. 핸즈온을 위해서는 `Create an IAM Role`을 선택하고 Role이름을 입력합니다.
 
-- 크롤러의 IAM 역할을 지정해줍니다. 역할을 직접 생성하셔서 필요한만큼의 권한을 부여하셔도 됩니다. 핸즈온을 위해서는 *기존 IAM권한을 선택*에서 *AWSGlueServiceRoleDefault*를 선택합니다.
+![IAM 역할 부여하기](./images/Day3-16.png)
 
-![IAM 역할 부여하기](./images/glue-006.png)
+- 지금까지는 주기적으로 실행이 필요하지 않기 때문에 `On demand` 형태로 크롤러를 실행하겠습니다.
 
-- 지금까지는 주기적으로 실행이 필요하지 않기 때문에 *온디맨드* 형태로 크롤러를 실행하겠습니다.
-
-![스케쥴링 설정](./images/glue-007.png)
+![스케쥴링 설정](./images/Day3-17.png)
 
 - 크롤링 결과는 테이블 형태로 출력을 하는데 해당 정보를 입력해줍니다. *handong2019* 데이터베이스를 선택합니다. 테이블이 생성될 때 접두사를 붙일수도 있습니다.
 
-![크롤러 출력 설정](./images/glue-008.png)
+![크롤러 출력 설정](./images/Day3-18.png)
 
 - 최종 정보를 확인하고 크롤러를 생성합니다.
 
-![크롤러 생성하기 최종단계](./images/glue-009.png)
-
 - 생성 된 크롤러를 실행합니다. 크롤러가 실행되면 완료까지 수분이 걸립니다.
 
-![크롤러 실행하기](./images/glue-010.png)
+![크롤러 실행하기](./images/Day3-19.png)
 
 ### 생성된 테이블 살펴보기
 
-크롤러 작업이 완료되면 *테이블* 메뉴에서 생성된 테이블을 확인 가능합니다.
+크롤러 작업이 완료되면 `Tables` 메뉴에서 생성된 테이블을 확인 가능합니다.
 
-![생성된 테이블 확인](./images/glue-011.png)
+![생성된 테이블 확인](./images/Day3-20.png)
 
-테이블 상세화면에 가보면 상단에 데이터 소스 위치정보가 가능하고 하단에는 데이터로부터 읽은 스키마정보를 자동으로 입력 된 것을 확인하실 수 있습니다. 스키마에 제일 마지막 *partition*가 추가됐고 해당 정보를 쿼리에 사용 할 수도 있습니다.
+글루가 S3를 여기저기 돌아 데이터의 스키마를 파악하고 위와 같이 테이블을 만들었네요. 그런데, Column name이 한글인게 조금 거슬립니다. Athena에서는 column 명에 한글을 지원하지 않거든요. 바꿔줍시다
 
-![테이블 상세보기](./images/glue-012.png)
+테이블 상세보기 상단에 `Edit Schema`를 클릭해줍니다. 
+
+![스키마 수정](./images/Day3-21.png)
+
+한글로 된 컬럼을 클릭해주고 영어로 수정하고 저장을 눌러줍니다.
+
+![컬럼 수정](./images/Day3-22.png)
+
+이제 데이터 스키마가 깔끔해진것 같습니다. 
 
 ### Amazon Athena에서 카탈로그를 통해 데이터 불러오기
 
 이렇게 생성된 데이터 카탈로그를 통해서 AWS 내부/외부 서비스에서 데이터를 쉽게 접근할 수 있게 됩니다. 서비리스 쿼리 서비스인 Amazon Athena를 통해서 S3에 있는 데이터를 카탈로그를 통해 조회해보도록 하겠습니다.
 
-*테이블*에 *테이블 보기* 메뉴를 통해 Amazon Athena 서비스로 이동합니다.
+`Tables`에 `View Data` 메뉴를 통해 Amazon Athena 서비스로 이동합니다.
 
-![Athena를 이용하여 데이터 살펴보기](./images/glue-013.png)
+![Athena를 이용하여 데이터 살펴보기](./images/Day3-23.png)
 
 해당 데이터베이스와 테이블을 선택하면 SQL 쿼리로 데이터 조회가 가능합니다.
 
-![Athena를 이용하여 데이터 살펴보기](./images/glue-014.png)
+![Athena를 이용하여 데이터 살펴보기](./images/Day3-24.png)
+
+### 쿼리 예시
+
+SQL문으로도 충분히 이것저것 데이터를 뒤져볼 수 있습니다. 
+
+```SQL
+--- 종목별 숫자들 
+SELECT kinds, sum(calls) as calls FROM "hadong2019"."transformed_result" 
+GROUP BY kinds
+ORDER BY calls DESC;
+
+--- 월별 통계 
+SELECT partition_0 as months, sum(calls) as calls FROM "hadong2019"."transformed_result" 
+GROUP BY partition_0
+ORDER BY months;
+
+-- 12월 통계, WHERE 조건에 Partition이 들어가면서 Athena가 스캔하는 데이터가 줄어드는 것에 주목해주세요. 스캔하는 데이터의 양이 곧 돈이니까요. 
+SELECT kinds, sum(calls) as calls FROM "hadong2019"."transformed_result" 
+WHERE partition_0 ='2018-12'
+GROUP BY kinds
+ORDER BY calls;
+
+-- 12월 구별 통계: 강남/ 강서구에서 많이 시켜먹네요. 
+SELECT province_1, sum(calls) as calls FROM "hadong2019"."transformed_result" 
+WHERE partition_0 ='2018-12'
+GROUP BY province_1
+ORDER BY calls DESC;
+
+-- 12월 구/동별 통계: 신대방동에는 무슨일이 있는걸까요
+SELECT province_1, province_2, sum(calls) as calls FROM "hadong2019"."transformed_result" 
+WHERE partition_0 ='2018-12'
+GROUP BY province_1, province_2
+ORDER BY calls DESC;
+
+```
+## Quicksight로 시각화하기 
+
+그럼 이제 예쁘게 그림을 그려봅시다. 
+
+Quicksight는 AWS에서 제공하는 BI 툴입니다. 다른 상용 BI툴에 비해서는 부족하지만 그래도 저렴한 가격과 다른 AWS 서비스 와의 연동이 편하다는 장점이 있습니다. 
+
+- Quicksight 콘솔로 이동 
+- Quicksight 구독
+
+![Quicksight 구독](./images/Day3-25.png)
+
+- Standard plan 선택 
+- Tokyo Region 선택 
+- `Quicksight accountname` : `{username}-handong2019`
+- `Email` 입력
+- `Choose s3 buckets`: `Select all`
+- 나머지는 그대로 둡니다. 
+- `Finish` 클릭
+- `Go to Amazon Quicksight` 클릭 
+
+아래와 같은 화면에 진입하면 성공입니다. 이상하게 도쿄리전으로 시작하면 모바일뷰로 나오네요. (버그인듯)
+
+이제 Quicksight에 Data set을 정의해줍니다. 
+
+![Quicksight Manage data](./images/Day3-26.png)
+
+- `Manage Data` 클릭 
+- `New data set` 클릭
+- `Athena` 클릭 
+
+![Quicksight dataset-athena](./images/Day3-27.png)
+
+- `Data Source Name`에 `delivery-2018` 입력 후 `Create data source` 클릭 
+
+![Quicksight data source name](./images/Day3-28.png)
+
+-`handong2019`, `transformed_result` 선택 후  `select` 선택 
+
+![Quicksight choose table](./images/Day3-29.png)
+
+- `Import to SPICE for quicker analytics`를 선택합니다. (1gb 까지는 무료라니깐 한번 사용해봅시다.)
+
+![Quicksight choose table](./images/Day3-30.png)
+
+- visualize 창에서 이것저것 만져 봅시다. 
+
+![Quicksight choose table](./images/Day3-31.png)
+
+
 
 ## 리소스 삭제
 필요하신 경우가 아니라면 핸즈온을 마치시면 리소스 삭제 부탁드립니다. (비용 청구됨!)
 리소스 삭제는 하신 작업의 역순으로 하시면 됩니다.
 
+  - quicksight 구독 해제 
   - Glue 테이블, 크롤러 삭제
+  - S3 데이터 삭제 
   - EMR + Spark 삭제
+  
 
 ## 참고자료
 AWS 기반 지속 가능한 데이터 분석 플랫폼 구축하기 (AWS Summit Seoul 2019)
