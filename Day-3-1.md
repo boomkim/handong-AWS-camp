@@ -26,13 +26,13 @@
 ## EMR을 통해 분석환경 구축하기
 시작하기에 앞서서 생성한 EMR 클러스터에 ssh 접속을 위해 EC2키페어를 생성합니다.
   - EC2 콘솔메뉴로 이동 
-  - `키페어` 메뉴에 `키페어 생성` 버튼을 눌러서 키페어를 생성합니다. 키페어 생성 즉시 브라우저에서 .pem 파일 하나가 다운로드 됩니다.
+  - `Key Pairs` 메뉴에 `Create Key Pair` 버튼을 눌러서 키페어를 생성합니다. 키페어 생성 즉시 브라우저에서 .pem 파일 하나가 다운로드 됩니다.
 
 ```
 키페어 이름 :        handong2019
 ```
 
-  ![EC2 키페어 생성하기](./images/emr-006.png)
+  ![EC2 키페어 생성하기](./images/Day3-01.png)
   
   - 윈도우사용자는 Putty등을 이용하여 SSH 접속이 가능합니다.
 
@@ -44,36 +44,36 @@
   chmod 400 handong2019.pem
   ```
 
-  - pem키는 사용후 꼭 지우시거나 관리해주세요. git에 올리시면 안됩니다!
+  - pem키는 사용 후 꼭 지우시거나 관리해주세요. git에 올리시면 안됩니다!
 
 ### 1. EMR 시작하기
 - 콘솔에서 EMR 서비스로 이동합니다.
 - 이전에 EMR 서비스를 사용해보시지 않으셨다면 아래와 같은 화면을 볼 수 있습니다.
 
-![EMR 시작하기](./images/emr-001.png)
+![EMR 시작하기](./images/Day3-02.png)
 
-- *클러스터 생성* 버튼을 눌러 EMR을 생성해보겠습니다.
+- `Create cluster` 버튼을 눌러 EMR을 생성해보겠습니다.
 - EMR 클러스터 생성을 위한 환경설정 메뉴를 확인하실 수 있습니다.
   - 빅데이터 분석을 위해서 어떤 소프트웨어를 사용할 것인지 선택할 수 있습니다.
-  - *데이터 메터 데이터에서 AWS Glue 데이터 카탈로그 사용* 이란 옵션이 있는데 추후에 Glue를 통해 생성한 데이터 카탈로그의 데이터들에 접근할 수 있습니다.
+  - `Use AWS Glue Data Catalog for table metadata` 이란 옵션이 있는데 추후에 Glue를 통해 생성한 데이터 카탈로그의 데이터들에 접근할 수 있습니다.
   - 하드웨어를 선택할 수 있습니다. 선택하시는 인스턴스에 따라 퍼포먼스와 비용에 영향을 줍니다.
-  - 또한 좌측 상단에 보시면 *고급 옵션으로 이동*이란 메뉴가 있어서 원하시는 환경을 직접 선택하여 구성하실 수 있습니다.
-  - *고급 옵션으로 이동*을 선택합니다.
+  - 또한 좌측 상단에 보시면 `Go to advanced options` 이란 메뉴가 있어서 원하시는 환경을 직접 선택하여 구성하실 수 있습니다.
+  - `Go to advanced options`을 선택합니다.
 
-![EMR 클러스터 생성하기 메뉴](./images/emr-002.png)
+![EMR 클러스터 생성하기 메뉴](./images/Day3-03.png)
 
 ### 2. EMR 구성하기
 - 소프트웨어 구성을 위한 화면입니다. 이전에 보았던 메뉴구성과 달리 원하시는 소프트웨어의 조합을 마음대로 구성하실 수 있습니다.
-- Zeppelin과 Spark 환경을 구성하기 위해 *Hadoop 2.8.5, Zeppelin 0.8.1, Spark 2.4.0*을 선택하였습니다.
+- Zeppelin과 Spark 환경을 구성하기 위해 `Hadoop 2.8.5, Zeppelin 0.8.1, Spark 2.4.2`을 선택하였습니다.
 - AWS Glue 데이터 카탈로그 설정도 체크하였습니다.
 
-![EMR 클러스터 소프트웨어 구성하기](./images/emr-003.png)
+![EMR 클러스터 소프트웨어 구성하기](./images/Day3-04.png)
 
 - 하드웨어 구성은 마스터노드 1개는 온디맨드 형태로, 코어노드 2개는 스팟 형태로 띄워보겠습니다.
 - 마스터노드에는 Zeppelin을 포함한 여러가지 환경설정들이 저장되어 있어서, 마스터노드가 꺼질경우 전체 분석환경이 비활성화 된다고 생각하시면 됩니다. 반면에 실제 데이터들을 분산하여 처리하는 코어노드나 작업노드는 원하는 작업양 만큼 자유롭게 늘이고 줄이고하는 작업이 가능합니다.
 - 코어노드나 작업노드는 비용을 고려하여 스팟 인스턴스 형태로 띄워도 무방합니다. 마스터노드도 스팟인스턴스로 띄워도 되긴 하지만 설명드린 것 처럼 마스터노드에 문제가 생기면 많은 귀찮고 어려운점들이 있으니 온디맨드로 사용하는 것을 권장합니다.
 
-![EMR 클러스터 하드웨어 구성하기](./images/emr-004.png)
+![EMR 클러스터 하드웨어 구성하기](./images/Day3-05.png)
 
 - 클러스터 이름을 입력하고 다음으로 넘어갑니다.
 
@@ -81,28 +81,28 @@
 클러스터 이름 :        handong2019
 ```
 
-![EMR 클러스터 설정하기](./images/emr-005.png)
+![EMR 클러스터 설정하기](./images/Day3-06.png)
 
-- 마지막 보안을 위한 설정입니다. 최초에 생성한 키페어를 선택하고 *클러스터 생성* 버튼을 누릅니다.
-- 생성완료까지 수분이 소요됩니다.
+- 마지막 보안을 위한 설정입니다. 최초에 생성한 `키페어를 선택`하고 `Create Cluster` 버튼을 누릅니다.
+- 생성완료까지 수분이 소요됩니다. (Status가 `Starting` 에서 `Waiting`으로 바뀌면 성공)
 
-![EMR 클러스터 보안 설정하기](./images/emr-007.png)
+![EMR 클러스터 보안 설정하기](./images/Day3-07.png)
 
 - EMR 클러스터 생성이 완료되면 아래와 같은 화면을 보실 수 있습니다.
-- *마스터 퍼블릭 DNS*는 Zeppelin이나 ssh 접속 시 사용할 수 있습니다.
-- *ElasticMapReduce-master 보안그룹*에서 보안그룹을 설정하여 접근권한을 제어할 수 있는데, 실습을 위해 현재 IP 기준으로 접근을 허가하도록 하겠습니다.
+- `Master public DNS`는 Zeppelin이나 ssh 접속 시 사용할 수 있습니다.
+- `Security groups for Master`에서 보안그룹을 설정하여 접근권한을 제어할 수 있는데, 실습을 위해 현재 IP 기준으로 접근을 허가하도록 하겠습니다.
 
-![구성된 EMR 클러스터](./images/emr-008.png)
+![구성된 EMR 클러스터](./images/day3-08.png)
 
-- *ElasticMapReduce-master*을 클릭하면 EC2 콘솔 보안 그룹 메뉴로 이동합니다.
+- `ElasticMapReduce-master`을 클릭하면 EC2 콘솔 보안 그룹 메뉴로 이동합니다.
 - ElasticMapReduce-master 보안그룹의 인바운드을 편집합니다.
 
-![ElasticMapReduce-master 보안그룹 규칙편집](./images/emr-009.png)
+![ElasticMapReduce-master 보안그룹 규칙편집](./images/Day3-09.png)
 
-- 8890 포트 (Zeppelin 사용) 22 포트 (ssh 접속)을 사용하는 접근 가능한 소스에 *접속하는 PC의 Public IP*를 추가합니다.
-- 접속하는 PC의 Public IP는 http://www.findip.kr 등을 사용하면 쉽게 알 수 있습니다.
+- 8890 포트 (Zeppelin 사용) 22 포트 (ssh 접속)을 사용하는 접근 가능한 소스에 `접속하는 PC의 Public IP`를 추가합니다.
+- 접속하는 PC의 Public IP는 http://www.findip.kr 등을 사용하면 쉽게 알 수 있습니다. 
 
-![ElasticMapReduce-master 보안그룹 접속허용](./images/emr-010.png)
+![ElasticMapReduce-master 보안그룹 접속허용](./images/Day3-10.png)
 
 - 여기까지 모두 성공하셨다면 정상적으로 Spark 마스터노드 안에 구성된Zeppelin에 접근이 가능합니다.
 
@@ -111,43 +111,14 @@
 ex) http://ec2-**-***-***-**.ap-northeast-1.compute.amazonaws.com:8890
 ```
 
-- 데이터를 Zeppelin을 통해 만지기 전에 간다한 설정들을 해두겠습니다. 
-- [간편 설정을 위한 쉘스크립트](https://github.com/awskrug/datascience-group/blob/master/workshop-sustainable_data_analysis/env_emr_spark_zeppelin.sh)를 Working Directory에 다운받습니다.
-  - 윈도우 사용자:
+- 데이터를 Zeppelin을 통해 만지기 전에 간단한 설정들을 해두겠습니다. 
   
-  Putty로 MasterNode에 접속합니다.
-  
-  ![Putty 접속 화면](./images/emr-020.png)
-  
-    ```
-    Host Name :     마스터 퍼블릭 DNS
-    Data - Auto-login username : hadoop
-    SSH - Auth - Private key file for authentication :  ppk파일로 변환한 키페어파일(handong2019.ppk)
-    ```
-  
-  MasterNode에 접속하면 다음 명령어로 핸즈온에 사용할 쉘스크립트 파일을 다운로드합니다.
-  
-    ```
-      wget https://raw.githubusercontent.com/awskrug/datascience-group/master/workshop-sustainable_data_analysis/env_emr_spark_zeppelin.sh
-    ```
+- MasterNode에 접속하면 다음 명령어로 핸즈온에 사용할 쉘스크립트 파일을 다운로드합니다.
 
-  - Mac사용자 : 
-    - 설정에 필요한 명령어들 묶음인 쉘스크립트 파일을 업로드 합니다.
-    
-      ```
-      mkdir ds_handson_20190509
-      cd ./ds_handson_20190509
-      scp -i [KEY_PAIR_PATH] ./env_emr_spark_zeppelin.sh hadoop@[MASTER_PUBLIC_DNS]:/home/hadoop/env_emr_spark_zeppelin.sh
-      ```
-    
-    - 터미널에서 해당 마스터 노드에 ssh 접속합니다. 이전에 저장된 .pem 키를 사용합니다.
-    
-      ```
-      ssh -i [KEY_PAIR_PATH] hadoop@[MASTER_PUBLIC_DNS]
-      ```
-    
-    - ssh접속에 성공하였으면 아래 화면이 확인 가능합니다. ls 명령어를 통해 1번 과정에서 복사했던 쉘스크립트 파일이 확인 가능합니다.
-    
+```
+  wget https://raw.githubusercontent.com/boomkim/handong-AWS-camp/master/env_emr_spark_zeppelin.sh
+```
+ 
   ![ssh 접속 화면](./images/emr-011.png)
   
   - 쉘스크립트 실행합니다. Zeppelin ID는 ds_handson_20190509로 미리 설정했습니다. 쉘스크립트가 실행되면 Zeppelin 비번을 한번 입력해주셔야 합니다.
@@ -158,18 +129,20 @@ ex) http://ec2-**-***-***-**.ap-northeast-1.compute.amazonaws.com:8890
   
   - 설정 완료까지 수분이 소요됩니다.
   
-- Zeppelin에 접속하여 id: ds_handson_20190509 pw: {입력하신 패스워드}로 접속이 정상적으로 되는지 확인합니다.
+- Zeppelin에 접속하여 `id: handong2019` `pw: {입력하신 패스워드}`로 접속이 정상적으로 되는지 확인합니다.
   
   ![Zeppelin에 로그인 성공!](./images/emr-012.png)
 
 ## 데이터셋 준비하기
-핸즈온에 사용할 데이터는 [SKT Big Data Hub](https://www.bigdatahub.co.kr)에서 제공하는 배달업종 이용현황 분석 2018년 데이터입니다. 사이트에 가보시면 회원가입 후 직접 다운로드가 가능하며 공개된 다양한 종류의 데이터가 많으니 확인해보시기 바랍니다.
+핸즈온에 사용할 데이터는 [SKT Big Data Hub](https://www.bigdatahub.co.kr)에서 제공하는 배달업종 이용현황 분석 2018년 데이터입니다. 사이트에 가보시면 회원가입 후 직접 다운로드가 가능. 하며 공개된 다양한 종류의 데이터가 많으니 확인해보시기 바랍니다.
 
-*핸즈온 종료시점 이후 데이터를 github으로 변경하였습니다.*
-[데이터 다운로드](https://github.com/awskrug/datascience-group/tree/master/workshop-sustainable_data_analysis/data)
+~~7월 9일 까지 회원가입이 안되는걸로 공지되어있네요~~
+
+
+[데이터 다운로드](https://bhkim2019.s3.ap-northeast-2.amazonaws.com/data.zip)
 위 링크에서 다운로드 후 압축을 해제하시면 csv파일이 나오는데, 해당 파일을 아래 경로에 업로드 해주세요.
 
-S3 콘솔로 이동해서 *[your_id]-handong2019*이라는 버켓을 생성하시고 original_data 폴더내에 업로드 해주세요.
+S3 콘솔로 이동해서 `[your_id]-handong2019`이라는 버켓을 생성하시고 original_data 폴더내에 업로드 해주세요.
 업로드 위치: s3://[your_id]-handong2019/original_data/
 
 ~~데이터는 미리 받아서 월별로 폴더트리를 만들어서 S3에 업로드 해두었습니다. EMR 마스터에 ssh 접속한 상태에서 아래 명령어를 통해서 여러분의 S3에 업로드하세요. EMR 마스터 인스터스에는 AWS CLI가 이미 셋업되어 있어서 바로 업로드가 가능합니다.~~
@@ -188,12 +161,12 @@ S3 콘솔로 이동해서 *[your_id]-handong2019*이라는 버켓을 생성하�
 
 ## Zeppelin을 이용하여 데이터 전처리
 
-데이터분석을 위해 EMR 설정도 완료했고, 데이터도 준비되었습니다. 이제 진짜로 데이터를 들여다보도록 하겠습니다. 핸즈온으로 준비한 데이터는 총 120mb 정도되는 작은 데이터이고 충분히 Google Spread Sheet 서비스나 엑셀로도 처리가 가능합니다. 이번 핸즈온에서는 실제로 빅데이터를 다루지는 않지만 어떻게 AWS 리소스를 이용하여 일반적인 워크스테이션이나 데이터베이스에서 처리할 수 없는 빅데이터를 분석할 수 있는지에 대한 접근방법을 익히는것이 중요한것임을 말씀드립니다. 
+데이터분석을 위해 EMR 설정도 완료했고, 데이터도 준비되었습니다. 이제 진짜로 데이터를 들여다보도록 하겠습니다. 핸즈온으로 준비한 데이터는 총 80~90mb 정도되는 작은 데이터이고 충분히 Google Spread Sheet 서비스나 엑셀로도 처리가 가능합니다. 이번 핸즈온에서는 실제로 빅데이터를 다루지는 않지만 어떻게 AWS 리소스를 이용하여 일반적인 워크스테이션이나 데이터베이스에서 처리할 수 없는 빅데이터를 분석할 수 있는지에 대한 접근방법을 익히는것이 중요한것임을 말씀드립니다. 
 
 ### 1. Zeppelin 시작하기
 Zeppelin에 접속하여 노트북을 생성합니다.
 
-![Zeppelin에서 노트북 생성하기](./images/emr-013.png)
+![Zeppelin에서 노트북 생성하기](./images/day3-11.png)
 
 ### 2. 데이터 불러오기 & 살펴보기
 여기부터 진행되는 내용은 아래 코드블락을 Zeppelin 노트북에 복사&붙여넣기 해보시고 실행해보시면 됩니다.
@@ -205,15 +178,10 @@ Zeppelin에 접속하여 노트북을 생성합니다.
 
   from pyspark.sql.functions import *
   from pyspark.sql.types import *
-  from pyspark.sql.window import Window
-  import pandas as pd
-  import numpy as np
-  from urllib.parse import urlparse, parse_qs, unquote_plus, urlsplit
-  from datetime import datetime, timedelta
+  from datetime import datetime
   from dateutil.relativedelta import relativedelta
-  import re
   import time
-  import builtins
+  
   ```
 
 - S3 데이터 불러오기 (PySpark 이용)
