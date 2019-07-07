@@ -187,7 +187,7 @@ fi
     -  아래와 같은 `[Amazon Linux AMI Test Page]`를 확인
 
 
-[image](/images/Day1-Create-EC2.png)
+![image](/images/Day1-Create-EC2.png)
 
 
 
@@ -295,49 +295,49 @@ Amazon RDS 다중 AZ 배포는 데이터베이스(DB) 인스턴스의 가용성 
 ### Task 1.3 : DB 서브넷 그룹 생성 
 이 작업에서는 DB 서브넷 그룹을 생성. 각 DB 서브넷 그룹은 지정된 리전에서 두 개 이상의 가용 영역에 서브넷이 있어야 함.
 - 1.3.1 `[서비스]` 메뉴에서 `[RDS]`를 클릭
-- 1.3.2 탐색 창에서 `[Subnet Groups]`를 클릭
-- 1.3.3 `[Create DB Subnet Group]`을 클릭
-- 1.3.4 `[Create DB Subnet Group]` 페이지에서 다음 세부 정보를 입력
-    - `[Name]` : **dbsubnetgroup**
-    - `[Description]` : **Lab DB Subnet Group**
+- 1.3.2 RDS 탐색 창에서 `[서브넷 그룹]`을 클릭
+- 1.3.3 `[DB 서브넷그룹 생성]`을 클릭
+- 1.3.4 `[DB 서브넷그룹 생성]` 페이지에서 다음 세부 정보를 입력
+    - `[이름]` : **dbsubnetgroup**
+    - `[설명]` : **Lab DB Subnet Group**
     - `[VPC ID]` : **My Lab VPC** 클릭
-- 1.3.5 `[Availability Zone]`의 경우, `[Private_Subnet5]`용으로 선택한 가용 영역을 클릭
-- 1.3.6 `[Subnet ID]`의 경우, `10.0.5.0/24`를 클릭한 다음 `[Add]`를 클릭
-- 1.3.7 `[Availability Zone]`의 경우, `[Private_Subnet6]`용으로 선택한 가용 영역을 클릭
-- 1.3.8 `[Subnet ID]`의 경우, `10.0.6.0/24`를 클릭한 다음 `[Add]`를 클릭
-- 1.3.9 `[Create]`를 클릭
+- 1.3.5 `[가용 영역]`의 경우, `[Private_Subnet5]`용으로 선택한 가용 영역을 클릭 **(ap-northeast-2a)**
+- 1.3.6 `[서브넷]`의 경우, `10.0.5.0/24`를 클릭한 다음 `[서브넷 추가]`를 클릭
+- 1.3.7 `[가용 영역]`을 추가로 `[Private_Subnet6]`용으로 선택한 가용 영역을 클릭 **(ap-northeast-2c)**
+- 1.3.8 `[서브넷]`의 경우, `10.0.6.0/24`를 클릭한 다음 `[서브넷 추가]`를 클릭
+- 1.3.9 `[생성]`을 클릭
 - 1.3.10 새 서브넷 그룹이 보이지 않으면, 콘솔의 오른쪽 위 모서리에 있는 새로고침 아이콘을 클릭
 
 ### Task 1.4 : RDS DB 인스턴스 생성
 이 작업에서는 MySQL 지원 Amazon RDS DB 인스턴스를 구성 및 시작
 - 1.4.1	`[서비스]` 메뉴에서 `[RDS]`를 클릭
-- 1.4.2	`[Get Started Now]`를 클릭
-- 1.4.3	`[MySQL]`을 클릭하고 `[Select]`를 클릭
-- 1.4.4	`[Production]` 아래의 `[MySQL]`을 클릭
-- 1.4.5	`[Next Step]`을 클릭
-- 1.4.6	`[Specify DB Details]` 페이지에서 다음 세부 정보를 입력
-    - `[DB Instance Class]` : 목록에 있는 첫 번째 옵션을 클릭
-    - `[Multi-AZ Deployment]` : **Yes** 클릭
-    - `[DB Instance Identifier]` : **labdbinstance**
-    - `[Master Username]` : **labuser**
-    - `[Master Password]` : **labpassword**
-    - `[Confirm Password]` : **labpassword**
-- 1.4.7	`[Next Step]`을 클릭
-- 1.4.8	`[Configure Advanced Settings]` 페이지에서 다음 정보를 입력하고 나머지 값은 모두 기본값 적용
-    - `[VPC]` : **My Lab VPC**
-    - `[Subnet Group]` : **dbsubnetgroup**
-    - `[Publicly Accessible]` : **No**
-    - `[VPC Security Group(s)]` : **DBSecurityGroup (VPC)**
-    - `[Database Name]` : **sampledb**
-    - 다음으로 Monitoring 항목에서 Enable Enhanced Monitoring : No를 설정
-- 1.4.9	`[Launch DB Instance]`를 클릭
-- 1.4.10 `[View Your DB Instances]`를 클릭
-- 1.4.11 `[labdbinstance]`를 선택하고, `[Endpoint]`가 available 또는 modifying으로 변할 때까지 대기
-    - 최대 10분 정도 서요
-    - 오른쪽 위에 있는 새로고침 아이콘을 사용하여 업데이트를 확인
-- 1.4.12 `[Endpoint]`를 복사하여 저장
-    - 3306을 같이 복사하지 않도록 주의
-    - `[Endpoint]`는 **"qr7g2qco3oeq5h.cze6p5rivinc.us-west-2.rds.amazon.com"**과 비슷한 형태
+- 1.4.2	`[데이터베이스 생성]` 버튼을 클릭
+- 1.4.3	엔진 옵션으로`[MySQL]`을 클릭
+- 1.4.4	버전(MySQL 5.7.22) 및 템플릿(프로덕션)을 기본 값으로 지정 
+- 1.4.5	`[설정]`에서 다음 세부 정보를 입력
+    - `[DB 인스턴스 식별자]` : **labdbinstance**
+    - `[Master username]` : **labuser**
+    - `[마스터 암호]` : **labpassword**
+    - `[암호 확인]` : **labpassword**
+- 1.4.6	`[DB 인스턴스크기]`에서 스탠다드 클래스 선택 **(db.m5.large)**, `[Storage]`는 기본값 적용 
+- 1.4.7	`[가용성 및 내구성]`에서 다중 AZ 배포 **대기 인스턴스 생성(생산 사용량에 권장)** 클릭
+- 1.4.8	`[연결]`에서 다음 정보를 입력하고 나머지 값은 모두 기본값 적용
+    - `[Virtual Private Cloud(VPC)]` : **My Lab VPC**
+    - `[추가 연결 구성]` 클릭
+    - `[서브넷 그룹]` : **dbsubnetgroup**
+    - `[퍼블릭 액세스 가능]` : **아니요** 클릭
+    - `[VPC 보안 그룹]` : **DBSecurityGroup (VPC)** 클릭 추가, default 보안 그룹 **X** 클릭 삭제
+- 1.4.8	`[추가 구성]`에서 다음 정보를 입력하고 나머지 값은 모두 기본값 적용
+    - `[초기 데이터베이스 이름]` : **sampledb** 입력
+    - `[자동 백업 활성화]` : **Check** 해제
+    - `[모니터링]`항목에서 Enhanced 모니터링 활성화 **Check** 해제
+    - `[삭제 방지]`항목에서 삭제 방지 활성화 **Check** 해제
+- 1.4.9	`[데이터베이스 생성]`를 클릭
+- 1.4.10 `[labdbinstance]`를 선택
+    - `[상태]`가 available 또는 modifying으로 변할 때까지 대기 (최대 10분 정도 소요)
+    - 오른쪽 위에 있는 `[새로고침]` 아이콘을 사용하여 업데이트를 확인
+- 1.4.11 `[엔드포인트]`를 복사하여 저장 (3306을 같이 복사하지 않도록 주의)
+    - `[엔드포인트]`는 **"qr7g2qco3oeq5h.cze6p5rivinc.us-west-2.rds.amazon.com"**과 비슷한 형태
 
 
 ### Task 2 : 데이터베이스와 상호 작용
@@ -348,11 +348,11 @@ Amazon RDS 다중 AZ 배포는 데이터베이스(DB) 인스턴스의 가용성 
 ### Task 2.1 : 데이터베이스 웹 애플리케이션에 액세스
 웹 서버에서 실행되는 웹 애플리케이션을 확인
 - 2.1.1	`[서비스]` 메뉴에서 `[EC2]`를 클릭
-- 2.1.2	탐색 창에서 `[Instances]`를 클릭
+- 2.1.2	EC2 탐색 창에서 `[인스턴스]`를 클릭
 - 2.1.3	`[Web Server1]`을 선택하고, 모든 다른 인스턴스가 선택 해제되었는지 확인
-    - 아래쪽 창에 있는 `[Description]` 탭까지 아래로 스크롤
-- 2.1.4	`[Web Server1]`의 `[Public IP]`주소를 복사
-- 2.1.5	IP 주소를 새 브라우저 탭 또는 창에 복사
+    - 아래쪽 창에 있는 `[설명]` 탭까지 아래로 스크롤
+- 2.1.4	`[Web Server1]`의 `[퍼블릭 DNS(IPv4)]`주소를 복사
+- 2.1.5	`[퍼블릭 DNS(IPv4)]`주소를 새 브라우저 탭 또는 창에 복사
     - 웹 애플리케이션이 웹 서버의 인스턴스 메타데이터와 함께 표시
 - 2.1.6	AWS 로고 오른쪽 옆에 있는 `[RDS]` 링크를 클릭
 - 2.1.7	다음 정보를 입력
@@ -360,16 +360,21 @@ Amazon RDS 다중 AZ 배포는 데이터베이스(DB) 인스턴스의 가용성 
     - `[Database]` : **sampledb**
     - `[Username]` : **labuser**
     - `[Password]` : **labpassword**
-- 2.1.8	`[Submit]`을 클릭. 연결 문자열이 표시된 후, 페이지가 리디렉션 2개의 새로운 레코드가 주소 테이블에 추가되어 표시
+
+![image](/images/Day1-Connect-RDS1.png)
+
+- 2.1.8	`[Submit]`을 클릭. 연결 문자열이 표시된 후
+    - 페이지가 리디렉션 2개의 새로운 레코드가 주소 테이블에 추가되어 아래와 같이 표시
+
+![image](/images/Day1-Connect-RDS2.png)
+
 - 2.1.9	또 다른 담당자를 추가하려면 `[Add Contact]`을 클릭
-    - `[Name]`, `[Phone]` 및 `[Email]`을 입력
-    - `[Submit]`를 클릭
-- 2.1.10 담당자를 수정하려면, `[Edit]`를 클릭
-    - 원하는 필드를 수정한 다음, `[Submit]`를 클릭
+    - `[Name]`, `[Phone]` 및 `[Email]`을 입력하고 `[제출]`을 클릭
+- 2.1.10 담당자를 수정하려면, `[Edit]`를 클릭하고 필드를 수정한 다음, `[제출]`을 클릭
 - 2.1.11 레코드를 삭제하려면, `[Remove]`를 클릭
 
 
-Day-1 실습2을 완료하셨습니다. 축하드립니다!
+Day-1 실습2를 완료하셨습니다. 축하드립니다!
 
 웹 사이트를 위한 관계형 데이터 스토어 구성을 성공적으로 완료했습니다. ^^<br>
 
@@ -551,7 +556,7 @@ Day-1 실습2을 완료하셨습니다. 축하드립니다!
     - 이 로드 밸런서 목록에 `[Lab3WebInstance]` 2대가 나열된 것을 확인
 - 1.4.5	`[Lab3ELB]`의 `[인스터스]` 탭을 클릭
     - 이 인스턴스의 `[상태]`가 `[InService]`로 바뀔 때까지 대기
-    - 오른쪽 위에 있는 새로고침 버튼을 사용하여 업데이트를 확인
+    - 오른쪽 위에 있는 `[새로고침]` 버튼을 사용하여 업데이트를 확인
 - 1.4.6	로드 밸런서가 인스턴스가 실행되고 있는 가용 영역의 `[정상 상태?]` 필드 아래에 `[예]`를 표시
 
 
