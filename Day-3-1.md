@@ -143,21 +143,8 @@ ex) http://ec2-**-***-***-**.ap-northeast-1.compute.amazonaws.com:8890
 위 링크에서 다운로드 후 압축을 해제하시면 csv파일이 나오는데, 해당 파일을 아래 경로에 업로드 해주세요.
 
 S3 콘솔로 이동해서 `[your_id]-handong2019`이라는 버켓을 생성하시고 original_data 폴더내에 업로드 해주세요.
-업로드 위치: s3://[your_id]-handong2019/original_data/
 
-~~데이터는 미리 받아서 월별로 폴더트리를 만들어서 S3에 업로드 해두었습니다. EMR 마스터에 ssh 접속한 상태에서 아래 명령어를 통해서 여러분의 S3에 업로드하세요. EMR 마스터 인스터스에는 AWS CLI가 이미 셋업되어 있어서 바로 업로드가 가능합니다.~~
-
-~~- Bucket 생성~~
-~~aws s3 mb s3://[your_id]-handong2019 --region ap-northeast-2~~
-
-~~- 파일 업로드~~
-~~aws s3 sync s3://data-handong2019 s3://[your_id]-handong2019/original_data --region ap-northeast-2~~
-
-~~- 업로드 확인~~
-~~aws s3 ls [your_id]-handong2019/original_data/~~
-
-
-~~위와 같이 *aws s3 ls* 명령어로 확인하거나 직접 S3 콘솔에서 파일이 업로드 되어있으면 준비가 완료 되었습니다.~~
+- 업로드 위치: `s3://[your_id]-handong2019/original_data/`
 
 ## Zeppelin을 이용하여 데이터 전처리
 
@@ -432,7 +419,11 @@ Quicksight는 AWS에서 제공하는 BI 툴입니다. 다른 상용 BI툴에 비
 
 ![Quicksight choose table](./images/Day3-31.png)
 
+시각화의 단계는 사실 Data Scientist 들의 영역이기도 하고 데이터에 대한 insight가 필요한 영역이기도 합니다. 기본적인 통계, 집계등을 이용하여 Insight가 있는 시각화를 만드려면 데이터를 이것저것 뒤져봐야 하고 어떤 결과물이 필요한지에 대한 깊은 고민이 필요합니다. 
 
+또한 시각화 레이어에서 필요한 자료가 없을경우 다시 그 자료를 얻기 위해 위의 과정을 반복해야 될 수도 있습니다.
+
+하지만 오늘 우리의 목표는 어쨌든 데이터를 수집하고, 저장하면서 변환하고, 분석하고, 시각화하는 과정을 전체적으로 경험해보는 것입니다. 여기까지 모두 완수했다면 소기의 목적은 달성했다고 생각합니다. 
 
 ## 리소스 삭제
 필요하신 경우가 아니라면 핸즈온을 마치시면 리소스 삭제 부탁드립니다. (비용 청구됨!)
@@ -445,5 +436,11 @@ Quicksight는 AWS에서 제공하는 BI 툴입니다. 다른 상용 BI툴에 비
   
 
 ## 참고자료
-AWS 기반 지속 가능한 데이터 분석 플랫폼 구축하기 (AWS Summit Seoul 2019)
-: https://www.slideshare.net/awskorea/aws-aws-summit-seoul-2019-141290115
+AWS 기반 지속 가능한 데이터 분석 플랫폼 구축하기
+: https://github.com/awskrug/datascience-group/tree/master/workshop-sustainable_data_analysis
+
+위 자료를 토대로 조금 수정해서 만들었습니다. 
+
+Day3 Bigdata 까지 고생이 많았습니다. 
+
+마지막 AI/ML을 향해 조금만 더 힘을 내 봅시다 화이팅! 
