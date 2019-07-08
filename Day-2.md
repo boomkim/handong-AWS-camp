@@ -455,6 +455,12 @@ IAM은 또 뭐람?
 
 ### 5-1. Delete Your Amazon S3 Bucket
 
+S3 버킷부터 지워봅시다
+
+* `[AWS Management Console]` ▷ `[S3]`
+  - `1-2` 단계에서 생성한 S3 버킷 선택
+  - 위에서 수정한 `config.js` 파일을 `/js` 경로에 업로드(덮어쓰기)
+
 ### 5-2. Delete Your Amazon Cognito User Pool
 
 ### 5-3. Delete Your Serverless Backend
