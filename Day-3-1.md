@@ -448,9 +448,17 @@ Field list를 이것저것 조합하고, 값을 조정해보면서 어떤 그래
 리소스 삭제는 하신 작업의 역순으로 하시면 됩니다.
 
   - quicksight 구독 해제 
+    - 오른쪽 위 사람 이미지 -> `Manage QuickSight`
+    - `Account settings` -> `Unsubscribe`
   - Glue 테이블, 크롤러 삭제
+    - glue 콘솔 접속 
+    - `Tables` -> 테이블 선택후 `Actions` -> `Delete Table`
   - S3 데이터 삭제 
-  - EMR + Spark 삭제
+    - s3 콘솔 접속 
+    - 해당 버킷 삭제 
+  - EMR 클러스터 삭제
+    - EMR 콘솔이동 
+    - 해당 클러스터 선택 후 `Terminate`
   
 
 ## 참고자료
