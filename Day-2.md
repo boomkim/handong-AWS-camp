@@ -432,8 +432,19 @@ IAM은 또 뭐람?
 실행 결과 다시 보기
 
 * `[AWS Management Console]` ▷ `[CloudWatch]`
-  - 11
+  - 좌측 탭 `Logs` 선택
+    
+    - Log Groups 객체 중 `/aws/lambda/RequestUnicorn` 선택
+    - 최근 Log Streams 객체 선택 ▷ 람다 함수 실행로그 확인
 
+* `[AWS Management Console]` ▷ `[DynamoDB]`
+  - 좌측 탭 `Tables` 선택 ▷ `Rides`로 되어있는 테이블 선택
+  
+    - `Item` 탭에서 람다 함수에서 기록한 히스토리 레코드 확인
+
+실습은 정말 끝났습니다. 수고하셨습니다.
+
+이제 삭제할일만 남았습니다.
 
 ---
 ## 5. Terminate Resources
