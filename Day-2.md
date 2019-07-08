@@ -403,10 +403,49 @@ IAM은 또 뭐람?
     
 ### 4-5. Update the Website Config
 
+앞에서 한 수정 한번 더
+
+* 로컬 PC에서 다음 작업
+  - `1-3` 단계의 `/WebApplication/1_StaticWebHosting/website/js/config.js` 파일을 에디터로 열기
+
+    - invokeUrl: `4-4` 단계에서 기록한 `Invoke URL`값 붙여넣기    
+    - 에디터에서 `Save`
+
+* `[AWS Management Console]` ▷ `[S3]`
+
+  - `1-2` 단계에서 생성한 S3 버킷 선택
+  - 위에서 수정한 `config.js` 파일을 `/js` 경로에 업로드(덮어쓰기)
+
 ### 4-6. Validate Your Implementation
 
-cloudwatch logs 확인
-dynamodb item 확인
+최종 테스트
+
+* `1-5` 단계에서 기록한 `Endpoint주소/ride.html` 주소로 웹페이지 열기
+  - 아래 항목을 다음과 같이 입력 (미로그인 상태시, 인증상태인 경우 패스)
+
+    - Email: 등록한 이메일 주소
+    - Password: 등록한 암호
+    - 확인 후 `[SIGN IN]`
+  
+  - 원하는 위치 선택 후 우측 상단 `[Request Unicorn]`
+  - 해당 위치로 유니콘이 한마리 찾아오면 성공입니다. 콩그레추레이션!
+    
+실행 결과 다시 보기
+
+* `[AWS Management Console]` ▷ `[CloudWatch]`
+  - 좌측 탭 `Logs` 선택
+    
+    - Log Groups 객체 중 `/aws/lambda/RequestUnicorn` 선택
+    - 최근 Log Streams 객체 선택 ▷ 람다 함수 실행로그 확인
+
+* `[AWS Management Console]` ▷ `[DynamoDB]`
+  - 좌측 탭 `Tables` 선택 ▷ `Rides`로 되어있는 테이블 선택
+  
+    - 상단 `Item` 탭에서 람다 함수에서 기록한 히스토리 레코드 확인
+
+실습은 정말 끝났습니다.
+
+이제 삭제할일만 남았습니다.
 
 ---
 ## 5. Terminate Resources
@@ -416,6 +455,17 @@ dynamodb item 확인
 10분
 
 ### 5-1. Delete Your Amazon S3 Bucket
+
+S3 버킷부터 지워봅시다
+
+* `[AWS Management Console]` ▷ `[S3]`
+  - `1-2` 단계에서 생성한 S3 버킷명 좌측에 체크 표시
+  - 상단 `[Delete]`
+  
+    - 삭제확인을 위해 `버킷명` 입력
+    - 확인 후 `[Confirm]`
+
+
 
 ### 5-2. Delete Your Amazon Cognito User Pool
 
