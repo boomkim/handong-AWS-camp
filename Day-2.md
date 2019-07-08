@@ -412,6 +412,7 @@ IAM은 또 뭐람?
     - 에디터에서 `Save`
 
 * `[AWS Management Console]` ▷ `[S3]`
+
   - `1-2` 단계에서 생성한 S3 버킷 선택
   - 위에서 수정한 `config.js` 파일을 `/js` 경로에 업로드(덮어쓰기)
 
