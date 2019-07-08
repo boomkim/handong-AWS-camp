@@ -458,8 +458,13 @@ IAM은 또 뭐람?
 S3 버킷부터 지워봅시다
 
 * `[AWS Management Console]` ▷ `[S3]`
-  - `1-2` 단계에서 생성한 S3 버킷 선택
-  - 위에서 수정한 `config.js` 파일을 `/js` 경로에 업로드(덮어쓰기)
+  - `1-2` 단계에서 생성한 S3 버킷명 좌측에 체크
+  - 상단 `[Delete]
+  
+    - 삭제확인을 위해 `버킷명` 입력
+    - 확인 후 `[Confirm]`
+
+
 
 ### 5-2. Delete Your Amazon Cognito User Pool
 
