@@ -381,6 +381,7 @@ GROUP BY province_1, province_2
 ORDER BY calls DESC;
 
 ```
+
 ## 5. Quicksight로 시각화하기 
 
 그럼 이제 예쁘게 그림을 그려봅시다. 
