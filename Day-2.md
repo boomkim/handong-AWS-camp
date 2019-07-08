@@ -370,6 +370,7 @@ IAM은 또 뭐람?
       - Resource Path: `ride`
       - Enable API Gateway CORS: 체크함
       - 확인 후 `[Create Resource]`
+      
     - `Resources` 탭 ▷ `/ride` 선택 ▷ `[Actions]` ▷ `[Create Methods]` ▷ dropdown에서 `POST` 선택 ▷ 체크
     
       - Integration type: `Lambda Function`
@@ -387,6 +388,19 @@ IAM은 또 뭐람?
 
 ### 4-4. Deploy Your API
 
+프로덕션 환경으로..
+
+* `[AWS Management Console]` ▷ `[API Gateway]` 
+  - `WildRydes` 선택
+
+    - `Resources` 탭 ▷ `[Actions]` ▷ `[Deploy API]`
+      
+      - Deployment stage: `[New Stage]`
+      - Stage name: `prod`
+      - 확인 후 `[Deploy]`
+    
+    - `Stages` 탭 ▷ `prod` 선택 ▷ 상단에 `Invoke URL` 항목값 별도 기록
+    
 ### 4-5. Update the Website Config
 
 ### 4-6. Validate Your Implementation
