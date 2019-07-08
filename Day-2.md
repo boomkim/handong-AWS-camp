@@ -417,8 +417,21 @@ IAM은 또 뭐람?
 
 ### 4-6. Validate Your Implementation
 
-cloudwatch logs 확인
-dynamodb item 확인
+최종 테스트
+
+* `1-5` 단계에서 기록한 `Endpoint주소/ride.html` 주소로 웹페이지 열기
+  - 아래 항목을 다음과 같이 입력 (미로그인 상태시, 인증상태인 경우 패스)
+
+    - Email: 등록한 이메일 주소
+    - Password: 등록한 암호
+    - 확인 후 `[SIGN IN]`
+  
+  - 원하는 위치를 선택 후 우측 상단 `[Request Unicorn]`
+  - 해당 위치로 유니콘이 한마리 찾아오면 성공입니다. 축하합니다!  
+    
+* `[AWS Management Console]` ▷ `[Cloudwatch]`
+  - 11
+
 
 ---
 ## 5. Terminate Resources
