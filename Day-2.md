@@ -399,6 +399,8 @@ IAM은 또 뭐람?
       - Stage name: `prod`
       - 확인 후 `[Deploy]`
     
+    - `Stages` 탭 ▷ `prod` 선택 ▷ 상단에 `Invoke URL` 항목값 별도 기록
+    
 ### 4-5. Update the Website Config
 
 ### 4-6. Validate Your Implementation
