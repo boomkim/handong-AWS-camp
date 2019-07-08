@@ -114,7 +114,7 @@
 접속URL: http://[생성된 마스터 퍼블릭 DNS]:8890
 ex) http://ec2-**-***-***-**.ap-northeast-1.compute.amazonaws.com:8890
 ```
-### 1-3. Zepplin 세팅하기
+### 1-3. Zeppelin 세팅하기
 
 - 데이터를 Zeppelin을 통해 만지기 전에 간단한 설정들을 해두겠습니다. 
   
@@ -455,7 +455,8 @@ Field list를 이것저것 조합하고, 값을 조정해보면서 어떤 그래
     - `Tables` -> 테이블 선택후 `Actions` -> `Delete Table`
   - S3 데이터 삭제 
     - s3 콘솔 접속 
-    - 해당 버킷 삭제 
+    - `{username}-handong2019`버킷 삭제 
+    - `aws-athena-query-results-{계정번호}-ap-northeast-1` 버킷 내용 삭제 
   - EMR 클러스터 삭제
     - EMR 콘솔이동 
     - 해당 클러스터 선택 후 `Terminate`
