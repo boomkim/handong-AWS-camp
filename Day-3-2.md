@@ -19,12 +19,13 @@ Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠�
 * 인스턴스 타입: `ml.m4.xlarge`
 * IAM Role: `Create a new role` 
 * (팝업창에서) Specific S3 Buckets: `sagemaker-{userid}` (위에서 생성한 버킷) 입력 후 `Create role`
+* (나머지는 모두 그대로)
 * 다시 Create Notebook instance 페이지로 돌아온 뒤 `Create notebook instance` 를 클릭합니다.
 
 ## 3. Notebook Instance 접근 
 
 * 서버 상태가 `InService` 로 바뀔 때까지 기다립니다. 보통 5 분정도의 시간이 소요 됩니다.
-* `InService` 가 된 후 Open을 클릭하면 Notebook으로 접속할 수 있습니다. 
+* `InService` 가 된 후 `Open Jupyter`을 클릭하면 Notebook으로 접속할 수 있습니다. 
 
 ## 4. 실습용 코드 다운로드 
 
@@ -35,14 +36,13 @@ cd SageMaker/
 git clone https://github.com/boomkim/handong-AWS-camp.git
 ```
 * Jupyter notebook refresh 
+* handong-AWS-camp/notebooks 에 노트북을 확인할 수 있습니다. 
 
-{그림이 들어갈 자리}
+![notebook import](./images/Day3-SM-01.png)
 
-## 5. 알고리즘 하나 골라서 테스트
+## 5. XGBoost 체험
 
-~~XGBoost 그냥 그대로 쓸지, 아니면 이미지 분류 할지 생각중~~
-
-## 6. ~~영화추천도 한번 해볼까...........~~
+`module3-video-game-sales-xgboost.ipynb` 을 클릭해서 XGBoost를 한번 체험해 봅시다.  
 
 ## 7. Internet-facing 앱 개발 
 
@@ -58,18 +58,16 @@ git clone https://github.com/boomkim/handong-AWS-camp.git
 
 ### 노트북 소개 
 
-* 노트북 오픈 
+* 노트북 오픈: `module7-SageMaker-Seq2Seq-Translation-English-German-InternetFacingApp`
 * 원본: `/sample-notebooks/introduction_to_amazon_algorithms/seq2seq_translation_en-de/SageMaker- Seq2Seq-Translation-English-German.ipynb`
 
-전체 데이터 중 첫번째 10000개의 데이터의 대해서만 학습을 해서 Seq2Seq 알고리즘의 사용방법을 소개하고 있습니다.
+이번에 실행할 노트북은 원본의 노트북의 내용을 조금 수정한 버전입니다. 원본 노트북에서는 전체 데이터 중 10000개의 샘플 문장만 가지고 학습을 진행합니다. 
 
-실제로는 10000 개의 샘플 문장으로 훈련한 번역기는 좋은 결과를 보여줄 수 없습니다. 그렇지만 전체 데이터 학습을 위해서는 선택하시는 SageMaker 의 서버 Instance Type 에 따라 다르지만 수시간에서 수일의 장시간이 소요될 수 있습니다. 따라서 이 노트북의 개발자들은 좀더 나은 품질의 번역 결과 체험을 원하시는 사용자들 위해 전체 데이터에 이미 훈련이 된 모델을 공유하고 있습니다.
+실제로는 10000 개의 샘플 문장으로 훈련한 번역기는 좋은 결과를 보여줄 수 없습니다. 그렇지만 전체 데이터 학습을 위해서는 선택하시는 SageMaker 의 서버 Instance Type 에 따라 다르지만 수시간에서 수일의 장시간이 소요될 수 있습니다. 
 
-이 Pre-trained model 을 사용하기 위해서는 노트북의 코드 중 Endpoint Configuration 직전의 코드를 아래와 같이 수정해서 이미 훈련된 모델을 다운로드 한 다음 본인의 S3 버켓으로 업로드 하시면 됩니다. 이때 Jupyter 노트북 마지막 줄의 sage.delete_endpoint 는 데모를 계속 진행하기 위해 실행하지 않습니다. 이를 위해 이번에는 가장 마지막 줄에 있는 코드를 주석 처리하겠습니다.
+따라서 이번에는 "Pre-trained"된 모델을 사용합니다. 
 
-### Pre-trained 모델을 사용 하기 위한 노트북 수정
-
-노트북에서 하단의 S3 bucket 이름에 상기 생성한 S3 이름을 입력하시고 우측의 예와 비슷한 형식으로 prefix 를 입력하시면 됩니다 (Figure 11 참조).
+이 Pre-trained model 을 사용하기 위해서는 노트북의 코드 중 S3 Bucket 명만 수정해서 이미 훈련된 모델을 다운로드 한 다음 본인의 S3 버켓으로 업로드 하시면 됩니다. **이때 Jupyter 노트북 마지막 줄의 sage.delete_endpoint 는 데모를 계속 진행하기 위해 실행하지 않습니다.** 이를 위해 이번에는 가장 마지막 줄에 있는 코드를 주석 처리하겠습니다.
 
 ### 노트북 실행 방법
 
@@ -87,31 +85,34 @@ git clone https://github.com/boomkim/handong-AWS-camp.git
 
 본 모듈에서는 방금 생성한 SageMaker 의 Inference service 를 호출하는 Lambda 함수를 개발해 보겠습니다.
 
-## Lambda 함수 생성하기 
+### Lambda 함수 생성하기 
 
 * lambda 콘솔로 이동 
 * `Create function` 클릭 
 * Lambda 
     * `Name`: `MySeq2SeqInference` 
     * `Runtime`: `Python 3.6`
-    * `Role`: `Create a custome role` 선택 후 팝업창에서 `Allow` 클릭 
-    * Lambda 콘솔로 돌아와서 `Create Function` 클릭 
+    * `Role`: `Create a new role with basic Lambda permissions` 선택
+    * `Create Function` 클릭
+    * 생성된 화면에서 role 확인 
+    * `View the {생성된 Role}` on the IAM Console 클릭해서 IAM으로 이동 
+    ![Lambda-IAMRole](./images/Day03-SM-02.png) 
 
 ### Lambda 함수에 Sagemaker 실행 권한(Role) 추가 
 
-* IAM 콘솔로 이동 
-* 왼쪽 메뉴에서 `Roles` 클릭 
-* 방금 생성한 Role을 선택 (ex:`lambda_basic_execution`)
 * `Add inline policy` 클릭 
 * 검색창에서 `SageMaker` 입력 
-* *Access level at Actions* 에서 `DescribeEndpoint` 와 `InvokeEndpoint` 선택 
-* 화면 하단의 *Resources* 에 `You chose actions that require the endpoint-config resource type` 선택 후 `Any` 를 클릭
+* `Actions`-> `Access level` -> `Read` 에서 `DescribeEndpoint` 와 `InvokeEndpoint` 선택 
+* 화면 하단의 `Resources` 에 `You chose actions that require the endpoint-config resource type` 선택 후 `Any` 를 클릭
+![IAM_policy](./images/Day3-SM-03.png)
 * `Review policy` 클릭 
 * 새로운 Policy 이름 입력 (예: `sagemaker_endpoint_policy`)후 `Create Policy` 클릭 
 
+![new-lambda](./images/Day3-SM-04.png) Sagemaker 권한이 추가되었습니다. 
+
 ## Lambda 함수 코딩하기 
 
-* 아래 코드를 붙여넣습니다. `endpoint`는 자신이 만든 endpoint로 바꿔줍니다.(Sagemaker Endpoint)
+* 람다의 콘솔로 돌아와서 아래 코드를 붙여넣습니다. `endpoint`는 자신이 만든 endpoint로 바꿔줍니다.(Sagemaker Endpoint)
 
 ```python
 import boto3
@@ -128,7 +129,7 @@ def lambda_handler(event, context):
     for sent in sentences:
         payload["instances"].append({"data" : sent["query"]})
     
-    response = sagemaker.invoke_endpoint(EndpointName={endpoint_name}, 
+    response = sagemaker.invoke_endpoint(EndpointName=endpoint_name, 
                                        ContentType='application/json', 
                                        Body=json.dumps(payload))
     
@@ -141,8 +142,13 @@ def lambda_handler(event, context):
 
 * Lambda의 Timeout 시간을 10초로 늘입니다.
 
+![lambda-timeout](./images/Day3-SM-05.png)
+
+* 일단 여기서 `Save` 
 
 ### test event 생성 
+
+![lambda-testevent](./images/Day3-SM-06.png)
 
 * configure test events 
 * Event name 입력 (예:`SampleEnglishSentence`)
@@ -158,9 +164,11 @@ def lambda_handler(event, context):
     ] 
 }
 ```
-
+![test event sample](./images/Day3-SM-07.png)
 * `Create` 클릭 
 * `Test` 클릭 후 결과 확인 
+
+![test result sample](./images/Day3-SM-08.png)
 
 ## 7-3 AWS API Gateway 와 S3 Static Web Server 를 이용한 웹서비스 연결하기
 
