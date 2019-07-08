@@ -403,6 +403,18 @@ IAM은 또 뭐람?
     
 ### 4-5. Update the Website Config
 
+앞에서 한 수정 한번 더
+
+* 로컬 PC에서 다음 작업
+  - `1-3` 단계의 `/WebApplication/1_StaticWebHosting/website/js/config.js` 파일을 에디터로 열기
+
+    - invokeUrl: `4-4` 단계에서 기록한 `Invoke URL`값 붙여넣기    
+    - 에디터에서 `Save`
+
+* `[AWS Management Console]` ▷ `[S3]`
+  - `1-2` 단계에서 생성한 S3 버킷 선택
+  - 위에서 수정한 `config.js` 파일을 `/js` 경로에 업로드(덮어쓰기)
+
 ### 4-6. Validate Your Implementation
 
 cloudwatch logs 확인
