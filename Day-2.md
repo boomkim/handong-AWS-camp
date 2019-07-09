@@ -465,9 +465,16 @@ S3 버킷부터 지워봅시다
     - 삭제확인을 위해 `버킷명` 입력
     - 확인 후 `[Confirm]`
 
-
-
 ### 5-2. Delete Your Amazon Cognito User Pool
+
+딱풀을 지워봅시다
+
+* `[AWS Management Console]` ▷ `[Cognito]` ▷ `[Manage User Pools]`
+  - `WildRydes` 객체 선택
+  - 우측 상단 `[Delete pool]`
+  
+    - 삭제확인을 위해 `delete` 입력
+    - 확인 후 `[Delete pool]`
 
 ### 5-3. Delete Your Serverless Backend
 
