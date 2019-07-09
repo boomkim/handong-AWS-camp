@@ -653,10 +653,8 @@ RDS부터 지워봅시다
 - `[AWS Management Console]` ▷ `[RDS]`
     - **labdbinstance**을 클릭하고 상단 `[작업]` ▷ `[삭제]` 클릭
         - 최종 스냅샷 생성 여부 **Check** 해제
-        - Retain automated backups **Check** 해제
-        - 인스턴스 삭제 시 시스템 스냅샷 및 특정 시점으로 복구를 포함한 자동화된 백업을 더 이상 사용할 수 없다는 점을 인정합니다. **Check**
-        - 삭제를 확인하려면 아래 필드에 **delete me**라는 문구를 입력
-        - `[삭제]` 클릭
+        - 인스턴스 삭제 시 시스템 스냅샷 및 특정 시점으로 복구를 포함한 자동화된 백업을 더 이상 사용할 수 없다는 항목에 **Check**
+        - 삭제를 확인하려면 아래 필드에 **delete me**라는 문구를 입력 후 `[삭제]` 클릭
 
 <br>
 
@@ -670,7 +668,7 @@ AutoScaling으로 생성된 EC2를 지워봅시다
 
 - `[AWS Management Console]` ▷ `[EC2]` ▷ `[AMI]` 클릭
     - **Web Server AMI**의 AMI ID를 기록 (예: ami-0ea06fc7ff2beb3ae)
-    - **Web Server AMI**를 클릭하고 상단 `[작업]` ▷ `[등록 취소]`를 클릭
+    - **Web Server AMI**를 클릭하고 상단 `[작업]` ▷ `[등록 취소]`▷ `[계속]` 클릭
 
 - `[AWS Management Console]` ▷ `[EC2]` ▷ `[스냅샷]` 클릭
     - **Web Server AMI**의 AMI ID로 검색
@@ -682,6 +680,8 @@ AutoScaling으로 생성된 EC2를 지워봅시다
 VPC 마법사로 생성된 EC2 Instance를 지워 봅시다
 - `[AWS Management Console]` ▷ `[EC2]` 클릭
     - **NAT Instance**을 클릭하고 상단 `[작업]` ▷ `[인스턴스 상태]` ▷ `[종료]` 클릭
+- `[AWS Management Console]` ▷ `[EC2]` ▷ `[탄력적 IP]`클릭
+    - **NAT Instance**가 사용했떤 탄력적 IP를 클릭하고 `[작업]` ▷ `[주소 릴리스]` ▷ `[릴리스]` 클릭
 
 <br>
 
@@ -692,9 +692,9 @@ ELB도 지워봅시다
 
 <br>
 
-![image](/images/Day1-Ending.jpg)
+![image](/images/Day1-Ending.png)
 
 
 수고하셨습니다.
 
-내일 수업을 기대해주세요!
+내일 Day-2 수업을 기대해주세요!
