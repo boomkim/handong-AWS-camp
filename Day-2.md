@@ -433,7 +433,7 @@ IAM은 또 뭐람?
 실행 결과 다시 보기
 
 * `[AWS Management Console]` ▷ `[CloudWatch]`
-  - 좌측 탭 `Logs` 선택
+  - 좌측 `Logs` 탭 선택
     
     - Log Groups 객체 중 `/aws/lambda/RequestUnicorn` 선택
     - 최근 Log Streams 객체 선택 ▷ 람다 함수 실행로그 확인
@@ -477,6 +477,33 @@ S3 버킷부터 지워봅시다
     - 확인 후 `[Delete pool]`
 
 ### 5-3. Delete Your Serverless Backend
+
+세개를 지워야 합니다
+Lambda / IAM Role / DynamoDB
+
+* `[AWS Management Console]` ▷ `[Lambda]`
+  - 좌측 `Functions` 탭 선택
+  - `RequestUnicorn` 객체 좌측에 체크 표시
+  - 우측 상단 `[Actions]` ▷ `[Delete]`
+  
+    - 팝업창 확인 후 `[Delete]`
+    
+* `[AWS Management Console]` ▷ `[IAM]` ▷ `[Manage User Pools]`
+  - `WildRydes` 객체 선택
+  - 우측 상단 `[Delete pool]`
+  
+    - 삭제확인을 위해 `delete` 입력
+    - 확인 후 `[Delete pool]`
+
+* `[AWS Management Console]` ▷ `[DynamoDB]` ▷ `[Manage User Pools]`
+  - `WildRydes` 객체 선택
+  - 우측 상단 `[Delete pool]`
+  
+    - 삭제확인을 위해 `delete` 입력
+    - 확인 후 `[Delete pool]`
+
+    
+    
 
 ### 5-4. Delete Your REST API
 
