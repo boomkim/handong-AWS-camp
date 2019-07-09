@@ -6,7 +6,7 @@
 
 ## 바로가기
 
-* 총 5단계로 구성되어 있으며 각 단계는 빠르면 10분에서 30분정도 소요됩니다
+* 총 5단계로 구성되어 있으며 각 단계별로 빠르면 10분에서 30분정도의 시간이 소요됩니다
 
 ### [① Host a Static Website](#1-host-a-static-website)
 ### [② Manage Users](#2-manage-users)
