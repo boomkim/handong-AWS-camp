@@ -5,12 +5,14 @@
 * 구현 방법이 1일차와 어떻게 다른지. 그리고 각기 어떤 장단점이 있을지에 대해 생각해봅시다
 
 ## 바로가기
+
+* 총 5단계로 구성되어 있으며 각 단계는 빠르면 10분에서 30분정도 소요됩니다
+
 ### [① Host a Static Website](#1-host-a-static-website)
 ### [② Manage Users](#2-manage-users)
 ### [③ Build a Serverless Backend](#3-bulid-a-serverless-backend)
 ### [④ Deploy a RESTful API](#4-deploy-a-restful-api)
 ### [⑤ Terminate Resources](#5-terminate-resources)
-
 
 ## 개요
 
