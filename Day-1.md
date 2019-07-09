@@ -628,21 +628,38 @@ RDS부터 지워봅시다
     - 삭제를 확인하려면 아래 필드에 **delete me**라는 문구를 입력
     - `[삭제]` 클릭
 
-2. Delete Your EC2
+<br>
+
+2. Delete Your EC2 (AutoScaling Instance)
 - `[AWS Management Console]` ▷ `[EC2]` ▷ `[Auto Scaling]` 그룹 클릭
-    - **Lab3ASGroup**을 클릭하고 상단 [작업] ▷ `[삭제]` 클릭
+    - **Lab3ASGroup**을 클릭하고 상단 `[작업]` ▷ `[삭제]` 클릭
 
 - `[AWS Management Console]` ▷ `[EC2]` ▷ `[시작 구성]` 클릭
-    - **Lab3Config**을 클릭하고 상단 [작업] ▷ `[시작 구성 삭제]` 클릭
+    - **Lab3Config**을 클릭하고 상단 `[작업]` ▷ `[시작 구성 삭제]` 클릭
 
-3. Delete Your ELB
+- `[AWS Management Console]` ▷ `[EC2]` ▷ `[AMI]` 클릭
+    - **Web Server AMI**의 AMI ID를 기록 (예: ami-0ea06fc7ff2beb3ae)
+    - **Web Server AMI**를 클릭하고 상단 `[작업]` ▷ `[등록 취소]`를 클릭
+
+- `[AWS Management Console]` ▷ `[EC2]` ▷ `[스냅샷]` 클릭
+    - **Web Server AMI**의 AMI ID로 검색
+    - 검색된 스냅샷을 클릭하고 상단 `[작업]` ▷ `[삭제]` ▷ `[예, 삭제]`를 클릭
+
+<br>
+
+3. Delete Your EC2 (NAT Instance)
+- `[AWS Management Console]` ▷ `[EC2]` 클릭
+    - **NAT Instance**을 클릭하고 상단 `[작업]` ▷ `[인스턴스 상태]` ▷ `[종료]` 클릭
+
+<br>
+
+4. Delete Your ELB
 - `[AWS Management Console]` ▷ `[EC2]` ▷ `[로드 밸런서]` 클릭
     - **Lab3ELB**을 클릭하고 상단 [작업] ▷ `[삭제]` 클릭 ▷ `[예, 삭제]`
 
+![image](/images/Day1-Ending.jpg)
 
 
+수고하셨습니다.
 
-
-수고하셨습니다. 
-
-일 수업이 정말 재밌습니다. 기대해주세요.
+내일 수업을 기대해주세요!
