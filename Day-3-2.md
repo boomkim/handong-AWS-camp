@@ -44,7 +44,7 @@ git clone https://github.com/boomkim/handong-AWS-camp.git
 
 `module3-video-game-sales-xgboost.ipynb` 을 클릭해서 XGBoost를 한번 체험해 봅시다.  
 
-## 7. Internet-facing 앱 개발 
+## 6. Internet-facing 앱 개발 
 
 3일간의 코스 중 마지막을 장식할 세션입니다
 
@@ -54,7 +54,7 @@ git clone https://github.com/boomkim/handong-AWS-camp.git
 
 **예상시간: 약 1시간 ~ 1시간 30분**
 
-## 7.1 영어-독어 번역 ML 모델 생성
+## 6.1 영어-독어 번역 ML 모델 생성
 
 ### 노트북 소개 
 
@@ -81,7 +81,7 @@ git clone https://github.com/boomkim/handong-AWS-camp.git
 
 **노트북 가장 하단의 delete_endpoint는 실행시키지 마세요**
 
-## 7-2 Samemaker Endpoint 호출 Lambda 함수 개발 
+## 6-2 Samemaker Endpoint 호출 Lambda 함수 개발 
 
 본 모듈에서는 방금 생성한 SageMaker 의 Inference service 를 호출하는 Lambda 함수를 개발해 보겠습니다.
 
@@ -170,20 +170,20 @@ def lambda_handler(event, context):
 
 ![test result sample](./images/Day3-SM-08.png)
 
-## 7-3 AWS API Gateway 와 S3 Static Web Server 를 이용한 웹서비스 연결하기
+## 6-3 AWS API Gateway 와 S3 Static Web Server 를 이용한 웹서비스 연결하기
 
 ### API Gateway 생성 및 Lambda 함수 연결하기
 
 *  Amazon API Gateway 콘솔 접속 
-* `Create API` -> `New API` 선택
+* `Create API` -> `New API` 선택 (혹은 `Get Started` 선택  -> `Create new API` 에서 `New API` 선택)
 * `API NAME`: (예: `SageMakerSeq2SeqLambdaGateWay`)
 * `Endpoint Type`: `Regional` 선택 후 `Create API`
 * 바뀐 화면에서 `Actions` -> `Create Method` 선택
 * 하단의 콤보 박스에서 `POST` 선택 후 체크(V) 버튼 클릭 
 * 오른쪽의 셋업 창에서 다음과 같이 입력 
     * `Integration type`: `Lambda function`
-    * `Lambda region` : Labmda 를 생성하신 Region (ap-northeast-2) 입력 
-    * `Lambda function`: Lambda 함수 이름 입력
+    * `Lambda region` : Labmda 를 생성한 Region (ap-northeast-2) 입력 
+    * `Lambda function`: Lambda 함수 이름 입력 (`MySeq2SeqInference`)
     * `Save` 선택
 * Lambda Test
     * `Test` 클릭 
@@ -212,26 +212,51 @@ def lambda_handler(event, context):
 ### S3를 이용해 Static web server를 설정하기 위한 파일 준비
 
 * API Gateway SDK 생성으로 다운받은 압축파일을 unzip 
+* [여기](https://bhkim2019.s3.ap-northeast-2.amazonaws.com/index_error_html.zip)에서 파일 다운로드 후 압축 해제
 * S3 Static 웹 서버에 사용될 index.html 과 error.html 파일 압축이 풀린 폴더에 저장
 
-{그림이 들어갈 자리- 폴더 구조 예시} 
+![버킷 내용 예시](./images/Day3-SM-09.png)
+이렇게 4개의 파일 1개의 폴더가 있으면 됩니다. 
 
 ### S3 Static Web Server 생성하기 
 
 * Amazon S3 콘솔 접속 
 * `Create Bucket` 선택
-* 새로운 버킷 이름 입력 (ex: `chulsoo-sagemaker-public-test`) -> `Next` -> `Next` 선택 
-* `Set permissions` 에서 `Manage public permission`를 `Grant public read access to this bucket`으로 설정 
+* 새로운 버킷 이름 입력 (ex: `{username}-sagemaker-public-test`) -> `Next` -> `Next` 선택 
+* `Set permissions` 에서 `Block all public access` 해제 
+![Set Permissions](./images/Day3-SM-10.png)
 * `Next`-> `Create Bucket` 선택 
 * 생성된 S3 bucket 선택 
 * `Properties` -> `Static website hosting` -> `Use this bucket to host a website` 선택 후 `Index document`: `index.html`, `Error document`: `error.html` 입력 
 * `Save` 선택 
+![Static website hosting](./images/Day3-SM-11.png)
 * 상단의 Endpoint 메모장에 기록 
 * `Overview` 탭 선택 -> `Upload` 선택 
 * 파일들 업로드, `Set permissions` 에서 `Grant public read access to this object(s)` 설정 
+![S3 Overview](./images/Day3-SM-12.png)
 
-### 서비스 테스트하기 
+## 6-4 서비스 테스트하기 
 
 * 웹브라우저(Chrome, IE, Safari 뭐든... )에서 기록해둔 S3 Endpoint URL에 접속. 
 * Translate to German 오른편의 텍스트 입력창에 영문 문장을 입력 (Ex. "I love you")
-* 잠시 뒤에 결과가 보여집니다.(보이길 바랍니다ㅜㅜ)
+* 잠시 뒤에 결과가 보여집니다.
+
+![Result](./images/Day3-SM-13.png)
+
+## 7. 정리 
+
+~~분해는 결합의 역순~~
+
+지금까지 구성한것을 역순으로 하나씩 삭제합니다. 
+
+* S3 버킷 삭제 
+    * `sagemaker-{username}`
+    * `{username}-sagemaker-publict-test`
+* API 삭제
+    * `Actions` -> `Delete API`
+* Sagemaker Endpoint 삭제 
+* Sagemaker 모델 삭제 
+    * pretrained model
+    * XGboost Model 
+* Sagemaker Notebook 종료 
+    * `Stop` -> `Delete` 
