@@ -32,11 +32,11 @@
 ### [구성도]
 ![image](/images/Day2-0.png)
 
-* Amazon S3: HTML/CSS/JavaScript/Image 등의 Static Contents를 Client에게 Serving
-* Amazon Cognito: 
-* AWS Lambda: 옆에 적으면 어떻게 되나?
-* Amazon API Gateway: 
-* Amazon DynamoDB:
+* Amazon S3: HTML/CSS/JavaScript/Image 등의 Static Contents를 Client에게 제공
+* Amazon Cognito: 웹페이지 內 구현된 사용자 인증 관리에 활용
+* AWS Lambda: Dynamic한 형태의 Client 요청을 받아 수행하고 DB에 히스토리를 기록
+* Amazon API Gateway: 사용자 인증정보를 연동하고 뒷단의 람다 함수를 실행해주기 위한 API G/W
+* Amazon DynamoDB: 히스토리를 저장하기 위한 NoSQL 기반의 관리형 DB
 
 ## 1. Host a Static Website
 
