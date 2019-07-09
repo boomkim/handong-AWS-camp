@@ -511,4 +511,24 @@ Lambda / IAM Role / DynamoDB
 
 ### 5-4. Delete Your REST API
 
+진짜 마지막으로 API Gateway 객체를 지웁니다.
+
+* `[AWS Management Console]` ▷ `[API Gateway]`
+  - `WildRydes` 선택
+  - 상단 `[Actions]` ▷ `[Delete API]`  
+  
+    - 공란에 `WildRydes` 입력
+    - 확인 후 `[Delete API]`
+    
 ### 5-5. Delete Your CloudWatch Log
+
+정말로 마지막으로 CloudWatch Log Group을 지웁니다
+
+* `[AWS Management Console]` ▷ `[CloudWatch]`
+  - 좌측 `Logs` 탭 선택
+  - `/aws/lambda/RequestUnicorn` 객체 좌측에 체크 표시
+  - 상단 `[Actions]` ▷ `[Delete log group]` 
+      
+    - 확인 후 `[Yes, Delete]`
+
+수고하셨습니다. 집에 가셔도 됩니다
