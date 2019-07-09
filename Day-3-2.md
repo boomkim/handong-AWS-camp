@@ -215,7 +215,7 @@ def lambda_handler(event, context):
 * [여기](https://bhkim2019.s3.ap-northeast-2.amazonaws.com/index_error_html.zip)에서 파일 다운로드 후 압축 해제
 * S3 Static 웹 서버에 사용될 index.html 과 error.html 파일 압축이 풀린 폴더에 저장
 
-![버킷 내용 예시](./images/Day3-SM-09.png)
+![버킷 내용 예시](./images/Day3-SM-12.png)
 이렇게 4개의 파일 1개의 폴더가 있으면 됩니다. 
 
 ### S3 Static Web Server 생성하기 
@@ -254,6 +254,8 @@ def lambda_handler(event, context):
     * `{username}-sagemaker-publict-test`
 * API 삭제
     * `Actions` -> `Delete API`
+* Lambda 함수 삭제 
+* IAM Role 삭제 
 * Sagemaker Endpoint 삭제 
 * Sagemaker 모델 삭제 
     * pretrained model
