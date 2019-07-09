@@ -1,14 +1,18 @@
 # Build a Serverless Web Application
 
-* 2일차 블라블라
+* 오늘 실습에서는 Serverless 기반으로 간단한 웹서비스를 구성합니다
+* 1일차 실습과 달리 가상 네트워크(VPC)를 구성하거나 가상 서버(EC2)를 생성하지 않습니다
+* 구현 방법이 1일차와 어떻게 다른지. 그리고 각기 어떤 장단점이 있을지에 대해 생각해봅시다
 
 ## 바로가기
+
+* 총 5단계로 구성되어 있으며 각 단계별로 빠르면 10분에서 30분정도의 시간이 소요됩니다
+
 ### [① Host a Static Website](#1-host-a-static-website)
 ### [② Manage Users](#2-manage-users)
 ### [③ Build a Serverless Backend](#3-bulid-a-serverless-backend)
 ### [④ Deploy a RESTful API](#4-deploy-a-restful-api)
 ### [⑤ Terminate Resources](#5-terminate-resources)
-
 
 ## 개요
 
@@ -433,7 +437,7 @@ IAM은 또 뭐람?
 실행 결과 다시 보기
 
 * `[AWS Management Console]` ▷ `[CloudWatch]`
-  - 좌측 탭 `Logs` 선택
+  - 좌측 `Logs` 탭 선택
     
     - Log Groups 객체 중 `/aws/lambda/RequestUnicorn` 선택
     - 최근 Log Streams 객체 선택 ▷ 람다 함수 실행로그 확인
@@ -465,12 +469,74 @@ S3 버킷부터 지워봅시다
     - 삭제확인을 위해 `버킷명` 입력
     - 확인 후 `[Confirm]`
 
-
-
 ### 5-2. Delete Your Amazon Cognito User Pool
+
+딱풀을 지워봅시다
+
+* `[AWS Management Console]` ▷ `[Cognito]` ▷ `[Manage User Pools]`
+  - `WildRydes` 객체 선택
+  - 우측 상단 `[Delete pool]`
+  
+    - 삭제확인을 위해 `delete` 입력
+    - 확인 후 `[Delete pool]`
 
 ### 5-3. Delete Your Serverless Backend
 
+세개를 지워야 합니다.
+Lambda / IAM Role / DynamoDB
+
+* `[AWS Management Console]` ▷ `[Lambda]`
+  - 좌측 `Functions` 탭 선택
+  - `RequestUnicorn` 객체 좌측에 체크 표시
+  - 우측 상단 `[Actions]` ▷ `[Delete]`
+  
+    - 팝업창 확인 후 `[Delete]`
+
+이번엔 IAM Role 객체를 지웁니다.
+
+* `[AWS Management Console]` ▷ `[IAM]`
+  - 좌측 `Roles` 탭 선택
+  - Search Window: `WildRydesLambda` ▷ 검색된 객체 좌측에 체크 표시 ▷ `[Delete role]` 선택
+  
+    - 팝업창 확인 후 `Yes, delete`
+
+마지막으로 DynamoDB 테이블을 지웁니다.
+
+* `[AWS Management Console]` ▷ `[DynamoDB]`
+  - 좌측 `Tables` 탭 선택
+  - `Rides` 객체 좌측에 체크 표시
+  - 상단 `[Delete table]`
+  
+    - Delete all CloudWatch alarms for this table: 체크함
+    - Create a backup before deleting this table: 체크 해제
+    - 확인 후 `[Delete]`
+    
+아이고 힘들다    
+
 ### 5-4. Delete Your REST API
 
+진짜 마지막으로 API Gateway 객체를 지웁니다.
+
+* `[AWS Management Console]` ▷ `[API Gateway]`
+  - `WildRydes` 선택
+  - 상단 `[Actions]` ▷ `[Delete API]`  
+  
+    - 공란에 `WildRydes` 입력
+    - 확인 후 `[Delete API]`
+    
 ### 5-5. Delete Your CloudWatch Log
+
+정말로 마지막으로 CloudWatch Log Group을 지웁니다
+
+* `[AWS Management Console]` ▷ `[CloudWatch]`
+  - 좌측 `Logs` 탭 선택
+  - `/aws/lambda/RequestUnicorn` 객체 좌측에 체크 표시
+  - 상단 `[Actions]` ▷ `[Delete log group]` 
+      
+    - 확인 후 `[Yes, Delete]`
+
+![image](/images/Day2-FN.png)
+
+수고하셨습니다. 집에 가셔도 됩니다
+
+
