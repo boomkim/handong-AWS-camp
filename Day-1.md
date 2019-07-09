@@ -593,6 +593,11 @@ Day-1 실습2를 완료하셨습니다. 축하드립니다!
     - 이 인스턴스의 `[상태]`가 `[InService]`로 바뀔 때까지 대기
     - 오른쪽 위에 있는 `[새로고침]` 버튼을 사용하여 업데이트를 확인
 - 1.4.6	로드 밸런서가 인스턴스의 `[상태]` 필드 아래에 `[InService]`를 표시
+- 1.4.7 퍼블릭 액세스 가능한 최초 웹 서버는 더 이상 필요없기에 아래와 같이 삭제를 진행
+    - `[서비스]` 메뉴에서 `[EC2]`를 클릭
+    - EC2 탐색 창에서 `[인스턴스]`를 클릭
+    - `[Web Server 1]`을 마우스 오른쪽 버튼으로 클릭
+    - `[인스턴스 상태]`에서 `[종료]`를 클릭
 
 <br>
 
@@ -632,20 +637,9 @@ Day-1 실습2를 완료하셨습니다. 축하드립니다!
 
 <br>
 
-### Task 2.2 : 첫 번째 웹 서버 인스턴스 시작
-본 작업에서는 퍼블릭 서브넷2의 웹 서버 1을 종료, Auto Scaling 그룹이 프라이빗 서브넷에서 인스턴스를 시작했습니다.
-
-공개적으로 액세스 가능한 원래 웹 서버는 더 이상 필요없기에 아래와 같이 삭제를 진행합니다.
-- 2.2.1	`[서비스]` 메뉴에서 `[EC2]`를 클릭
-- 2.2.2	EC2 탐색 창에서 `[인스턴스]`를 클릭
-- 2.2.3	`[Web Server 1]`을 마우스 오른쪽 버튼으로 클릭
-    -  `[인스턴스 상태]`에서 `[종료]`를 클릭
-
-<br>
-
 Day-1 실습3을 완료하셨습니다. 축하드립니다!
 
-Auto Scaling과 Elastic Load Balancer을 사용하여 인프라를 관리하는 작업을 성공적으로 완료했습니다.
+본 작업에서는 퍼블릭 서브넷2의 웹 서버 1을 종료하였고, Auto Scaling으로 EC2 웹 서버를 프라이빗 서브넷에 추가하고 Elastic Load Balancer을 사용하여 인프라의 부하분산을 하는 작업을 성공적으로 완료했습니다.
 
 <br>
 
@@ -656,7 +650,7 @@ Auto Scaling과 Elastic Load Balancer을 사용하여 인프라를 관리하는 
 1. Delete Your Amazon RDS
 RDS부터 지워봅시다
 
-- `[AWS Management Console]` ▷ `[S3]`
+- `[AWS Management Console]` ▷ `[RDS]`
     - **labdbinstance**을 클릭하고 상단 `[작업]` ▷ `[삭제]` 클릭
         - 최종 스냅샷 생성 여부 **Check** 해제
         - Retain automated backups **Check** 해제
@@ -667,6 +661,7 @@ RDS부터 지워봅시다
 <br>
 
 2. Delete Your EC2 (AutoScaling Instance)
+AutoScaling으로 생성된 EC2를 지워봅시다
 - `[AWS Management Console]` ▷ `[EC2]` ▷ `[Auto Scaling]` 그룹 클릭
     - **Lab3ASGroup**을 클릭하고 상단 `[작업]` ▷ `[삭제]` 클릭
 
@@ -684,12 +679,14 @@ RDS부터 지워봅시다
 <br>
 
 3. Delete Your EC2 (NAT Instance)
+VPC 마법사로 생성된 EC2 Instance를 지워 봅시다
 - `[AWS Management Console]` ▷ `[EC2]` 클릭
     - **NAT Instance**을 클릭하고 상단 `[작업]` ▷ `[인스턴스 상태]` ▷ `[종료]` 클릭
 
 <br>
 
 4. Delete Your ELB
+ELB도 지워봅시다
 - `[AWS Management Console]` ▷ `[EC2]` ▷ `[로드 밸런서]` 클릭
     - **Lab3ELB**을 클릭하고 상단 [작업] ▷ `[삭제]` 클릭 ▷ `[예, 삭제]`
 
