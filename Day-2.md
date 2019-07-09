@@ -32,10 +32,22 @@
 ### [구성도]
 ![image](/images/Day2-0.png)
 
-서비스 역할
+* Amazon S3
+  - 
+  
+* Amazon Cognito
+  - 
 
-무엇무엇을 한다
+* AWS Lambda
+  - 
 
+* Amazon API Gateway
+  -
+  
+* Amazon DynamoDB
+  -
+  
+무엇무엇을 하고 연관관계가 어떻게 되어 
 
 
 ## 1. Host a Static Website
@@ -47,7 +59,7 @@
 30분
 
 ### 1-1. Select a Region
-- `[AWS Management Console]` ▷ 우측 상단 Region 부분에 `Asia Pacific (Seoul)` 선택
+* `[AWS Management Console]` ▷ 우측 상단 Region 부분에 `Asia Pacific (Seoul)` 선택
 
 ### 1-2. Create an S3 Bucket
 
