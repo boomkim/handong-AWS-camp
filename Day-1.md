@@ -694,7 +694,10 @@ ELB도 지워봅시다
 
 ![image](/images/Day1-Ending.png)
 
+<br>
 
 수고하셨습니다.
 
 내일 Day-2 수업을 기대해주세요!
+
+
