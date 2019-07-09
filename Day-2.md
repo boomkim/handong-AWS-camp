@@ -490,24 +490,24 @@ Lambda / IAM Role / DynamoDB
 
 이번엔 IAM Role 객체를 지웁니다.
 
-* `[AWS Management Console]` ▷ `[IAM]` ▷ `[Manage User Pools]`
-  - `WildRydes` 객체 선택
-  - 우측 상단 `[Delete pool]`
+* `[AWS Management Console]` ▷ `[IAM]`
+  - 좌측 `Roles` 탭 선택
+  - Search Window: `WildRydesLambda` ▷ 검색된 객체 좌측에 체크 표시 ▷ `[Delete role]` 선택
   
-    - 삭제확인을 위해 `delete` 입력
-    - 확인 후 `[Delete pool]`
+    - 팝업창 확인 후 `Yes, delete`
 
 마지막으로 DynamoDB 테이블을 지웁니다.
 
-* `[AWS Management Console]` ▷ `[DynamoDB]` ▷ `[Manage User Pools]`
-  - `WildRydes` 객체 선택
-  - 우측 상단 `[Delete pool]`
+* `[AWS Management Console]` ▷ `[DynamoDB]`
+  - 좌측 `Tables` 탭 선택
+  - `Rides` 객체 좌측에 체크 표시
+  - 상단 `[Delete table]`
   
-    - 삭제확인을 위해 `delete` 입력
-    - 확인 후 `[Delete pool]`
-
+    - Delete all CloudWatch alarms for this table: 체크함
+    - Create a backup before deleting this table: 체크 해제
+    - 확인 후 `[Delete]`
     
-    
+아이고 힘들다    
 
 ### 5-4. Delete Your REST API
 
