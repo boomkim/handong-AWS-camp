@@ -38,9 +38,8 @@
 * Amazon Cognito
   - 인증
 
-* AWS Lambda
-  - 함수
-
+* AWS Lambda: 옆에 적으면 어떻게 되나?
+  
 * Amazon API Gateway
   - 받아준다
   
