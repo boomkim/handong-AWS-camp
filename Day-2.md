@@ -545,6 +545,6 @@ Lambda / IAM Role / DynamoDB
 
 ![image](/images/Day2-FN.png)
 
-수고하셨습니다. 집에 가셔도 됩니다
+수고하셨습니다. 오늘은 집에 가셔도 됩니다.
 
 
