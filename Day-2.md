@@ -32,22 +32,11 @@
 ### [구성도]
 ![image](/images/Day2-0.png)
 
-* Amazon S3
-  - 글씨가 왜 이리 크니
-  
-* Amazon Cognito
-  - 인증
-
+* Amazon S3: HTML/CSS/JavaScript/Image 등의 Static Contents를 Client에게 Serving
+* Amazon Cognito: 
 * AWS Lambda: 옆에 적으면 어떻게 되나?
-  
-* Amazon API Gateway
-  - 받아준다
-  
-* Amazon DynamoDB
-  - database
-  
-무엇무엇을 하고 연관관계가 어떻게 되어 
-
+* Amazon API Gateway: 
+* Amazon DynamoDB:
 
 ## 1. Host a Static Website
 
