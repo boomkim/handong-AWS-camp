@@ -34,8 +34,8 @@
 
 * _Amazon S3_: HTML/CSS/JavaScript/Image 등의 Static Contents를 Client에게 제공
 * _Amazon Cognito_: 웹페이지 內 구현된 사용자 인증 관리에 활용
-* _AWS Lambda_: Dynamic한 형태의 Client 요청을 받아 수행하고 DB에 히스토리를 기록
-* _Amazon API Gateway_: 사용자 인증을 연동하고 뒷단의 람다 함수를 실행해주기 위한 Gateway 역할
+* _AWS Lambda_: Dynamic한 형태의 Client 요청을 받아 수행하고 DynamoDB에 히스토리를 기록
+* _Amazon API Gateway_: 사용자 인증을 Cognito와 연동하고 뒷단 Lambda 함수를 실행하기 위한 Gateway
 * _Amazon DynamoDB_: 히스토리를 저장하기 위한 NoSQL 기반의 관리형 DB
 
 ## 1. Host a Static Website
