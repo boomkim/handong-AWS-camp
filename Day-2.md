@@ -531,4 +531,8 @@ Lambda / IAM Role / DynamoDB
       
     - 확인 후 `[Yes, Delete]`
 
+![image](/images/Day2-FN.png)
+
 수고하셨습니다. 집에 가셔도 됩니다
+
+
