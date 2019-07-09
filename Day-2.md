@@ -33,19 +33,19 @@
 ![image](/images/Day2-0.png)
 
 * Amazon S3
-  - 
+  - 글씨가 왜 이리 크니
   
 * Amazon Cognito
-  - 
+  - 인증
 
 * AWS Lambda
-  - 
+  - 함수
 
 * Amazon API Gateway
-  -
+  - 받아준다
   
 * Amazon DynamoDB
-  -
+  - database
   
 무엇무엇을 하고 연관관계가 어떻게 되어 
 
