@@ -478,7 +478,7 @@ S3 버킷부터 지워봅시다
 
 ### 5-3. Delete Your Serverless Backend
 
-세개를 지워야 합니다
+세개를 지워야 합니다.
 Lambda / IAM Role / DynamoDB
 
 * `[AWS Management Console]` ▷ `[Lambda]`
@@ -487,13 +487,17 @@ Lambda / IAM Role / DynamoDB
   - 우측 상단 `[Actions]` ▷ `[Delete]`
   
     - 팝업창 확인 후 `[Delete]`
-    
+
+이번엔 IAM Role 객체를 지웁니다.
+
 * `[AWS Management Console]` ▷ `[IAM]` ▷ `[Manage User Pools]`
   - `WildRydes` 객체 선택
   - 우측 상단 `[Delete pool]`
   
     - 삭제확인을 위해 `delete` 입력
     - 확인 후 `[Delete pool]`
+
+마지막으로 DynamoDB 테이블을 지웁니다.
 
 * `[AWS Management Console]` ▷ `[DynamoDB]` ▷ `[Manage User Pools]`
   - `WildRydes` 객체 선택
