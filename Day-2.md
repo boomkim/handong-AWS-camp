@@ -14,13 +14,13 @@
 ### [④ Deploy a RESTful API](#4-deploy-a-restful-api)
 ### [⑤ Terminate Resources](#5-terminate-resources)
 
-## 시나리오 개요
+## 개요
 
 * 준비물
   - AWS 계정
   - 인터넷이 되는 노트북 (웹브라우저는 Chrome 권장)
   - 텍스트 에디터 (Notepad++ 등)
-  - 뭔가 잘 안되도 포기하지 않는 멘탈
+  - 뭔가 잘 안되도 바로 포기하지 않는 멘탈
 
 * 진행 관련
   - 모든 실습은 서울 리전(ap-northeast-2)에서 수행 (AWS 콘솔 우측 상단에서 선택)
@@ -30,6 +30,9 @@
 ![image](/images/Day2-0.png)
 
 서비스 역할
+
+무엇무엇을 한다
+
 
 
 ## 1. Host a Static Website
