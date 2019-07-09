@@ -1,11 +1,11 @@
 # AWS WEB-APPLICATION 
 
-## 목차 
+## 목차.
 
 - 실습1. AWS VPC 구축 및 웹 서버 시작 (35분)
 - 실습2. AWS DB 서버 구축 및 웹서버를 사용하여 DB와 상호 작용 (35분)
 - 실습3. AWS 아키텍처를 확장 및 로드 밸런싱 (50분)
-- Terminate Resources
+- Terminate Resources (10분)
 
 * * *
 
