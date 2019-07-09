@@ -1,6 +1,8 @@
 # Build a Serverless Web Application
 
-* 2일차 블라블라
+* 오늘 실습에서는 Serverless 기반으로 간단한 웹서비스를 구성합니다
+* 1일차 실습과 달리 네트워크 구성이나 가상 서버(EC2)를 사용하지 않습니다
+* 구현 방법에서 1일차와 어떻게 다른지. 각기 어떤 장단점이 있을지에 대해 생각해봅시다
 
 ## 바로가기
 ### [① Host a Static Website](#1-host-a-static-website)
