@@ -26,6 +26,7 @@
 
 * 유의 사항
   - 모든 실습은 서울 리전(ap-northeast-2)에서 수행 (AWS 콘솔 우측 상단에서 선택)
+    - 단, 제가 제공해드린 계정내에서 리전을 분배해드린 분들은 `각기 할당한 리전`을 사용해야 합니다
   - 언어 설정은 영어 기준으로 진행 (AWS 콘솔 좌측 하단에서 선택)
   - 생성하는 AWS 리소스명은 대체로 대소문자를 구분하니 가이드대로 적어주세요
 
@@ -248,6 +249,7 @@ Lambda 함수에 권한을 부여하기 위해 IAM Role 객체를 생성합니�
     - Search Window: `AWSLambdaBasicExecutionRole` ▷ 검색된 항목에 체크 ▷ `[Next: Tags]`
     - Add tags: 공란으로 두고 ▷ `[Next: Review]`
     - Role name: `WildRydesLambda` ▷ `[Create role]`
+      - 단, 제가 제공해드린 계정내에서 리전을 분배해드린 분들은 각기 할당한 `IAM Role명`을 사용해야 합니다
 
   - 좌측탭 `Roles` ▷ Search Window: `WildRydesLambda` ▷ 검색된 Role 객체 선택
     
