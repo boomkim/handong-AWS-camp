@@ -327,9 +327,7 @@ Lambda 함수를 생성합니다
 
 ![image](/images/Day2-4.png)
 
-15분
-
-앞에다 뭐 붙여가지고 API를 받아주고. 몇가지 역할을 합니다요.
+소개
 
 ### 4-1. Create a New REST API
 
