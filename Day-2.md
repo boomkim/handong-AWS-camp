@@ -276,7 +276,7 @@ Lambda 함수를 생성합니다
   - `Author from scratch` 선택
 
     - Function name: `RequestUnicorn`
-    - Runtime: `node.js 8.10`
+    - Runtime: `Node.js 8.10`
     - Permissions: `Choose or create an execution role` ▷ `Use an existing role` ▷ `WildRydesLambda`
     - 확인 후 `[Create function]`
 
