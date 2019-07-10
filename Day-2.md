@@ -331,7 +331,7 @@ Lambda 함수를 생성합니다
 
 ### 4-1. Create a New REST API
 
-단위 객체를 만듭니다.
+API Gateway 객체를 만듭니다
 
 * `[AWS Management Console]` ▷ `[API Gateway]` 
   - `[Create API]` 또는 `[Get Started]` 선택
@@ -346,7 +346,7 @@ Lambda 함수를 생성합니다
 
 ### 4-2. Create a Cognito User Pools Authorizer
 
-오쏘라이저 변신
+Cognito에서 설정했던 인증을 연동합니다
 
 * `[AWS Management Console]` ▷ `[API Gateway]` 
   - `WildRydes` 선택
@@ -359,8 +359,6 @@ Lambda 함수를 생성합니다
       - Token Source: `Authorization`
       - 확인 후 `[Create]`
 
-중간 설명
-
 * `[AWS Management Console]` ▷ `[API Gateway]` 
   - `WildRydes` 선택
   
@@ -371,7 +369,7 @@ Lambda 함수를 생성합니다
 
 ### 4-3. Create a New Resource and Method
 
-설명을 부탁합니다
+API Gateway에서 POST 메쏘드를 생성합니다
 
 * `[AWS Management Console]` ▷ `[API Gateway]` 
   - `WildRydes` 선택
@@ -400,7 +398,7 @@ Lambda 함수를 생성합니다
 
 ### 4-4. Deploy Your API
 
-프로덕션 환경으로..
+설정한 API를 프로덕션 환경으로 배포합니다
 
 * `[AWS Management Console]` ▷ `[API Gateway]` 
   - `WildRydes` 선택
@@ -415,7 +413,7 @@ Lambda 함수를 생성합니다
     
 ### 4-5. Update the Website Config
 
-앞에서 한 수정 한번 더
+API Gateway의 끝점을 환경변수 파일에 반영합니다
 
 * 로컬 PC에서 다음 작업
   - `1-3` 단계의 `/WebApplication/1_StaticWebHosting/website/js/config.js` 파일을 에디터로 열기
@@ -430,7 +428,7 @@ Lambda 함수를 생성합니다
 
 ### 4-6. Validate Your Implementation
 
-최종 테스트
+이전 단계가 제대로 수행되었는지 확인합니다
 
 * `1-5` 단계에서 기록한 `Endpoint주소/ride.html` 주소로 웹페이지 열기
   - 아래 항목을 다음과 같이 입력 (미로그인 상태시, 인증상태인 경우 패스)
@@ -455,20 +453,20 @@ Lambda 함수를 생성합니다
   
     - 상단 `Item` 탭에서 람다 함수에서 기록한 히스토리 레코드 확인
 
-실습은 정말 끝났습니다.
+실습은 끝났습니다.
 
-이제 삭제할일만 남았습니다.
+이제 삭제할일만 남았습니다. 돈내면 안되잖아요.
 
 ---
 ## 5. Terminate Resources
 
 ![image](/images/Day2-5.png)
 
-10분
+소개
 
 ### 5-1. Delete Your Amazon S3 Bucket
 
-S3 버킷부터 지워봅시다
+S3 버킷을 삭제합니다
 
 * `[AWS Management Console]` ▷ `[S3]`
   - `1-2` 단계에서 생성한 S3 버킷명 좌측에 체크 표시
@@ -479,7 +477,7 @@ S3 버킷부터 지워봅시다
 
 ### 5-2. Delete Your Amazon Cognito User Pool
 
-딱풀을 지워봅시다
+이어 Cognito 유저 풀을 삭제합니다
 
 * `[AWS Management Console]` ▷ `[Cognito]` ▷ `[Manage User Pools]`
   - `WildRydes` 객체 선택
@@ -490,8 +488,7 @@ S3 버킷부터 지워봅시다
 
 ### 5-3. Delete Your Serverless Backend
 
-세개를 지워야 합니다.
-Lambda / IAM Role / DynamoDB
+먼저 Lambda 함수 객체를 삭제합니다
 
 * `[AWS Management Console]` ▷ `[Lambda]`
   - 좌측 `Functions` 탭 선택
@@ -500,7 +497,7 @@ Lambda / IAM Role / DynamoDB
   
     - 팝업창 확인 후 `[Delete]`
 
-이번엔 IAM Role 객체를 지웁니다.
+다음으로 IAM Role 객체를 지웁니다
 
 * `[AWS Management Console]` ▷ `[IAM]`
   - 좌측 `Roles` 탭 선택
@@ -508,7 +505,7 @@ Lambda / IAM Role / DynamoDB
   
     - 팝업창 확인 후 `Yes, delete`
 
-마지막으로 DynamoDB 테이블을 지웁니다.
+마지막으로 DynamoDB 테이블을 삭제합니다
 
 * `[AWS Management Console]` ▷ `[DynamoDB]`
   - 좌측 `Tables` 탭 선택
@@ -519,11 +516,10 @@ Lambda / IAM Role / DynamoDB
     - Create a backup before deleting this table: 체크 해제
     - 확인 후 `[Delete]`
     
-아이고 힘들다    
 
 ### 5-4. Delete Your REST API
 
-진짜 마지막으로 API Gateway 객체를 지웁니다.
+이어 API Gateway 객체를 지웁니다
 
 * `[AWS Management Console]` ▷ `[API Gateway]`
   - `WildRydes` 선택
@@ -534,7 +530,7 @@ Lambda / IAM Role / DynamoDB
     
 ### 5-5. Delete Your CloudWatch Log
 
-정말로 마지막으로 CloudWatch Log Group을 지웁니다
+마지막으로 CloudWatch Log Group을 지웁니다
 
 * `[AWS Management Console]` ▷ `[CloudWatch]`
   - 좌측 `Logs` 탭 선택
