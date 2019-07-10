@@ -250,7 +250,7 @@ Lambda 함수에 권한을 부여하기 위해 IAM Role 객체를 생성합니�
     - Search Window: `AWSLambdaBasicExecutionRole` ▷ 검색된 항목에 체크 ▷ `[Next: Tags]`
     - Add tags: 공란으로 두고 ▷ `[Next: Review]`
     - Role name: `WildRydesLambda` ▷ `[Create role]`
-      - _주의: 제가 제공해드린 계정내에서 리전을 분배해드린 분들은 각기 할당한 `IAM Role명`을 사용해야 합니다_
+      - _주의: 제가 제공해드린 계정내에서 리전을 분배해드린 분들은 각기 할당한 `IAM Role명`을 사용_
 
   - 좌측탭 `Roles` ▷ Search Window: `WildRydesLambda` ▷ 검색된 Role 객체 선택
     
