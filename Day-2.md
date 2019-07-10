@@ -253,7 +253,7 @@ Lambda 함수에 권한을 부여하기 위해 IAM Role 객체를 생성합니�
 
       - _주의: 제가 제공해드린 계정내에서 리전을 분배해드린 분들은 각기 할당한 `IAM Role명`을 사용_
 
-  - 좌측탭 `Roles` ▷ Search Window: `WildRydesLambda` ▷ 검색된 Role 객체 선택
+  - 좌측탭 `Roles` ▷ Search Window: `WildRydesLambda` ▷ 자신이 생성한 `Role 객체` 선택
     
     - `Permissions` 탭 ▷ `Add inline policy`
 
