@@ -56,7 +56,7 @@ S3 버킷을 생성합니다
 * `[AWS Management Console]` ▷ `[Find Services]` 검색창에 `S3` 입력
   - `[Create bucket]`선택
 
-    - Bucket name: `wildryde-firstname-lastname` # 그대로 적지 말고 이름부분을 반드시 변경!
+    - Bucket name: `wildryde-firstname-lastname` # _주의: 고대로 적지 말고 이름부분 반드시 변경!_
     - Region: `Asia Pacific (Seoul)`
     - 확인 후 `[Create]`
 
