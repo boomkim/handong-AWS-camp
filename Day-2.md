@@ -62,7 +62,7 @@ S3 버킷을 생성합니다
 
 ### 1-3. Upload Content
 
-생성한 S3에 웹컨텐츠를 업로드 합니다
+생성한 S3 버킷에 웹컨텐츠를 업로드 합니다
 
 * `[AWS Management Console]` ▷ `[S3]`
 
