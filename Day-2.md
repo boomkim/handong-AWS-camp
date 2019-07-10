@@ -141,7 +141,7 @@ S3 버킷이 웹서버 역할을 할 수 있도록 Website Hosting 옵션을 활
 
 ### 2-1. Create an Amazon Cognito User Pool
 
-인증풀을 관리하기 위한 User Pool을 생성합니다
+사용자인증을 관리하기 위한 User Pool을 생성합니다
 
 * `[AWS Management Console]` ▷ `[Cognito]`
   - `[Manage User Pools]` ▷ `[Create a user pool]` 선택
