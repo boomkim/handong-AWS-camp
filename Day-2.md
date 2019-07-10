@@ -327,6 +327,8 @@ Lambda 함수를 생성합니다
 
       - Execution result: `succeeded`로 표시되는지 확인
       - Details: 응답값에 `statusCode`가 `201`로 표시되는지 확인
+        - 여기서 `statusCode`가 `500`이 나오는 경우 손을 들어 조교를 호출해주세요
+      
 
 ---
 ## 4. Deploy a RESTful API
