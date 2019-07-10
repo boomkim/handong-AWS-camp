@@ -263,6 +263,7 @@ Lambda 함수에 권한을 부여하기 위해 IAM Role 객체를 생성합니�
       - Add ARN → Specify ARN for table: `3-1` 단계에서 기록한 ARN값 입력 ▷ `[Add]`
       - 확인 후 `[Review policy]`
       - Name: `DynamoDBWriteAccess`
+        - _주의: 제가 제공해드린 계정내에서 리전을 분배해드린 분들은 각기 할당한 `IAM Role명`을 사용_
       - 확인 후 `[Create policy]`
 
 
