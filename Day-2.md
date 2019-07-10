@@ -151,6 +151,8 @@ S3 버킷이 웹서버 역할을 할 수 있도록 Website Hosting 옵션을 활
 
 ### 2-2. Add an App to Your User Pool
 
+App client를 설정합니다
+
 * `[AWS Management Console]` ▷ `[Cognito]` ▷ `[Manage User Pools]`
   - `WildRydes` 객체 선택
   - `General settings` 탭 ▷ `App clients` ▷ `App an app client`
@@ -162,7 +164,7 @@ S3 버킷이 웹서버 역할을 할 수 있도록 Website Hosting 옵션을 활
 
 ### 2-3. Update the config.js File in Your Website Bucket
 
-여기선 뭘 할거다
+환경변수 파일에 cognito 객체ID값을 입력합니다
 
 * 로컬 PC에서 다음 작업
   - `1-3` 단계의 `/WebApplication/1_StaticWebHosting/website/js/config.js` 파일을 에디터로 열기
@@ -178,7 +180,7 @@ S3 버킷이 웹서버 역할을 할 수 있도록 Website Hosting 옵션을 활
 
 ### 2-4. Test Your Implementation
 
-이거 왜 이리 기냐..
+이전 단계가 제대로 수행되었는지 확인합니다
 
 * `1-5` 단계에서 기록한 `Endpoint주소/register.html` 주소로 웹페이지 열기
   - 아래 항목을 다음과 같이 입력
@@ -220,11 +222,11 @@ S3 버킷이 웹서버 역할을 할 수 있도록 Website Hosting 옵션을 활
 
 ![image](/images/Day2-3.png)
 
-30분
+소개
 
 ### 3-1. Create an Amazon DynamoDB Table
 
-좀 설명을 해주시면 안되겠습니까?
+DynamoDB 서비스에서 신규 테이블을 만듭니다
 
 * `[AWS Management Console]` ▷ `[DynamoDB]`
   - `[Create table]` 선택
@@ -237,7 +239,7 @@ S3 버킷이 웹서버 역할을 할 수 있도록 Website Hosting 옵션을 활
 
 ### 3-2. Create an IAM Role for Your Lambda function
 
-IAM은 또 뭐람?
+Lambda 함수에 권한을 부여하기 위해 IAM Role 객체를 생성합니다
 
 * `[AWS Management Console]` ▷ `[IAM]`
   - 좌측탭 `Roles` ▷ `[Create role]`
@@ -262,7 +264,7 @@ IAM은 또 뭐람?
 
 ### 3-3. Create a Lambda Function for Handling Requests
 
-람다라라라라
+Lambda 함수를 생성합니다
 
 * `[AWS Management Console]` ▷ `[Lambda]` ▷ `[Create a function]`
   - `Author from scratch` 선택
@@ -281,7 +283,7 @@ IAM은 또 뭐람?
   
 ### 3-4. Test Your Implementation
 
-함수를 개별실행 해보겠습니다.
+이전 단계가 제대로 수행되었는지 확인합니다
 
 * `[AWS Management Console]` ▷ `[Lambda]`
   - `RequestUnicorn` 선택
