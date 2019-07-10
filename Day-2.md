@@ -42,16 +42,14 @@
 
 ![image](/images/Day2-1.png)
 
-사용하는 서비스 아이콘
-객체간 상관관계
-30분
+소개
 
 ### 1-1. Select a Region
 * `[AWS Management Console]` ▷ 우측 상단 Region 부분에 `Asia Pacific (Seoul)` 선택
 
 ### 1-2. Create an S3 Bucket
 
-이번 단계에서는 무슨 용도의 S3 버킷을 생성합니다
+S3 버킷을 생성합니다
 
 * `[AWS Management Console]` ▷ `[Find Services]` 검색창에 `S3` 입력
   - `[Create bucket]`선택
@@ -62,7 +60,7 @@
 
 ### 1-3. Upload Content
 
-이번 단계는 위에서 만든 S3 버킷에 무슨 용도의 컨텐츠를 업로드 합니다
+생성한 S3에 웹컨텐츠를 업로드 합니다
 
 * `[AWS Management Console]` ▷ `[S3]`
 
@@ -80,7 +78,7 @@
 
 ### 1-4. Add a Bucket Policy to Allow Public Reads
 
-무슨 권한을 부여하겠습니다
+모든 객체에 대해 익명 읽기-권한을 부여합니다
 
 * `[AWS Management Console]` ▷ `[S3]`
   - `1-2` 단계에서 생성한 S3 버킷 선택
@@ -111,7 +109,7 @@
 
 ### 1-5. Enable Website Hosting
 
-단순 스토리지가 아닌 웹모듈을 활성화합니다
+S3 버킷이 웹서버 역할을 할 수 있도록 Website Hosting 옵션을 활성화합니다
 
 * `[AWS Management Console]` ▷ `[S3]`
   - `1-2` 단계에서 생성한 S3 버킷 선택
@@ -125,6 +123,8 @@
 
 ### 1-6. Validate Your Implementation
 
+이전 단계가 제대로 수행되었는지 확인합니다
+
 * `1-5` 단계에서 기록한 Endpoint 주소로 웹페이지 열기
 
   - 웹브라우저에 정상적으로 말떼가 표시되는지 확인
@@ -135,11 +135,11 @@
 
 ![image](/images/Day2-2.png)
 
-30분
+소개
 
 ### 2-1. Create an Amazon Cognito User Pool
 
-유저를 담는 그릇을 만들도록 하겠습니다
+인증풀을 관리하기 위한 User Pool을 생성합니다
 
 * `[AWS Management Console]` ▷ `[Cognito]`
   - `[Manage User Pools]` ▷ `[Create a user pool]` 선택
