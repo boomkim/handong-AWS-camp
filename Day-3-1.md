@@ -64,8 +64,6 @@
   - 또한 좌측 상단에 보시면 `Go to advanced options` 이란 메뉴가 있어서 원하시는 환경을 직접 선택하여 구성하실 수 있습니다.
   - `Go to advanced options`을 선택합니다.
 
-![EMR 클러스터 생성하기 메뉴](./images/Day3-03.png)
-
 ### 1-2. EMR 구성하기
 - 소프트웨어 구성을 위한 화면입니다. 이전에 보았던 메뉴구성과 달리 원하시는 소프트웨어의 조합을 마음대로 구성하실 수 있습니다.
 - Zeppelin과 Spark 환경을 구성하기 위해 `Hadoop 2.8.5, Zeppelin 0.8.1, Spark 2.4.2`을 선택하였습니다.
