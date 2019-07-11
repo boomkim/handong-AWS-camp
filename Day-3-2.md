@@ -98,7 +98,7 @@ git clone https://github.com/boomkim/handong-AWS-camp.git
     * `Create Function` 클릭
     * 생성된 화면에서 role 확인 
     * `View the {생성된 Role}` on the IAM Console 클릭해서 IAM으로 이동 
-    ![Lambda-IAMRole](./images/Day03-SM-02.png) 
+    ![Lambda-IAMRole](./images/Day3-SM-02.png) 
 
 ### Lambda 함수에 Sagemaker 실행 권한(Role) 추가 
 
