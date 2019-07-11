@@ -25,6 +25,8 @@
 3. Glue를 통해 데이터 카탈로그도 만들고 (+ Athena는 덤)
 4. 예쁘게 시각화 
 
+![target architecture](./images/Day3-00.png)
+
 해보려고 합니다. 그럼 시작해 봅시다. 
 
 ## 1. EMR을 통해 분석환경 구축하기
