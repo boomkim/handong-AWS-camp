@@ -195,7 +195,7 @@ Zeppelin에 접속하여 노트북을 생성합니다.
   ```
   %pyspark
   
-  dat = spark.read.csv("s3n://[your_id]-handong2019/original_data/*", header = True)\
+  dat = spark.read.csv("s3://[your_id]-handong2019/original_data/*", header = True)\
     .withColumn("dow_number", date_format('일자', 'u'))
 
   z.show(dat)
@@ -213,7 +213,7 @@ Zeppelin에 접속하여 노트북을 생성합니다.
   ```
   %pyspark
   
-  dat = spark.read.csv("s3n://[your_id]-handong2019/original_data/*", header = True)\
+  dat = spark.read.csv("s3://[your_id]-handong2019/original_data/*", header = True)\
     .withColumn("일자", to_date("일자", "yyyyMMdd"))\
     .withColumn("dow_number", date_format('일자', 'u'))\
     .withColumn("dow_string", date_format('일자', 'E'))
