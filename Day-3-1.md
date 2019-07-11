@@ -293,7 +293,7 @@ Zeppelin에 접속하여 노트북을 생성합니다.
 
 ![데이터 소스 추가 옵션](./images/Day3-15.png)
 
-- 크롤러의 IAM 역할을 지정해줍니다. 역할을 직접 생성하셔서 필요한만큼의 권한을 부여하셔도 됩니다. 핸즈온을 위해서는 `Create an IAM Role`을 선택하고 Role이름을 입력합니다.
+- 크롤러의 IAM 역할을 지정해줍니다. 역할을 직접 생성하셔서 필요한만큼의 권한을 부여하셔도 됩니다. 핸즈온을 위해서는 `Create an IAM Role`을 선택하고 Role이름을 입력합니다. (계정을 받아서 쓰시는 분은 `handong2019-{부여받은번호}`)
 
 ![IAM 역할 부여하기](./images/Day3-16.png)
 
@@ -301,7 +301,7 @@ Zeppelin에 접속하여 노트북을 생성합니다.
 
 ![스케쥴링 설정](./images/Day3-17.png)
 
-- 크롤링 결과는 테이블 형태로 출력을 하는데 해당 정보를 입력해줍니다. `handong2019` 데이터베이스를 선택합니다. 테이블이 생성될 때 접두사를 붙일수도 있습니다.
+- 크롤링 결과는 테이블 형태로 출력을 하는데 해당 정보를 입력해줍니다. `handong2019` 데이터베이스를 선택합니다. 테이블이 생성될 때 접두사를 붙일 수도 있습니다. `transformed_`
 
 ![크롤러 출력 설정](./images/Day3-18.png)
 
@@ -327,7 +327,7 @@ Zeppelin에 접속하여 노트북을 생성합니다.
 
 ![컬럼 수정](./images/Day3-22.png)
 
-이제 데이터 스키마가 깔끔해진것 같습니다. 
+이제 데이터 스키마가 깔끔해진 것 같습니다. 
 
 ### 4-3. Amazon Athena에서 카탈로그를 통해 데이터 불러오기
 
@@ -390,7 +390,7 @@ Quicksight는 AWS에서 제공하는 BI 툴입니다. 다른 상용 BI툴에 비
 ![Quicksight 구독](./images/Day3-25.png)
 
 - Standard plan 선택 
-- Tokyo Region 선택 
+- Region(Default: `virginia`,) 선택 
 - `Quicksight accountname` : `{username}-handong2019`
 - `Email` 입력
 - `Choose s3 buckets`: `Select all`
@@ -401,6 +401,8 @@ Quicksight는 AWS에서 제공하는 BI 툴입니다. 다른 상용 BI툴에 비
 아래와 같은 화면에 진입하면 성공입니다. 이상하게 도쿄리전으로 시작하면 모바일뷰로 나오네요. (버그인듯)
 
 ### 5.2 Data set 만들기 
+
+**데이터셋을 만들기 전에 반드시 자신의 리전을 확인!!**
 
 이제 Quicksight에 Data set을 정의해줍니다. 
 
@@ -432,7 +434,7 @@ Quicksight는 AWS에서 제공하는 BI 툴입니다. 다른 상용 BI툴에 비
 
 시각화의 단계는 사실 Data Scientist 들의 영역이기도 하고 데이터에 대한 insight가 필요한 영역이기도 합니다. 기본적인 통계, 집계등을 이용하여 Insight가 있는 시각화를 만드려면 데이터를 이것저것 뒤져봐야 하고 어떤 결과물이 필요한지에 대한 깊은 고민이 필요합니다. 
 
-Field list를 이것저것 조합하고, 값을 조정해보면서 어떤 그래프를 그릴 수 있는지 살펴 봅시다. 
+Field list를 이것저것 조합하고, 값을 조정해 보면서 어떤 그래프를 그릴 수 있는지 살펴 봅시다. 
 
 그렇게 이것저것 만져보다가, 그리고 싶은 그림이 있는데 필요한 자료가 없을 경우에는 어떻게 할지 생각해봐야 합니다. 어떻게 자료를 더 얻어올 수 있는지, 어떻게하면 데이터를 더 가치있게 만들 수 있는지. 필요하다면 다시 ETL작업을 하거나, 새로운 데이터를 수집하는 등의 작업을 해야합니다. 
 
@@ -448,10 +450,12 @@ Field list를 이것저것 조합하고, 값을 조정해보면서 어떤 그래
   - Glue 테이블, 크롤러 삭제
     - glue 콘솔 접속 
     - `Tables` -> 테이블 선택후 `Actions` -> `Delete Table`
+  - IAM Role 삭제
+    - `AWSGlueServiceRole-handong2019-{}`
   - S3 데이터 삭제 
     - s3 콘솔 접속 
     - `{username}-handong2019`버킷 삭제 
-    - `aws-athena-query-results-{계정번호}-ap-northeast-1` 버킷 내용 삭제 
+    - `aws-athena-query-results-{계정번호}-{리전}` 버킷 내용 삭제 
   - EMR 클러스터 삭제
     - EMR 콘솔이동 
     - 해당 클러스터 선택 후 `Terminate`
