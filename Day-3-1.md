@@ -139,8 +139,6 @@ ex) http://ec2-**-***-***-**.ap-northeast-1.compute.amazonaws.com:8890
 ## 2. 데이터셋 준비하기
 핸즈온에 사용할 데이터는 [SKT Big Data Hub](https://www.bigdatahub.co.kr)에서 제공하는 배달업종 이용현황 분석 2018년 데이터입니다. 사이트에 가보시면 회원가입 후 직접 다운로드가 가능. 하며 공개된 다양한 종류의 데이터가 많으니 확인해보시기 바랍니다.
 
-~~7월 9일 까지 회원가입이 안되는걸로 공지되어있네요~~
-
 ### 2-1. 데이터 다운로드
 
 [데이터 다운로드](https://bhkim2019.s3.ap-northeast-2.amazonaws.com/data.zip)
