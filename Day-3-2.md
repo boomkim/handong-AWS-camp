@@ -2,6 +2,8 @@
 
 ## 0. Overview
 
+![architecture](./images/Day3-SM-0.png)
+
 ### Sagemaker?
 
 Amazon SageMaker 는 데이터 사이언티스트와 개발자들이 쉽고 빠르게 구성, 학습하고 어떤 규모 로든 기계 학습된 모델을 배포할 수 있도록 해주는 관리형 서비스 입니다. 이 워크샵을 통해 Sagemaker notebook instance 를 생성하고 샘플 Jupyter notebook 을 실습하면서 SageMaker 의 일부 기능을 알아보도록 합니다.
@@ -216,6 +218,7 @@ def lambda_handler(event, context):
 * S3 Static 웹 서버에 사용될 index.html 과 error.html 파일 압축이 풀린 폴더에 저장
 
 ![버킷 내용 예시](./images/Day3-SM-12.png)
+
 이렇게 4개의 파일 1개의 폴더가 있으면 됩니다. 
 
 ### S3 Static Web Server 생성하기 
