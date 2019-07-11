@@ -101,7 +101,7 @@
 - `ElasticMapReduce-master`을 클릭하면 EC2 콘솔 보안 그룹 메뉴로 이동합니다.
 - ElasticMapReduce-master 보안그룹의 인바운드을 편집합니다.
 
-![ElasticMapReduce-master 보안그룹 규칙편집](./images/day3-09.png)
+![ElasticMapReduce-master 보안그룹 규칙편집](./images/Day3-09.png)
 
 - 8890 포트 (Zeppelin 사용) 22 포트 (ssh 접속)을 사용하는 접근 가능한 소스에 `접속하는 PC의 Public IP`를 추가합니다.
 - 접속하는 PC의 Public IP는 http://www.findip.kr 등을 사용하면 쉽게 알 수 있습니다. 
