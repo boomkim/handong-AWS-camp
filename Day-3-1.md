@@ -124,7 +124,7 @@ ex) http://ec2-**-***-***-**.ap-northeast-1.compute.amazonaws.com:8890
  
   ![ssh 접속 화면](./images/emr-011.png)
   
-  - 쉘스크립트 실행합니다. Zeppelin ID는 ds_handson_20190509로 미리 설정했습니다. 쉘스크립트가 실행되면 Zeppelin 비번을 한번 입력해주셔야 합니다.
+  - 쉘스크립트 실행합니다. Zeppelin ID는 handong2019로 미리 설정했습니다. 쉘스크립트가 실행되면 Zeppelin 비번을 한번 입력해주셔야 합니다.
 
     ```
     sh env_emr_spark_zeppelin.sh
