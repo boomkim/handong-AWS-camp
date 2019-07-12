@@ -157,7 +157,7 @@ App client를 설정합니다
 
 * `[AWS Management Console]` ▷ `[Cognito]` ▷ `[Manage User Pools]`
   - `WildRydes` 객체 선택
-  - `General settings` 탭 ▷ `App clients` ▷ `App an app client`
+  - `General settings` 탭 ▷ `App clients` ▷ `Add an app client`
 
     - App client name: `WildRydesWebApp`
     - Generate client secret: 체크표시 해제  
