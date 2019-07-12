@@ -79,7 +79,7 @@ git clone https://github.com/boomkim/handong-AWS-camp.git
 
 *노트북 코드 중 “Create endpoint configuration” 셀에서 현재 InstanceType 이 ‘ml.m4.large’ 로 되어 있습니다 (Figure 13 참조). Seq2Seq 알고리즘은 Neural network 기반이기 때문에 ml.p2.xlarge (GPU) instance 를 사용하실 수 있지만 본 실습에서는 Free tier 가 지원되는 ml.m4.xlarge 를 사용하고 있습니다. ml.t2.* instance 는 time-out 문제가 발생할 수 있으므로 본 실습에서는 사용하지 않습니다.*
 
-*노트북 코드 중 “Create endpoint” 셀은 새로운 서버를 설치하고 실행 코드를 설치하는 과정이므로 본 노트북에서는 가장 많은 시간 (약 10~11 여분)이 소요 되는데 아래와 같은 메세지를 확인하시면 다음 모듈로 진행하시면 됩니다 (Figure 14 참조).*
+*노트북 코드 중 “Create endpoint” 셀은 새로운 서버를 설치하고 실행 코드를 설치하는 과정이므로 본 노트북에서는 가장 많은 시간 (약 10~11 여분)이 소요 됩니다.*
 
 **노트북 가장 하단의 delete_endpoint는 실행시키지 마세요**
 
